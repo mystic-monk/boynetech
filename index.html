@@ -1,0 +1,611 @@
+﻿<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EireTech Digital Solutions — Ireland's data, analytics, software delivery, and IT managed services consultancy. We turn data into decisions and technology into outcomes.">
+  <title>EireTech Digital Solutions | Data, Analytics &amp; Technology Consultancy Ireland</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg">
+  <style>
+    /* Homepage hero — photo background replaces the default gradient overlay */
+    .hero {
+      background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+    /* Solid dark overlay instead of the default radial gradient */
+    .hero::before {
+      background: rgba(0, 0, 0, 0.55);
+    }
+    /* Hero secondary button — white outline for legibility on dark photo background */
+    .hero .btn-secondary {
+      color: var(--et-white);
+      border-color: rgba(255, 255, 255, 0.8);
+    }
+    .hero .btn-secondary:hover {
+      background-color: var(--et-white);
+      border-color: var(--et-white);
+      color: var(--et-navy);
+    }
+    /* Stats strip — navy background, transparent stat cards with white text */
+    .stats-strip {
+      background-color: var(--et-navy);
+      padding-block: var(--et-space-xl);
+    }
+    .stats-strip .stats-row {
+      background-color: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .stats-strip .stat-item {
+      background-color: transparent;
+    }
+    .stats-strip .stat-item__number {
+      color: var(--et-white);
+    }
+    .stats-strip .stat-item__label {
+      color: rgba(255, 255, 255, 0.7);
+    }
+    /* Insight section header — space between heading and all-articles link */
+    .insights-header {
+      display: flex;
+      align-items: flex-end;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: var(--et-space-lg);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── Navigation ─────────────────────────────────────────── -->
+  <header class="site-nav" role="banner">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo" aria-label="EireTech Digital Solutions — Home">
+        EireTech <span>Digital</span>
+      </a>
+
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="services.html">Services</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Contact</a>
+      </nav>
+
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+
+    <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="insights.html">Insights</a>
+      <a href="about.html">About</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact.html" class="btn btn-primary btn-sm">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ── Hero ───────────────────────────────────────────────── -->
+    <section class="hero" aria-labelledby="hero-heading">
+      <div class="hero__inner">
+        <span class="hero__label">Irish Technology &amp; Analytics Consultancy</span>
+        <h1 class="hero__title" id="hero-heading">
+          We Turn Data Into <span class="accent">Decisions.</span>
+        </h1>
+        <p class="hero__sub">
+          EireTech partners with Irish public sector bodies and private enterprises to deliver data, AI, and technology solutions that drive measurable outcomes.
+        </p>
+        <div class="hero__actions">
+          <a href="contact.html" class="btn btn-emerald btn-lg">Get in Touch</a>
+          <a href="services.html" class="btn btn-secondary btn-lg">Our Services</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Services Overview ──────────────────────────────────── -->
+    <section class="section section--cloud" aria-labelledby="services-heading">
+      <div class="container">
+        <div class="section-header--center text-center">
+          <span class="section-label">What We Do</span>
+          <h2 id="services-heading">Five practice areas. One cohesive team.</h2>
+          <div class="divider divider--center"></div>
+          <p>We cover the full technology lifecycle — strategy, build, run, and optimise — so you work with one accountable partner, not a chain of specialists who never speak to each other.</p>
+        </div>
+
+        <div class="grid grid--3 mt-lg">
+
+          <!-- Data & Analytics -->
+          <article class="card card--border">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/>
+                <line x1="6" y1="20" x2="6" y2="14"/><line x1="2" y1="20" x2="22" y2="20"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Data &amp; Analytics</h3>
+            <p class="card-body">We build the data foundations and insight capabilities your organisation needs to make confident, evidence-based decisions.</p>
+            <a href="services.html#data-analytics" class="card-link">Read More</a>
+          </article>
+
+          <!-- Software Development -->
+          <article class="card card--border">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Software Development</h3>
+            <p class="card-body">From web applications to enterprise platforms, we deliver robust, maintainable software aligned to your processes.</p>
+            <a href="services.html#software-development" class="card-link">Read More</a>
+          </article>
+
+          <!-- IT Managed Services -->
+          <article class="card card--border">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="2" y="2" width="20" height="8" rx="2"/><rect x="2" y="14" width="20" height="8" rx="2"/>
+                <line x1="6" y1="6" x2="6.01" y2="6"/><line x1="6" y1="18" x2="6.01" y2="18"/>
+              </svg>
+            </div>
+            <h3 class="card-title">IT Managed Services</h3>
+            <p class="card-body">Reliable, responsive IT support and infrastructure management so your teams stay productive and your systems stay secure.</p>
+            <a href="services.html#managed-services" class="card-link">Read More</a>
+          </article>
+
+          <!-- AI & Automation -->
+          <article class="card card--border">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="9" y="9" width="6" height="6"/>
+                <rect x="3" y="3" width="18" height="18" rx="2"/>
+                <line x1="9" y1="1" x2="9" y2="3"/><line x1="15" y1="1" x2="15" y2="3"/>
+                <line x1="9" y1="21" x2="9" y2="23"/><line x1="15" y1="21" x2="15" y2="23"/>
+                <line x1="1" y1="9" x2="3" y2="9"/><line x1="21" y1="9" x2="23" y2="9"/>
+                <line x1="1" y1="15" x2="3" y2="15"/><line x1="21" y1="15" x2="23" y2="15"/>
+              </svg>
+            </div>
+            <h3 class="card-title">AI &amp; Automation</h3>
+            <p class="card-body">We design and implement intelligent automation that removes manual effort, reduces errors, and accelerates delivery.</p>
+            <a href="services.html#ai-automation" class="card-link">Read More</a>
+          </article>
+
+          <!-- Digital Transformation -->
+          <article class="card card--border">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 16l-4-4 4-4"/><path d="M17 8l4 4-4 4"/>
+                <line x1="3" y1="12" x2="21" y2="12"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Digital Transformation</h3>
+            <p class="card-body">We help organisations reimagine how they operate, serve, and compete — with practical roadmaps that actually get delivered.</p>
+            <a href="services.html#digital-transformation" class="card-link">Read More</a>
+          </article>
+
+          <!-- Custom Engagements -->
+          <article class="card card--border">
+            <div class="card-icon" aria-hidden="true">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="3"/>
+                <path d="M19.07 4.93a10 10 0 0 0-14.14 0M4.93 19.07a10 10 0 0 0 14.14 0"/>
+                <path d="M12 2v2M12 20v2M2 12h2M20 12h2"/>
+              </svg>
+            </div>
+            <h3 class="card-title">Custom Engagements</h3>
+            <p class="card-body">Not every challenge fits a standard brief. Talk to us about bespoke analytical, technical, or advisory work.</p>
+            <a href="contact.html" class="card-link">Talk to Us</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Why EireTech ───────────────────────────────────────── -->
+    <section class="section" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="section-header--center text-center">
+          <span class="section-label">Why EireTech</span>
+          <h2 id="why-heading">The difference is in how we work</h2>
+          <div class="divider divider--center"></div>
+        </div>
+
+        <div class="grid grid--3 mt-lg">
+
+          <div class="trust-col">
+            <div class="trust-col__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              </svg>
+            </div>
+            <h3>Irish-Based Team</h3>
+            <p>Deep local knowledge of the public sector, regulatory landscape, and enterprise environment. We are not a remote team parachuted in — we are here, in the same market as you.</p>
+          </div>
+
+          <div class="trust-col">
+            <div class="trust-col__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <h3>End-to-End Delivery</h3>
+            <p>From strategy through to production. We do not stop at the slide deck. We stay engaged until the work is working and your team is confident using it.</p>
+          </div>
+
+          <div class="trust-col">
+            <div class="trust-col__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"/>
+                <polyline points="16 12 12 8 8 12"/>
+                <line x1="12" y1="16" x2="12" y2="8"/>
+              </svg>
+            </div>
+            <h3>Outcome-Focused</h3>
+            <p>Every engagement is measured against real, agreed business outcomes — not activity metrics. If it is not making a difference, we say so.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Stats Strip ────────────────────────────────────────── -->
+    <div class="stats-strip" aria-label="EireTech at a glance">
+      <div class="container">
+        <div class="stats-row">
+          <div class="stat-item">
+            <div class="stat-item__number">20<span class="accent">+</span></div>
+            <div class="stat-item__label">Years combined leadership experience in data and technology</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-item__number">50<span class="accent">+</span></div>
+            <div class="stat-item__label">Projects delivered across public sector and enterprise</div>
+          </div>
+          <div class="stat-item">
+            <div class="stat-item__number">5</div>
+            <div class="stat-item__label">Practice areas under one experienced, integrated team</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Insights Teaser ────────────────────────────────────── -->
+    <section class="section" aria-labelledby="insights-heading">
+      <div class="container">
+        <div class="insights-header">
+          <div class="section-header">
+            <span class="section-label">From Our Team</span>
+            <h2 id="insights-heading">Thinking out loud</h2>
+          </div>
+          <a href="insights.html" class="btn btn-secondary">All Articles</a>
+        </div>
+
+        <div class="grid grid--3">
+
+          <article class="article-card">
+            <a href="insights.html" tabindex="-1" aria-hidden="true">
+              <img
+                src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80"
+                alt="Analytics data being reviewed on a screen"
+                class="article-card__image"
+                loading="lazy">
+            </a>
+            <div class="article-card__body">
+              <p class="article-card__tag">Analytics · 5 min read</p>
+              <h3 class="article-card__title">
+                <a href="insights.html" style="color:inherit;text-decoration:none;">Making the Case for a Data Strategy in the Irish Public Sector</a>
+              </h3>
+              <p class="article-card__excerpt">Many Irish public sector bodies have rich operational data but no coherent strategy for using it. Here is why that matters and how to build the internal case for change.</p>
+              <p class="article-card__meta">May 2025</p>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <a href="insights.html" tabindex="-1" aria-hidden="true">
+              <img
+                src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80"
+                alt="Abstract AI visualisation representing machine learning concepts"
+                class="article-card__image"
+                loading="lazy">
+            </a>
+            <div class="article-card__body">
+              <p class="article-card__tag">AI · 4 min read</p>
+              <h3 class="article-card__title">
+                <a href="insights.html" style="color:inherit;text-decoration:none;">What RAG Actually Means for Your Organisation</a>
+              </h3>
+              <p class="article-card__excerpt">Retrieval-augmented generation is generating significant interest — but most explanations are written for engineers. Here is what it means for a senior decision-maker.</p>
+              <p class="article-card__meta">April 2025</p>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <a href="insights.html" tabindex="-1" aria-hidden="true">
+              <img
+                src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80"
+                alt="Data charts and analytics reports on a laptop screen"
+                class="article-card__image"
+                loading="lazy">
+            </a>
+            <div class="article-card__body">
+              <p class="article-card__tag">Business Intelligence · 6 min read</p>
+              <h3 class="article-card__title">
+                <a href="insights.html" style="color:inherit;text-decoration:none;">Why Most BI Projects Fail Before They Start</a>
+              </h3>
+              <p class="article-card__excerpt">The majority of business intelligence failures are not technical. They are failures of scoping, sponsorship, and expectation management — and they are entirely avoidable.</p>
+              <p class="article-card__meta">March 2025</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CTA Banner ─────────────────────────────────────────── -->
+    <section class="cta-banner" aria-labelledby="cta-heading">
+      <div class="cta-banner__inner">
+        <div>
+          <h2 id="cta-heading">Ready to build something that lasts?</h2>
+          <p>Talk to our team about your data, technology, or transformation goals. No obligation — just an honest conversation.</p>
+        </div>
+        <a href="contact.html" class="btn btn-emerald btn-lg">Start the Conversation</a>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ── Footer ─────────────────────────────────────────────── -->
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">EireTech <span>Digital</span></a>
+        <p>Ireland's partner for data, technology, and digital innovation.</p>
+        <p class="registered">Registered in Ireland &middot; Company No. [placeholder]</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#data-analytics">Data Analytics Consultancy</a></li>
+          <li><a href="services.html#software-development">Software Development</a></li>
+          <li><a href="services.html#managed-services">IT Managed Services</a></li>
+          <li><a href="services.html#ai-automation">AI &amp; Automation</a></li>
+          <li><a href="services.html#digital-transformation">Digital Transformation</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Dublin, Ireland</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:hello@eiretech.ie">hello@eiretech.ie</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://linkedin.com/company/eiretech" target="_blank" rel="noopener noreferrer">linkedin.com/company/eiretech</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="footer-bar">
+      <div class="footer-bar__inner">
+        <span>&copy; 2025 EireTech Digital Solutions Limited &middot; All rights reserved</span>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ── AI Chat Widget ──────────────────────────────────────── -->
+  <div class="chat-widget" id="chatWidget" role="complementary" aria-label="EireTech AI Assistant">
+
+    <div class="chat-panel" id="chatPanel" hidden>
+      <div class="chat-header">
+        <div>
+          <div class="chat-header__title">EireTech Assistant</div>
+          <div class="chat-header__sub">Ask me anything</div>
+        </div>
+        <button class="chat-close" id="chatClose" aria-label="Close assistant">&#x00D7;</button>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite" aria-label="Conversation"></div>
+      <div class="chat-input-row">
+        <input
+          type="text"
+          id="chatInput"
+          class="chat-input"
+          placeholder="Type your message…"
+          autocomplete="off"
+          aria-label="Message to EireTech assistant">
+        <button class="chat-send" id="chatSend" aria-label="Send message">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <button class="chat-toggle" id="chatToggle" aria-label="Open EireTech assistant" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+      </svg>
+    </button>
+
+  </div>
+
+  <script>
+    // ── Mobile Navigation ──────────────────────────────────────
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var menu   = document.getElementById('navMobile');
+
+      toggle.addEventListener('click', function () {
+        var open = menu.classList.toggle('open');
+        toggle.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open);
+      });
+
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menu.classList.remove('open');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }());
+
+    // ── AI Chat Widget ─────────────────────────────────────────
+    (function () {
+      // SECURITY NOTE FOR DEVELOPER:
+      // For local development only. Before deploying to a public server,
+      // replace the direct API call with a call to your own backend proxy
+      // endpoint (e.g. a FastAPI route at /api/chat) so the key is never
+      // exposed in the browser.
+      var ANTHROPIC_API_KEY = 'YOUR_API_KEY_HERE';
+      var API_ENDPOINT      = 'https://api.anthropic.com/v1/messages';
+      var SYSTEM_PROMPT     = 'You are the EireTech Digital Solutions assistant. EireTech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand EireTech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
+
+      var chatToggle   = document.getElementById('chatToggle');
+      var chatClose    = document.getElementById('chatClose');
+      var chatPanel    = document.getElementById('chatPanel');
+      var chatMessages = document.getElementById('chatMessages');
+      var chatInput    = document.getElementById('chatInput');
+      var chatSend     = document.getElementById('chatSend');
+
+      var conversationHistory = [];
+      var greetingShown = false;
+      var isWaiting     = false;
+
+      // Open / close
+      chatToggle.addEventListener('click', openChat);
+      chatClose.addEventListener('click', closeChat);
+
+      function openChat() {
+        chatPanel.hidden = false;
+        chatToggle.setAttribute('aria-expanded', 'true');
+
+        if (!greetingShown) {
+          greetingShown = true;
+          appendMessage('assistant', 'Hi, I am the EireTech Digital Assistant. Ask me about our services, team, or how we can help your organisation.');
+        }
+
+        chatInput.focus();
+      }
+
+      function closeChat() {
+        chatPanel.hidden = true;
+        chatToggle.setAttribute('aria-expanded', 'false');
+      }
+
+      // Send on Enter or button click
+      chatInput.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' && !e.shiftKey) {
+          e.preventDefault();
+          handleSend();
+        }
+      });
+      chatSend.addEventListener('click', handleSend);
+
+      function handleSend() {
+        var text = chatInput.value.trim();
+        if (!text || isWaiting) return;
+
+        chatInput.value = '';
+        appendMessage('user', text);
+        conversationHistory.push({ role: 'user', content: text });
+        sendToAPI();
+      }
+
+      function appendMessage(role, text) {
+        var div = document.createElement('div');
+        div.className = 'chat-message chat-message--' + role;
+        div.textContent = text;
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+        return div;
+      }
+
+      function showTyping() {
+        var div = document.createElement('div');
+        div.className = 'chat-message chat-message--assistant chat-message--typing';
+        div.id = 'chatTyping';
+        div.innerHTML = '<span></span><span></span><span></span>';
+        chatMessages.appendChild(div);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+
+      function hideTyping() {
+        var el = document.getElementById('chatTyping');
+        if (el) el.remove();
+      }
+
+      async function sendToAPI() {
+        isWaiting = true;
+        showTyping();
+
+        try {
+          var response = await fetch(API_ENDPOINT, {
+            method: 'POST',
+            headers: {
+              'content-type': 'application/json',
+              'x-api-key': ANTHROPIC_API_KEY,
+              'anthropic-version': '2023-06-01',
+              'anthropic-dangerous-direct-browser-access': 'true'
+            },
+            body: JSON.stringify({
+              model: 'claude-sonnet-4-20250514',
+              max_tokens: 500,
+              system: SYSTEM_PROMPT,
+              messages: conversationHistory
+            })
+          });
+
+          hideTyping();
+
+          if (!response.ok) {
+            throw new Error('HTTP ' + response.status);
+          }
+
+          var data   = await response.json();
+          var reply  = data.content[0].text;
+          appendMessage('assistant', reply);
+          conversationHistory.push({ role: 'assistant', content: reply });
+
+        } catch (err) {
+          hideTyping();
+          appendMessage('assistant', 'I\'m having trouble connecting at the moment. Please reach out to us directly at hello@eiretech.ie or use the Contact page.');
+        }
+
+        isWaiting = false;
+      }
+    }());
+  </script>
+
+</body>
+</html>
+

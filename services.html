@@ -1,0 +1,485 @@
+﻿<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EireTech Digital Solutions services — data analytics consultancy, software development, IT managed services, AI and automation, and digital transformation advisory across Ireland.">
+  <title>Services | EireTech Digital Solutions</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg">
+  <style>
+    /* Page hero — data analytics background image */
+    .page-hero {
+      background-image: url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .page-hero::before { background: rgba(12, 31, 63, 0.75); }
+
+    /* Service detail blocks — alternating image / text layout */
+    .service-block {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+      padding-block: var(--et-space-xl);
+      border-bottom: 1px solid rgba(136,151,168,.15);
+    }
+    .service-block:last-child { border-bottom: none; }
+
+    .service-block__image {
+      border-radius: var(--et-radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .service-block__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .service-block__image img:hover { transform: scale(1.02); }
+
+    /* Flip: image moves to right column */
+    .service-block--flip .service-block__image { order: 2; }
+    .service-block--flip .service-block__content { order: 1; }
+
+    .service-block__content > p {
+      color: var(--et-slate);
+      margin-bottom: 1.25rem;
+      line-height: 1.7;
+    }
+    .service-block__content h2 { margin-bottom: 0.75rem; }
+
+    /* Two-column deliverables list */
+    .deliverables {
+      list-style: none;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.4rem 1rem;
+      margin-bottom: 1.75rem;
+    }
+    .deliverables li {
+      position: relative;
+      padding-left: 1rem;
+      font-size: 0.9rem;
+      color: var(--et-slate);
+      line-height: 1.5;
+    }
+    .deliverables li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background-color: var(--et-emerald);
+    }
+
+    /* Process strip — 4 columns with connecting line */
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 31px;
+      left: 9%;
+      right: 9%;
+      height: 2px;
+      background: linear-gradient(to right, var(--et-emerald), var(--et-blue));
+      z-index: 0;
+    }
+    .process-step {
+      position: relative;
+      z-index: 1;
+      text-align: center;
+    }
+    .process-step__num {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background-color: var(--et-emerald);
+      color: var(--et-white);
+      font-family: var(--et-font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 1.25rem;
+      box-shadow: 0 0 0 4px var(--et-white), 0 0 0 6px var(--et-emerald);
+    }
+    .process-step h3 { font-size: 1.0625rem; margin-bottom: 0.625rem; }
+    .process-step p  { font-size: 0.9rem; color: var(--et-slate); }
+
+    @media (max-width: 1024px) {
+      .service-block { gap: 2.5rem; }
+    }
+    @media (max-width: 768px) {
+      .service-block { grid-template-columns: 1fr; gap: 2rem; }
+      .service-block--flip .service-block__image,
+      .service-block--flip .service-block__content { order: unset; }
+      .deliverables { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 2rem; }
+      .process-steps::before { display: none; }
+    }
+    @media (max-width: 480px) {
+      .process-steps { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav" role="banner">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">EireTech <span>Digital</span></a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="services.html" class="active">Services</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+      <a href="services.html" class="active">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="insights.html">Insights</a>
+      <a href="about.html">About</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact.html" class="btn btn-primary btn-sm">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="page-hero__inner">
+        <span class="section-label">Our Practice Areas</span>
+        <h1 id="page-title">What We Do</h1>
+        <p>Five integrated practice areas. One cohesive team. Outcomes that stay delivered.</p>
+      </div>
+    </section>
+
+    <!-- ── Service Blocks ─────────────────────────────────────── -->
+    <section class="section" aria-label="Service areas in detail">
+      <div class="container">
+
+        <!-- 1: Data & Analytics — image left -->
+        <article class="service-block" id="data-analytics">
+          <div class="service-block__image">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80"
+                 alt="Data analytics charts and dashboard on a laptop screen" loading="lazy">
+          </div>
+          <div class="service-block__content">
+            <span class="section-label">Practice Area 01</span>
+            <h2>Data &amp; Analytics Consultancy</h2>
+            <p>We help organisations move from raw data to reliable insight. Whether you are building a data strategy from scratch, modernising a legacy BI environment, or scaling an analytics capability, we provide the expertise to do it properly.</p>
+            <p>Our work spans data architecture, pipeline engineering, dashboard development, and analytics governance — delivered by people who have done this in real organisations, not just on whiteboards.</p>
+            <ul class="deliverables">
+              <li>Data strategy and maturity assessment</li>
+              <li>BI platform design and delivery</li>
+              <li>Data pipeline and lakehouse engineering</li>
+              <li>Dashboard and reporting development</li>
+              <li>Analytics governance frameworks</li>
+              <li>Self-service analytics enablement</li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary">Talk to Us</a>
+          </div>
+        </article>
+
+        <!-- 2: Software Development — image right -->
+        <article class="service-block service-block--flip" id="software-development">
+          <div class="service-block__image">
+            <img src="https://images.unsplash.com/photo-1555066931-4365d14431b9?w=600&q=80"
+                 alt="Developer writing code on a large monitor" loading="lazy">
+          </div>
+          <div class="service-block__content">
+            <span class="section-label">Practice Area 02</span>
+            <h2>Software Development &amp; Delivery</h2>
+            <p>We design and build software that fits how your organisation actually works. Our approach is pragmatic and delivery-focused — we scope carefully, build incrementally, and stay accountable to outcomes.</p>
+            <p>From internal operational tools to customer-facing applications, we bring technical depth and project rigour to every engagement. We do not disappear at go-live.</p>
+            <ul class="deliverables">
+              <li>Web application design and development</li>
+              <li>API and integration development</li>
+              <li>Internal tooling and workflow applications</li>
+              <li>Legacy system modernisation</li>
+              <li>Technical discovery and architecture</li>
+              <li>Agile delivery management</li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary">Talk to Us</a>
+          </div>
+        </article>
+
+        <!-- 3: IT Managed Services — image left -->
+        <article class="service-block" id="managed-services">
+          <div class="service-block__image">
+            <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80"
+                 alt="IT infrastructure and server rack representing managed services" loading="lazy">
+          </div>
+          <div class="service-block__content">
+            <span class="section-label">Practice Area 03</span>
+            <h2>IT Managed Services</h2>
+            <p>Your technology should work reliably so your team can focus on the work that matters. We provide responsive, professionally managed IT support covering infrastructure, end-user services, security monitoring, and vendor management.</p>
+            <p>We act as an extension of your team, not a remote helpdesk. You will speak to the same people who know your environment.</p>
+            <ul class="deliverables">
+              <li>Infrastructure management and monitoring</li>
+              <li>End-user support and service desk</li>
+              <li>Cybersecurity monitoring and response</li>
+              <li>Cloud environment management</li>
+              <li>Vendor and licence management</li>
+              <li>IT strategy and roadmap advisory</li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary">Talk to Us</a>
+          </div>
+        </article>
+
+        <!-- 4: AI & Automation — image right -->
+        <article class="service-block service-block--flip" id="ai-automation">
+          <div class="service-block__image">
+            <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80"
+                 alt="Abstract visualisation representing artificial intelligence and automation" loading="lazy">
+          </div>
+          <div class="service-block__content">
+            <span class="section-label">Practice Area 04</span>
+            <h2>AI &amp; Automation Solutions</h2>
+            <p>Artificial intelligence is only valuable when it is grounded in your processes and your data. We help organisations identify where AI and automation create genuine value, design solutions that fit within governance and compliance frameworks, and deliver working systems — not proofs of concept that go no further.</p>
+            <p>We are experienced with both cloud-based and fully local (on-premise) AI deployments — critical for organisations with strict data residency requirements.</p>
+            <ul class="deliverables">
+              <li>AI opportunity assessment and prioritisation</li>
+              <li>RAG and document intelligence applications</li>
+              <li>Process automation and workflow orchestration</li>
+              <li>Predictive modelling and forecasting</li>
+              <li>LLM integration and prompt engineering</li>
+              <li>AI governance and responsible AI frameworks</li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary">Talk to Us</a>
+          </div>
+        </article>
+
+        <!-- 5: Digital Transformation — image left -->
+        <article class="service-block" id="digital-transformation">
+          <div class="service-block__image">
+            <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80"
+                 alt="Team collaborating on a digital strategy and technology roadmap" loading="lazy">
+          </div>
+          <div class="service-block__content">
+            <span class="section-label">Practice Area 05</span>
+            <h2>Digital Transformation Advisory</h2>
+            <p>Transformation is not a technology project. It is an organisational change programme that technology enables. We bring senior advisory experience to help leaders define what change is needed, build the business case, design the programme, and see it through.</p>
+            <p>We do not hand over a report and disappear. We stay engaged through delivery, governance, and benefits realisation — because that is where most programmes actually fail.</p>
+            <ul class="deliverables">
+              <li>Digital maturity assessment</li>
+              <li>Transformation strategy and roadmap</li>
+              <li>Business case development</li>
+              <li>Programme governance and oversight</li>
+              <li>Stakeholder engagement and change management</li>
+              <li>Benefits realisation tracking</li>
+            </ul>
+            <a href="contact.html" class="btn btn-primary">Talk to Us</a>
+          </div>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── How We Work ────────────────────────────────────────── -->
+    <section class="section section--cloud" aria-labelledby="process-heading">
+      <div class="container">
+        <div class="section-header--center text-center">
+          <span class="section-label">Our Approach</span>
+          <h2 id="process-heading">How we work</h2>
+          <div class="divider divider--center"></div>
+          <p>Every engagement follows the same four principles — regardless of size or practice area.</p>
+        </div>
+        <div class="process-steps mt-lg">
+          <div class="process-step">
+            <div class="process-step__num" aria-hidden="true">01</div>
+            <h3>Discover</h3>
+            <p>We listen first. Every engagement begins with structured discovery to understand your context, constraints, and goals — not our assumptions about them.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-step__num" aria-hidden="true">02</div>
+            <h3>Design</h3>
+            <p>We co-design a solution with you, not for you. Prototypes and early validation before full commitment. No surprises at sign-off.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-step__num" aria-hidden="true">03</div>
+            <h3>Deliver</h3>
+            <p>Structured delivery with clear milestones, regular reviews, and genuine accountability. You always know where things stand.</p>
+          </div>
+          <div class="process-step">
+            <div class="process-step__num" aria-hidden="true">04</div>
+            <h3>Sustain</h3>
+            <p>We do not walk away at go-live. We support, iterate, and improve — because the work only matters if it keeps working.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner" aria-labelledby="cta-heading">
+      <div class="cta-banner__inner">
+        <div>
+          <h2 id="cta-heading">Not sure which service fits your need?</h2>
+          <p>Tell us what you are trying to achieve and we will work out together where we can help most.</p>
+        </div>
+        <a href="contact.html" class="btn btn-emerald btn-lg">Contact Us</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">EireTech <span>Digital</span></a>
+        <p>Ireland's partner for data, technology, and digital innovation.</p>
+        <p class="registered">Registered in Ireland &middot; Company No. [placeholder]</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#data-analytics">Data Analytics Consultancy</a></li>
+          <li><a href="services.html#software-development">Software Development</a></li>
+          <li><a href="services.html#managed-services">IT Managed Services</a></li>
+          <li><a href="services.html#ai-automation">AI &amp; Automation</a></li>
+          <li><a href="services.html#digital-transformation">Digital Transformation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Dublin, Ireland</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:hello@eiretech.ie">hello@eiretech.ie</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://linkedin.com/company/eiretech" target="_blank" rel="noopener noreferrer">linkedin.com/company/eiretech</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-bar__inner">
+        <span>&copy; 2025 EireTech Digital Solutions Limited &middot; All rights reserved</span>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chatWidget" role="complementary" aria-label="EireTech AI Assistant">
+    <div class="chat-panel" id="chatPanel" hidden>
+      <div class="chat-header">
+        <div>
+          <div class="chat-header__title">EireTech Assistant</div>
+          <div class="chat-header__sub">Ask me anything</div>
+        </div>
+        <button class="chat-close" id="chatClose" aria-label="Close assistant">&#x00D7;</button>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Type your message…" autocomplete="off" aria-label="Message to EireTech assistant">
+        <button class="chat-send" id="chatSend" aria-label="Send message">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+        </button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle" aria-label="Open EireTech assistant" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </button>
+  </div>
+
+  <script>
+    (function () {
+      var toggle = document.getElementById('navToggle');
+      var menu   = document.getElementById('navMobile');
+      toggle.addEventListener('click', function () {
+        var open = menu.classList.toggle('open');
+        toggle.classList.toggle('open', open);
+        toggle.setAttribute('aria-expanded', open);
+      });
+      menu.querySelectorAll('a').forEach(function (link) {
+        link.addEventListener('click', function () {
+          menu.classList.remove('open');
+          toggle.classList.remove('open');
+          toggle.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }());
+
+    (function () {
+      var ANTHROPIC_API_KEY = 'YOUR_API_KEY_HERE';
+      var API_ENDPOINT      = 'https://api.anthropic.com/v1/messages';
+      var SYSTEM_PROMPT     = 'You are the EireTech Digital Solutions assistant. EireTech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand EireTech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
+      var chatToggle   = document.getElementById('chatToggle');
+      var chatClose    = document.getElementById('chatClose');
+      var chatPanel    = document.getElementById('chatPanel');
+      var chatMessages = document.getElementById('chatMessages');
+      var chatInput    = document.getElementById('chatInput');
+      var chatSend     = document.getElementById('chatSend');
+      var history = [], greetingShown = false, isWaiting = false;
+      chatToggle.addEventListener('click', function () {
+        chatPanel.hidden = false;
+        chatToggle.setAttribute('aria-expanded', 'true');
+        if (!greetingShown) { greetingShown = true; appendMsg('assistant', 'Hi, I am the EireTech Digital Assistant. Ask me about our services, team, or how we can help your organisation.'); }
+        chatInput.focus();
+      });
+      chatClose.addEventListener('click', function () { chatPanel.hidden = true; chatToggle.setAttribute('aria-expanded', 'false'); });
+      chatInput.addEventListener('keydown', function (e) { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); send(); } });
+      chatSend.addEventListener('click', send);
+      function appendMsg(role, text) {
+        var d = document.createElement('div');
+        d.className = 'chat-message chat-message--' + role;
+        d.textContent = text;
+        chatMessages.appendChild(d);
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+      }
+      function showTyping() { var d = document.createElement('div'); d.className = 'chat-message chat-message--assistant chat-message--typing'; d.id = 'chatTyping'; d.innerHTML = '<span></span><span></span><span></span>'; chatMessages.appendChild(d); chatMessages.scrollTop = chatMessages.scrollHeight; }
+      function hideTyping() { var el = document.getElementById('chatTyping'); if (el) el.remove(); }
+      async function send() {
+        var text = chatInput.value.trim();
+        if (!text || isWaiting) return;
+        chatInput.value = '';
+        appendMsg('user', text);
+        history.push({ role: 'user', content: text });
+        isWaiting = true; showTyping();
+        try {
+          var res = await fetch(API_ENDPOINT, { method: 'POST', headers: { 'content-type': 'application/json', 'x-api-key': ANTHROPIC_API_KEY, 'anthropic-version': '2023-06-01', 'anthropic-dangerous-direct-browser-access': 'true' }, body: JSON.stringify({ model: 'claude-sonnet-4-20250514', max_tokens: 500, system: SYSTEM_PROMPT, messages: history }) });
+          hideTyping();
+          if (!res.ok) throw new Error('HTTP ' + res.status);
+          var data = await res.json(); var reply = data.content[0].text;
+          appendMsg('assistant', reply); history.push({ role: 'assistant', content: reply });
+        } catch (e) { hideTyping(); appendMsg('assistant', 'I\'m having trouble connecting at the moment. Please reach out directly at hello@eiretech.ie.'); }
+        isWaiting = false;
+      }
+    }());
+  </script>
+</body>
+</html>
+

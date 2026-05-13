@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\ankush.arya\\\\Dev\\\\EireTech\\\\css\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\ankush.arya\\\\Dev\\\\EireTech\\\\images\")",
+      "PowerShell(New-Item -ItemType Directory -Force \"c:\\\\Users\\\\ankush.arya\\\\Dev\\\\EireTech\\\\portal\")",
+      "Bash(python3 -c ' *)",
+      "PowerShell(Get-ChildItem \"c:\\\\Users\\\\ankush.arya\\\\Dev\\\\EireTech\" -Recurse -File | Where-Object { $_.Name -ne 'settings.json' } | Select-Object @{N='Path';E={$_.FullName.Replace\\('c:\\\\Users\\\\ankush.arya\\\\Dev\\\\EireTech\\\\',''\\)}} | Format-Table -AutoSize)"
+    ]
+  }
+}

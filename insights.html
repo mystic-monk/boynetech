@@ -1,0 +1,343 @@
+﻿<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EireTech Insights — perspectives on data, AI, technology delivery, and what it actually takes to drive change in Irish organisations.">
+  <title>Insights | EireTech Digital Solutions</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg">
+  <style>
+    /* Page hero — analytics background */
+    .page-hero {
+      background-image: url('https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .page-hero::before { background: rgba(12, 31, 63, 0.65); }
+
+    /* Featured article — large horizontal card */
+    .featured-article {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-radius: var(--et-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--et-shadow-md);
+      border: 1px solid rgba(136,151,168,.15);
+    }
+    .featured-article__image {
+      width: 100%;
+      height: 100%;
+      min-height: 320px;
+      object-fit: cover;
+      display: block;
+    }
+    .featured-article__body {
+      padding: 2.5rem;
+      background: var(--et-white);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .featured-article__tag {
+      font-size: 0.8125rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--et-emerald);
+      margin-bottom: 0.75rem;
+    }
+    .featured-article__title {
+      font-family: var(--et-font-display);
+      font-size: clamp(1.25rem, 2.5vw, 1.625rem);
+      font-weight: 700;
+      color: var(--et-navy);
+      line-height: 1.3;
+      margin-bottom: 1rem;
+    }
+    .featured-article__summary {
+      color: var(--et-slate);
+      font-size: 1rem;
+      line-height: 1.7;
+      margin-bottom: 1.5rem;
+    }
+    .featured-article__meta {
+      font-size: 0.875rem;
+      color: var(--et-grey);
+      margin-bottom: 1.5rem;
+    }
+
+    /* Newsletter strip */
+    .newsletter-strip {
+      background: var(--et-cloud);
+      border-radius: var(--et-radius-lg);
+      padding: 3rem;
+      text-align: center;
+      max-width: 600px;
+      margin-inline: auto;
+    }
+    .newsletter-strip h2 { margin-bottom: 0.625rem; font-size: 1.625rem; }
+    .newsletter-strip p  { color: var(--et-slate); margin-bottom: 1.5rem; }
+    .newsletter-form {
+      display: flex;
+      gap: 0.75rem;
+      max-width: 440px;
+      margin-inline: auto;
+    }
+    .newsletter-form input {
+      flex: 1;
+      min-width: 0;
+    }
+
+    @media (max-width: 768px) {
+      .featured-article { grid-template-columns: 1fr; }
+      .featured-article__image { min-height: 220px; }
+      .newsletter-form { flex-direction: column; }
+      .newsletter-form .btn { width: 100%; justify-content: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav" role="banner">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">EireTech <span>Digital</span></a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="services.html">Services</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="insights.html" class="active">Insights</a>
+        <a href="about.html">About</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="insights.html" class="active">Insights</a>
+      <a href="about.html">About</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact.html" class="btn btn-primary btn-sm">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="page-hero__inner">
+        <span class="section-label">From Our Team</span>
+        <h1 id="page-title">Thinking Out Loud</h1>
+        <p>Perspectives on data, AI, technology, and what it actually takes to deliver change in Irish organisations.</p>
+      </div>
+    </section>
+
+    <!-- ── Featured Article ───────────────────────────────────── -->
+    <section class="section" aria-labelledby="featured-heading">
+      <div class="container">
+        <span class="section-label">Featured</span>
+        <h2 class="sr-only" id="featured-heading">Featured article</h2>
+        <article class="featured-article mt-sm">
+          <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=600&q=80"
+               alt="Data analytics dashboard representing public sector data strategy"
+               class="featured-article__image" loading="lazy">
+          <div class="featured-article__body">
+            <p class="featured-article__tag">Analytics &middot; 6 min read</p>
+            <h3 class="featured-article__title">Making the Case for a Data Strategy in the Irish Public Sector</h3>
+            <p class="featured-article__summary">Many Irish public sector bodies have rich operational data but no coherent strategy for using it. This article sets out why a data strategy matters, what it should contain, and how to build the internal case for investment — without losing stakeholders in technical detail.</p>
+            <p class="featured-article__meta">EireTech Editorial &middot; May 2025</p>
+            <a href="#featured" class="btn btn-primary">Read Article</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ── Article Grid ───────────────────────────────────────── -->
+    <section class="section section--cloud" aria-labelledby="articles-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">All Articles</span>
+          <h2 id="articles-heading">More from the team</h2>
+        </div>
+
+        <div class="grid grid--2 mt-lg">
+
+          <article class="article-card">
+            <a href="#article1" tabindex="-1" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80"
+                   alt="AI interface and machine learning abstract visualisation"
+                   class="article-card__image" loading="lazy">
+            </a>
+            <div class="article-card__body">
+              <p class="article-card__tag">AI &middot; 4 min read</p>
+              <h3 class="article-card__title">
+                <a href="#article1" style="color:inherit;text-decoration:none;">What RAG Actually Means for Your Organisation</a>
+              </h3>
+              <p class="article-card__excerpt">Retrieval-augmented generation is generating significant interest — but most explanations are written for engineers. Here is what it means for a senior decision-maker and what questions to ask before investing.</p>
+              <p class="article-card__meta">April 2025 &middot; EireTech Editorial</p>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <a href="#article2" tabindex="-1" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80"
+                   alt="Business intelligence data and analytics charts"
+                   class="article-card__image" loading="lazy">
+            </a>
+            <div class="article-card__body">
+              <p class="article-card__tag">Analytics &middot; 5 min read</p>
+              <h3 class="article-card__title">
+                <a href="#article2" style="color:inherit;text-decoration:none;">Why Most BI Projects Fail Before They Start</a>
+              </h3>
+              <p class="article-card__excerpt">The majority of business intelligence failures are not technical. They are failures of scoping, sponsorship, and expectation management. Here is how to avoid the most common traps before a line of code is written.</p>
+              <p class="article-card__meta">March 2025 &middot; EireTech Editorial</p>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <a href="#article3" tabindex="-1" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=600&q=80"
+                   alt="Team collaborating on a technology delivery roadmap"
+                   class="article-card__image" loading="lazy">
+            </a>
+            <div class="article-card__body">
+              <p class="article-card__tag">Delivery &middot; 4 min read</p>
+              <h3 class="article-card__title">
+                <a href="#article3" style="color:inherit;text-decoration:none;">The Case Against the Proof of Concept</a>
+              </h3>
+              <p class="article-card__excerpt">Organisations have become addicted to proofs of concept that never reach production. We make the case for smaller, faster, fully committed delivery instead — and explain why a PoC is often just a way to avoid a decision.</p>
+              <p class="article-card__meta">February 2025 &middot; EireTech Editorial</p>
+            </div>
+          </article>
+
+          <article class="article-card">
+            <a href="#article4" tabindex="-1" aria-hidden="true">
+              <img src="https://images.unsplash.com/photo-1581092160607-ee22621dd758?w=600&q=80"
+                   alt="IT infrastructure and server environment"
+                   class="article-card__image" loading="lazy">
+            </a>
+            <div class="article-card__body">
+              <p class="article-card__tag">Infrastructure &middot; 5 min read</p>
+              <h3 class="article-card__title">
+                <a href="#article4" style="color:inherit;text-decoration:none;">IT Managed Services — What to Expect From a Good Provider</a>
+              </h3>
+              <p class="article-card__excerpt">What separates a genuinely good managed services partner from one that is merely reactive? We outline the questions to ask and the standards to hold any provider to — before you sign a contract.</p>
+              <p class="article-card__meta">January 2025 &middot; EireTech Editorial</p>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Newsletter ─────────────────────────────────────────── -->
+    <section class="section" aria-labelledby="newsletter-heading">
+      <div class="container">
+        <div class="newsletter-strip">
+          <h2 id="newsletter-heading">Get our thinking in your inbox</h2>
+          <p>Occasional articles on data, AI, and technology in the Irish market. No marketing. Unsubscribe at any time.</p>
+          <form class="newsletter-form" action="#" method="post" novalidate aria-label="Newsletter sign-up">
+            <input type="email" name="email" placeholder="Work email address" required aria-label="Work email address" autocomplete="email">
+            <button type="submit" class="btn btn-emerald">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">EireTech <span>Digital</span></a>
+        <p>Ireland's partner for data, technology, and digital innovation.</p>
+        <p class="registered">Registered in Ireland &middot; Company No. [placeholder]</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#data-analytics">Data Analytics Consultancy</a></li>
+          <li><a href="services.html#software-development">Software Development</a></li>
+          <li><a href="services.html#managed-services">IT Managed Services</a></li>
+          <li><a href="services.html#ai-automation">AI &amp; Automation</a></li>
+          <li><a href="services.html#digital-transformation">Digital Transformation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Dublin, Ireland</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:hello@eiretech.ie">hello@eiretech.ie</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://linkedin.com/company/eiretech" target="_blank" rel="noopener noreferrer">linkedin.com/company/eiretech</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-bar__inner">
+        <span>&copy; 2025 EireTech Digital Solutions Limited &middot; All rights reserved</span>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chatWidget" role="complementary" aria-label="EireTech AI Assistant">
+    <div class="chat-panel" id="chatPanel" hidden>
+      <div class="chat-header">
+        <div><div class="chat-header__title">EireTech Assistant</div><div class="chat-header__sub">Ask me anything</div></div>
+        <button class="chat-close" id="chatClose" aria-label="Close assistant">&#x00D7;</button>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Type your message…" autocomplete="off" aria-label="Message to EireTech assistant">
+        <button class="chat-send" id="chatSend" aria-label="Send message"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle" aria-label="Open EireTech assistant" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </button>
+  </div>
+
+  <script>
+    (function(){var t=document.getElementById('navToggle'),m=document.getElementById('navMobile');t.addEventListener('click',function(){var o=m.classList.toggle('open');t.classList.toggle('open',o);t.setAttribute('aria-expanded',o);});m.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){m.classList.remove('open');t.classList.remove('open');t.setAttribute('aria-expanded','false');});});})();
+    (function(){var KEY='YOUR_API_KEY_HERE',EP='https://api.anthropic.com/v1/messages',SYS='You are the EireTech Digital Solutions assistant. EireTech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand EireTech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
+    var ct=document.getElementById('chatToggle'),cc=document.getElementById('chatClose'),cp=document.getElementById('chatPanel'),cm=document.getElementById('chatMessages'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
+    var hist=[],shown=false,waiting=false;
+    ct.addEventListener('click',function(){cp.hidden=false;ct.setAttribute('aria-expanded','true');if(!shown){shown=true;add('assistant','Hi, I am the EireTech Digital Assistant. Ask me about our services, team, or how we can help your organisation.');}ci.focus();});
+    cc.addEventListener('click',function(){cp.hidden=true;ct.setAttribute('aria-expanded','false');});
+    ci.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+    cs.addEventListener('click',send);
+    function add(r,t){var d=document.createElement('div');d.className='chat-message chat-message--'+r;d.textContent=t;cm.appendChild(d);cm.scrollTop=cm.scrollHeight;}
+    function typing(){var d=document.createElement('div');d.className='chat-message chat-message--assistant chat-message--typing';d.id='ct';d.innerHTML='<span></span><span></span><span></span>';cm.appendChild(d);cm.scrollTop=cm.scrollHeight;}
+    function untype(){var e=document.getElementById('ct');if(e)e.remove();}
+    async function send(){var txt=ci.value.trim();if(!txt||waiting)return;ci.value='';add('user',txt);hist.push({role:'user',content:txt});waiting=true;typing();
+    try{var r=await fetch(EP,{method:'POST',headers:{'content-type':'application/json','x-api-key':KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,system:SYS,messages:hist})});
+    untype();if(!r.ok)throw new Error();var d=await r.json();var rep=d.content[0].text;add('assistant',rep);hist.push({role:'assistant',content:rep});}
+    catch(e){untype();add('assistant','I\'m having trouble connecting. Please reach out directly at hello@eiretech.ie.');}waiting=false;}
+    })();
+  </script>
+</body>
+</html>
+

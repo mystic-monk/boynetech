@@ -1,0 +1,331 @@
+﻿<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Careers at EireTech Digital Solutions — join a small, senior team delivering data, AI, and technology work that makes a real difference across Ireland.">
+  <title>Careers | EireTech Digital Solutions</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg">
+  <style>
+    /* Page hero — modern workplace background */
+    .page-hero {
+      background-image: url('https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .page-hero::before { background: rgba(12, 31, 63, 0.65); }
+
+    /* Role cards */
+    .role-card {
+      background: var(--et-white);
+      border-radius: var(--et-radius-lg);
+      padding: 2rem;
+      border: 1px solid rgba(136,151,168,.2);
+      box-shadow: var(--et-shadow-sm);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .role-card:hover { box-shadow: var(--et-shadow-md); transform: translateY(-2px); }
+
+    .role-card__header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 1rem;
+      margin-bottom: 1rem;
+      flex-wrap: wrap;
+    }
+    .role-card__title {
+      font-family: var(--et-font-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--et-navy);
+    }
+    .role-card__tags {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      flex-shrink: 0;
+    }
+    .role-tag {
+      font-size: 0.75rem;
+      font-weight: 500;
+      padding: 0.2rem 0.65rem;
+      border-radius: 99px;
+    }
+    .role-tag--location {
+      background: rgba(74,96,128,.1);
+      color: var(--et-slate);
+    }
+    .role-tag--type {
+      background: rgba(13,122,86,.1);
+      color: var(--et-emerald);
+    }
+    .role-card__desc {
+      color: var(--et-slate);
+      font-size: 0.9375rem;
+      line-height: 1.65;
+      margin-bottom: 1.5rem;
+    }
+
+    /* Speculative strip */
+    .speculative-strip {
+      background: var(--et-cloud);
+      border-radius: var(--et-radius-lg);
+      padding: 2.5rem 3rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .speculative-strip h3 { margin-bottom: 0.5rem; }
+    .speculative-strip p  { color: var(--et-slate); font-size: 0.9375rem; margin-bottom: 0; }
+
+    @media (max-width: 768px) {
+      .speculative-strip { flex-direction: column; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav" role="banner">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">EireTech <span>Digital</span></a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="services.html">Services</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a href="careers.html" class="active">Careers</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="insights.html">Insights</a>
+      <a href="about.html">About</a>
+      <a href="careers.html" class="active">Careers</a>
+      <a href="contact.html" class="btn btn-primary btn-sm">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="page-hero__inner">
+        <span class="section-label">Join the Team</span>
+        <h1 id="page-title">Work That Matters.</h1>
+        <p>We are a small, senior team doing substantive work. If you want to own what you build and see it make a difference, we want to hear from you.</p>
+      </div>
+    </section>
+
+    <!-- ── Why EireTech ───────────────────────────────────────── -->
+    <section class="section" aria-labelledby="why-heading">
+      <div class="container">
+        <div class="section-header--center text-center">
+          <span class="section-label">Why Join Us</span>
+          <h2 id="why-heading">What working here is actually like</h2>
+          <div class="divider divider--center"></div>
+          <p>We will be honest with you — because that is what we would want.</p>
+        </div>
+        <div class="grid grid--3 mt-lg">
+
+          <div class="trust-col">
+            <div class="trust-col__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <h3>Small team, real ownership</h3>
+            <p>You will not be one of 400 consultants assigned to a workstream. You will own things — with support, accountability, and credit. When something ships, your name is on it.</p>
+          </div>
+
+          <div class="trust-col">
+            <div class="trust-col__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+            </div>
+            <h3>Varied, meaningful work</h3>
+            <p>Analytics, AI, infrastructure, and software — across public sector and enterprise. No two engagements are the same. If you want depth and variety without changing employer every two years, this is the place.</p>
+          </div>
+
+          <div class="trust-col">
+            <div class="trust-col__icon" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/>
+                <line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+              </svg>
+            </div>
+            <h3>Flexibility and respect</h3>
+            <p>We judge by outcomes, not hours. Remote-first with regular team collaboration days in Dublin. We trust people to manage their own time — and we back that up with how we actually operate.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Open Roles ─────────────────────────────────────────── -->
+    <section class="section section--cloud" aria-labelledby="roles-heading">
+      <div class="container">
+        <div class="section-header">
+          <span class="section-label">Open Roles</span>
+          <h2 id="roles-heading">Current opportunities</h2>
+          <div class="divider"></div>
+        </div>
+
+        <div class="grid grid--1 mt-md" style="max-width:860px;">
+
+          <article class="role-card">
+            <div class="role-card__header">
+              <h3 class="role-card__title">Senior Data Engineer</h3>
+              <div class="role-card__tags">
+                <span class="role-tag role-tag--location">Remote / Dublin</span>
+                <span class="role-tag role-tag--type">Permanent</span>
+              </div>
+            </div>
+            <p class="role-card__desc">We are looking for an experienced data engineer comfortable with Microsoft Fabric, Delta Lake, and Python to lead pipeline delivery on a major public sector programme. You will work directly with our data practice lead and the client team — no intermediaries.</p>
+            <a href="contact.html" class="btn btn-primary">Apply Now</a>
+          </article>
+
+          <article class="role-card">
+            <div class="role-card__header">
+              <h3 class="role-card__title">Analytics Consultant</h3>
+              <div class="role-card__tags">
+                <span class="role-tag role-tag--location">Hybrid — Dublin</span>
+                <span class="role-tag role-tag--type">Permanent or Contract</span>
+              </div>
+            </div>
+            <p class="role-card__desc">A senior analytics professional to lead client engagements covering BI strategy, Power BI delivery, and data governance. You will own the client relationship end-to-end. Public sector experience is a strong advantage — though not a requirement if your enterprise background is strong.</p>
+            <a href="contact.html" class="btn btn-primary">Apply Now</a>
+          </article>
+
+          <article class="role-card">
+            <div class="role-card__header">
+              <h3 class="role-card__title">AI Solutions Developer</h3>
+              <div class="role-card__tags">
+                <span class="role-tag role-tag--location">Remote</span>
+                <span class="role-tag role-tag--type">Contract</span>
+              </div>
+            </div>
+            <p class="role-card__desc">A developer with hands-on experience building LLM-powered applications — RAG systems, agents, or document intelligence — to support delivery on an existing client programme. Python required. Experience with LlamaIndex, LangChain, or similar frameworks preferred.</p>
+            <a href="contact.html" class="btn btn-primary">Apply Now</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Speculative ─────────────────────────────────────────── -->
+    <section class="section" aria-label="Speculative applications">
+      <div class="container">
+        <div class="speculative-strip">
+          <div>
+            <h3>Do not see the right role?</h3>
+            <p>Send us a speculative application. We keep a shortlist of strong candidates for roles that arise at short notice — and good people rarely wait long.</p>
+          </div>
+          <a href="contact.html" class="btn btn-primary">Send Your CV</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">EireTech <span>Digital</span></a>
+        <p>Ireland's partner for data, technology, and digital innovation.</p>
+        <p class="registered">Registered in Ireland &middot; Company No. [placeholder]</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#data-analytics">Data Analytics Consultancy</a></li>
+          <li><a href="services.html#software-development">Software Development</a></li>
+          <li><a href="services.html#managed-services">IT Managed Services</a></li>
+          <li><a href="services.html#ai-automation">AI &amp; Automation</a></li>
+          <li><a href="services.html#digital-transformation">Digital Transformation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Dublin, Ireland</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:hello@eiretech.ie">hello@eiretech.ie</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://linkedin.com/company/eiretech" target="_blank" rel="noopener noreferrer">linkedin.com/company/eiretech</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-bar__inner">
+        <span>&copy; 2025 EireTech Digital Solutions Limited &middot; All rights reserved</span>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chatWidget" role="complementary" aria-label="EireTech AI Assistant">
+    <div class="chat-panel" id="chatPanel" hidden>
+      <div class="chat-header">
+        <div><div class="chat-header__title">EireTech Assistant</div><div class="chat-header__sub">Ask me anything</div></div>
+        <button class="chat-close" id="chatClose" aria-label="Close assistant">&#x00D7;</button>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Type your message…" autocomplete="off" aria-label="Message to EireTech assistant">
+        <button class="chat-send" id="chatSend" aria-label="Send message"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle" aria-label="Open EireTech assistant" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </button>
+  </div>
+
+  <script>
+    (function(){var t=document.getElementById('navToggle'),m=document.getElementById('navMobile');t.addEventListener('click',function(){var o=m.classList.toggle('open');t.classList.toggle('open',o);t.setAttribute('aria-expanded',o);});m.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){m.classList.remove('open');t.classList.remove('open');t.setAttribute('aria-expanded','false');});});})();
+    (function(){var KEY='YOUR_API_KEY_HERE',EP='https://api.anthropic.com/v1/messages',SYS='You are the EireTech Digital Solutions assistant. EireTech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand EireTech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
+    var ct=document.getElementById('chatToggle'),cc=document.getElementById('chatClose'),cp=document.getElementById('chatPanel'),cm=document.getElementById('chatMessages'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
+    var hist=[],shown=false,waiting=false;
+    ct.addEventListener('click',function(){cp.hidden=false;ct.setAttribute('aria-expanded','true');if(!shown){shown=true;add('assistant','Hi, I am the EireTech Digital Assistant. Ask me about our services, team, or how we can help your organisation.');}ci.focus();});
+    cc.addEventListener('click',function(){cp.hidden=true;ct.setAttribute('aria-expanded','false');});
+    ci.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+    cs.addEventListener('click',send);
+    function add(r,t){var d=document.createElement('div');d.className='chat-message chat-message--'+r;d.textContent=t;cm.appendChild(d);cm.scrollTop=cm.scrollHeight;}
+    function typing(){var d=document.createElement('div');d.className='chat-message chat-message--assistant chat-message--typing';d.id='ct';d.innerHTML='<span></span><span></span><span></span>';cm.appendChild(d);cm.scrollTop=cm.scrollHeight;}
+    function untype(){var e=document.getElementById('ct');if(e)e.remove();}
+    async function send(){var txt=ci.value.trim();if(!txt||waiting)return;ci.value='';add('user',txt);hist.push({role:'user',content:txt});waiting=true;typing();
+    try{var r=await fetch(EP,{method:'POST',headers:{'content-type':'application/json','x-api-key':KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,system:SYS,messages:hist})});
+    untype();if(!r.ok)throw new Error();var d=await r.json();var rep=d.content[0].text;add('assistant',rep);hist.push({role:'assistant',content:rep});}
+    catch(e){untype();add('assistant','I\'m having trouble connecting. Please reach out directly at hello@eiretech.ie.');}waiting=false;}
+    })();
+  </script>
+</body>
+</html>
+

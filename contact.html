@@ -1,0 +1,507 @@
+﻿<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Contact EireTech Digital Solutions — get in touch to discuss your data, analytics, software, or technology needs. We respond within one business day.">
+  <title>Contact | EireTech Digital Solutions</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg">
+  <style>
+    /* Contact page header — clean, no hero image */
+    .contact-header {
+      background-color: var(--et-cloud);
+      padding-block: var(--et-space-xl);
+      text-align: center;
+    }
+    .contact-header h1 { margin-bottom: 0.625rem; }
+    .contact-header p  { color: var(--et-slate); font-size: 1.0625rem; max-width: 44ch; margin-inline: auto; margin-bottom: 0; }
+
+    /* Two-column contact layout */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    /* Form card */
+    .form-card {
+      background: var(--et-white);
+      border-radius: var(--et-radius-lg);
+      padding: 2.5rem;
+      box-shadow: var(--et-shadow-sm);
+      border: 1px solid rgba(136,151,168,.15);
+    }
+    .form-card h2 { font-size: 1.375rem; margin-bottom: 1.5rem; }
+
+    /* Submit feedback */
+    .form-note {
+      font-size: 0.8125rem;
+      color: var(--et-grey);
+      text-align: center;
+      margin-top: 0.75rem;
+    }
+    .form-success {
+      display: none;
+      background: rgba(13,122,86,.08);
+      border: 1.5px solid var(--et-emerald);
+      border-radius: var(--et-radius-md);
+      padding: 1rem 1.25rem;
+      color: var(--et-emerald);
+      font-weight: 500;
+      font-size: 0.9375rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
+    .form-error-msg {
+      font-size: 0.8rem;
+      color: #c0392b;
+      margin-top: 0.25rem;
+      display: none;
+    }
+    input.invalid, select.invalid, textarea.invalid {
+      border-color: #c0392b;
+    }
+
+    /* Contact details card */
+    .contact-details-card {
+      background: var(--et-cloud);
+      border-radius: var(--et-radius-lg);
+      padding: 2rem;
+    }
+    .contact-details-card h3 { font-size: 1.125rem; margin-bottom: 1.25rem; }
+
+    .contact-detail-row {
+      display: flex;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      align-items: flex-start;
+    }
+    .contact-detail-row__icon {
+      color: var(--et-emerald);
+      flex-shrink: 0;
+      margin-top: 0.1rem;
+    }
+    .contact-detail-row__label {
+      font-size: 0.8rem;
+      font-weight: 500;
+      color: var(--et-grey);
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.2rem;
+    }
+    .contact-detail-row__value {
+      font-size: 0.9375rem;
+      color: var(--et-navy);
+    }
+    .contact-detail-row__value a {
+      color: var(--et-navy);
+    }
+    .contact-detail-row__value a:hover { color: var(--et-blue); }
+
+    .contact-urgent {
+      font-size: 0.8125rem;
+      color: var(--et-slate);
+      background: var(--et-white);
+      border-radius: var(--et-radius-md);
+      padding: 0.875rem 1rem;
+      margin-top: 1.25rem;
+      line-height: 1.55;
+    }
+
+    /* FAQ accordion */
+    .faq-list { max-width: 720px; margin-inline: auto; }
+    .faq-item {
+      border-bottom: 1px solid rgba(136,151,168,.2);
+    }
+    .faq-item:first-child { border-top: 1px solid rgba(136,151,168,.2); }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 1.25rem 0;
+      font-family: var(--et-font-body);
+      font-size: 1rem;
+      font-weight: 500;
+      color: var(--et-navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+    }
+    .faq-question:hover { color: var(--et-blue); }
+    .faq-chevron {
+      flex-shrink: 0;
+      transition: transform 0.25s ease;
+      color: var(--et-grey);
+    }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--et-emerald); }
+    .faq-answer {
+      display: none;
+      padding-bottom: 1.25rem;
+      color: var(--et-slate);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer { display: block; }
+
+    @media (max-width: 768px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .form-card { padding: 1.75rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav" role="banner">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">EireTech <span>Digital</span></a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="services.html">Services</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html">About</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html" class="btn btn-primary btn-sm active" style="background-color:var(--et-emerald);border-color:var(--et-emerald);">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="insights.html">Insights</a>
+      <a href="about.html">About</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact.html" class="btn btn-primary btn-sm">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- ── Page Header ────────────────────────────────────────── -->
+    <div class="contact-header">
+      <div class="container">
+        <span class="section-label">Get in Touch</span>
+        <h1>Let's Talk</h1>
+        <p>Tell us what you are working on and we will come back to you within one business day.</p>
+      </div>
+    </div>
+
+    <!-- ── Contact Grid ───────────────────────────────────────── -->
+    <section class="section" aria-label="Contact form and details">
+      <div class="container">
+        <div class="contact-grid">
+
+          <!-- Form -->
+          <div class="form-card">
+            <h2>Send us a message</h2>
+            <form id="contactForm" novalidate aria-label="Contact form">
+
+              <div class="form-group">
+                <label for="fullName">Full name <span aria-hidden="true">*</span></label>
+                <input type="text" id="fullName" name="fullName" placeholder="Your full name" required autocomplete="name">
+                <p class="form-error-msg" id="fullNameErr">Please enter your full name.</p>
+              </div>
+
+              <div class="form-group">
+                <label for="workEmail">Work email <span aria-hidden="true">*</span></label>
+                <input type="email" id="workEmail" name="workEmail" placeholder="you@yourorganisation.ie" required autocomplete="email">
+                <p class="form-error-msg" id="workEmailErr">Please enter a valid email address.</p>
+              </div>
+
+              <div class="form-group">
+                <label for="company">Company / organisation <span aria-hidden="true">*</span></label>
+                <input type="text" id="company" name="company" placeholder="Your organisation name" required autocomplete="organization">
+                <p class="form-error-msg" id="companyErr">Please enter your organisation name.</p>
+              </div>
+
+              <div class="form-group">
+                <label for="service">Service of interest <span aria-hidden="true">*</span></label>
+                <select id="service" name="service" required>
+                  <option value="" disabled selected>Select a service area…</option>
+                  <option value="data-analytics">Data &amp; Analytics</option>
+                  <option value="software-development">Software Development</option>
+                  <option value="managed-services">IT Managed Services</option>
+                  <option value="ai-automation">AI &amp; Automation</option>
+                  <option value="digital-transformation">Digital Transformation</option>
+                  <option value="not-sure">Not sure yet</option>
+                </select>
+                <p class="form-error-msg" id="serviceErr">Please select a service area.</p>
+              </div>
+
+              <div class="form-group">
+                <label for="message">How can we help? <span aria-hidden="true">*</span></label>
+                <textarea id="message" name="message" placeholder="Briefly describe what you are working on or what you would like to discuss…" required aria-describedby="messageHint"></textarea>
+                <p class="form-error-msg" id="messageErr">Please tell us a little about your needs.</p>
+              </div>
+
+              <button type="submit" class="btn btn-emerald btn-lg" style="width:100%;justify-content:center;">Send Message</button>
+              <p class="form-note">We do not share your details with third parties.</p>
+              <div class="form-success" id="formSuccess" role="alert">
+                Thank you — we have received your message and will be in touch within one business day.
+              </div>
+            </form>
+          </div>
+
+          <!-- Contact Details -->
+          <div>
+            <div class="contact-details-card">
+              <h3>Other ways to reach us</h3>
+
+              <div class="contact-detail-row">
+                <div class="contact-detail-row__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </div>
+                <div>
+                  <p class="contact-detail-row__label">Email</p>
+                  <p class="contact-detail-row__value"><a href="mailto:hello@eiretech.ie">hello@eiretech.ie</a></p>
+                </div>
+              </div>
+
+              <div class="contact-detail-row">
+                <div class="contact-detail-row__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                </div>
+                <div>
+                  <p class="contact-detail-row__label">LinkedIn</p>
+                  <p class="contact-detail-row__value"><a href="https://linkedin.com/company/eiretech" target="_blank" rel="noopener noreferrer">linkedin.com/company/eiretech</a></p>
+                </div>
+              </div>
+
+              <div class="contact-detail-row">
+                <div class="contact-detail-row__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                </div>
+                <div>
+                  <p class="contact-detail-row__label">Location</p>
+                  <p class="contact-detail-row__value">Dublin, Ireland</p>
+                </div>
+              </div>
+
+              <div class="contact-detail-row">
+                <div class="contact-detail-row__icon">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                </div>
+                <div>
+                  <p class="contact-detail-row__label">Office Hours</p>
+                  <p class="contact-detail-row__value">Monday to Friday, 9am – 5:30pm IST</p>
+                </div>
+              </div>
+
+              <div class="contact-urgent">
+                <strong>Urgent IT support?</strong> Please include the word URGENT in your email subject line and we will prioritise your enquiry.
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── FAQ ────────────────────────────────────────────────── -->
+    <section class="section section--cloud" aria-labelledby="faq-heading">
+      <div class="container">
+        <div class="section-header--center text-center">
+          <span class="section-label">Common Questions</span>
+          <h2 id="faq-heading">Before you reach out</h2>
+          <div class="divider divider--center"></div>
+        </div>
+        <div class="faq-list mt-lg">
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              How quickly do you respond to enquiries?
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">Within one business day for all initial enquiries. We aim to be faster than that where possible — but one business day is our commitment.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Do you work with organisations outside Ireland?
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">Primarily Ireland-based, though we do support remote and distributed engagements where the need is a strong fit for our expertise. If you are based outside Ireland, we are happy to discuss whether we are the right partner.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              What size of organisation do you typically work with?
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">From large public sector bodies to SMEs. Scope and approach are calibrated to your context — we do not apply enterprise process to SME-scale problems, and we do not cut corners on public sector programmes that require rigour.</div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-question" aria-expanded="false">
+              Can I speak with someone before committing to anything?
+              <svg class="faq-chevron" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="6 9 12 15 18 9"/></svg>
+            </button>
+            <div class="faq-answer">Always. We offer a no-obligation discovery call for any enquiry that appears to be a genuine fit. Send us a message via the form above and we will suggest a time that works.</div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">EireTech <span>Digital</span></a>
+        <p>Ireland's partner for data, technology, and digital innovation.</p>
+        <p class="registered">Registered in Ireland &middot; Company No. [placeholder]</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#data-analytics">Data Analytics Consultancy</a></li>
+          <li><a href="services.html#software-development">Software Development</a></li>
+          <li><a href="services.html#managed-services">IT Managed Services</a></li>
+          <li><a href="services.html#ai-automation">AI &amp; Automation</a></li>
+          <li><a href="services.html#digital-transformation">Digital Transformation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Dublin, Ireland</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:hello@eiretech.ie">hello@eiretech.ie</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://linkedin.com/company/eiretech" target="_blank" rel="noopener noreferrer">linkedin.com/company/eiretech</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-bar__inner">
+        <span>&copy; 2025 EireTech Digital Solutions Limited &middot; All rights reserved</span>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chatWidget" role="complementary" aria-label="EireTech AI Assistant">
+    <div class="chat-panel" id="chatPanel" hidden>
+      <div class="chat-header">
+        <div><div class="chat-header__title">EireTech Assistant</div><div class="chat-header__sub">Ask me anything</div></div>
+        <button class="chat-close" id="chatClose" aria-label="Close assistant">&#x00D7;</button>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Type your message…" autocomplete="off" aria-label="Message to EireTech assistant">
+        <button class="chat-send" id="chatSend" aria-label="Send message"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle" aria-label="Open EireTech assistant" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </button>
+  </div>
+
+  <script>
+    // Mobile nav
+    (function(){var t=document.getElementById('navToggle'),m=document.getElementById('navMobile');t.addEventListener('click',function(){var o=m.classList.toggle('open');t.classList.toggle('open',o);t.setAttribute('aria-expanded',o);});m.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){m.classList.remove('open');t.classList.remove('open');t.setAttribute('aria-expanded','false');});});})();
+
+    // Contact form validation
+    (function () {
+      var form = document.getElementById('contactForm');
+      var success = document.getElementById('formSuccess');
+
+      function validate(field, errId, test) {
+        var err = document.getElementById(errId);
+        var ok = test(field.value.trim());
+        field.classList.toggle('invalid', !ok);
+        err.style.display = ok ? 'none' : 'block';
+        return ok;
+      }
+
+      function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var fn = document.getElementById('fullName');
+        var em = document.getElementById('workEmail');
+        var co = document.getElementById('company');
+        var sv = document.getElementById('service');
+        var ms = document.getElementById('message');
+
+        var v1 = validate(fn, 'fullNameErr',  function(v){ return v.length > 1; });
+        var v2 = validate(em, 'workEmailErr', function(v){ return isEmail(v); });
+        var v3 = validate(co, 'companyErr',   function(v){ return v.length > 1; });
+        var v4 = validate(sv, 'serviceErr',   function(v){ return v !== ''; });
+        var v5 = validate(ms, 'messageErr',   function(v){ return v.length > 9; });
+
+        if (v1 && v2 && v3 && v4 && v5) {
+          form.reset();
+          ['fullName','workEmail','company','service','message'].forEach(function(id){ document.getElementById(id).classList.remove('invalid'); });
+          success.style.display = 'block';
+        }
+      });
+
+      ['fullName','workEmail','company','service','message'].forEach(function(id) {
+        document.getElementById(id).addEventListener('input', function() { this.classList.remove('invalid'); });
+      });
+    }());
+
+    // FAQ accordion
+    (function () {
+      document.querySelectorAll('.faq-question').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+          var item = this.closest('.faq-item');
+          var isOpen = item.classList.contains('open');
+          document.querySelectorAll('.faq-item.open').forEach(function (el) {
+            el.classList.remove('open');
+            el.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+          });
+          if (!isOpen) {
+            item.classList.add('open');
+            this.setAttribute('aria-expanded', 'true');
+          }
+        });
+      });
+    }());
+
+    // Chat widget
+    (function(){var KEY='YOUR_API_KEY_HERE',EP='https://api.anthropic.com/v1/messages',SYS='You are the EireTech Digital Solutions assistant. EireTech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand EireTech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
+    var ct=document.getElementById('chatToggle'),cc=document.getElementById('chatClose'),cp=document.getElementById('chatPanel'),cm=document.getElementById('chatMessages'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
+    var hist=[],shown=false,waiting=false;
+    ct.addEventListener('click',function(){cp.hidden=false;ct.setAttribute('aria-expanded','true');if(!shown){shown=true;add('assistant','Hi, I am the EireTech Digital Assistant. Ask me about our services, team, or how we can help your organisation.');}ci.focus();});
+    cc.addEventListener('click',function(){cp.hidden=true;ct.setAttribute('aria-expanded','false');});
+    ci.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+    cs.addEventListener('click',send);
+    function add(r,t){var d=document.createElement('div');d.className='chat-message chat-message--'+r;d.textContent=t;cm.appendChild(d);cm.scrollTop=cm.scrollHeight;}
+    function typing(){var d=document.createElement('div');d.className='chat-message chat-message--assistant chat-message--typing';d.id='ct';d.innerHTML='<span></span><span></span><span></span>';cm.appendChild(d);cm.scrollTop=cm.scrollHeight;}
+    function untype(){var e=document.getElementById('ct');if(e)e.remove();}
+    async function send(){var txt=ci.value.trim();if(!txt||waiting)return;ci.value='';add('user',txt);hist.push({role:'user',content:txt});waiting=true;typing();
+    try{var r=await fetch(EP,{method:'POST',headers:{'content-type':'application/json','x-api-key':KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,system:SYS,messages:hist})});
+    untype();if(!r.ok)throw new Error();var d=await r.json();var rep=d.content[0].text;add('assistant',rep);hist.push({role:'assistant',content:rep});}
+    catch(e){untype();add('assistant','I\'m having trouble connecting. Please reach out directly at hello@eiretech.ie.');}waiting=false;}
+    })();
+  </script>
+</body>
+</html>
+

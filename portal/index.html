@@ -1,0 +1,159 @@
+﻿<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EireTech Digital Solutions Client Portal — secure access for EireTech clients.">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Client Portal | EireTech Digital Solutions</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="shortcut icon" href="../favicon.svg">
+  <style>
+    /* Minimal portal layout */
+    body {
+      background-color: var(--et-cloud);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Stripped nav — logo only */
+    .portal-nav {
+      background-color: var(--et-white);
+      border-bottom: 1px solid rgba(136,151,168,.15);
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    /* Login panel */
+    .portal-wrap {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--et-space-xl) 1.5rem;
+    }
+
+    .portal-panel {
+      background: var(--et-white);
+      border-radius: var(--et-radius-lg);
+      padding: 2.5rem 2.25rem;
+      width: 100%;
+      max-width: 400px;
+      box-shadow: var(--et-shadow-md);
+      border: 1px solid rgba(136,151,168,.15);
+      text-align: center;
+    }
+
+    .portal-logo {
+      font-family: var(--et-font-display);
+      font-size: 1.375rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: var(--et-navy);
+      text-decoration: none;
+      display: inline-block;
+      margin-bottom: 0.25rem;
+    }
+    .portal-logo span { color: var(--et-emerald); }
+
+    .portal-heading {
+      font-family: var(--et-font-display);
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--et-navy);
+      margin-top: 1.5rem;
+      margin-bottom: 0.375rem;
+    }
+    .portal-sub {
+      font-size: 0.9rem;
+      color: var(--et-slate);
+      line-height: 1.55;
+      margin-bottom: 1.75rem;
+    }
+
+    .portal-form .form-group {
+      text-align: left;
+      margin-bottom: 1rem;
+    }
+    .portal-form label {
+      font-size: 0.875rem;
+    }
+
+    .portal-divider {
+      border: none;
+      border-top: 1px solid var(--et-cloud);
+      margin: 1.5rem 0;
+    }
+
+    .portal-note {
+      font-size: 0.8125rem;
+      color: var(--et-slate);
+      line-height: 1.6;
+      margin-bottom: 1.25rem;
+    }
+
+    .portal-back {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--et-blue);
+    }
+
+    /* Minimal footer */
+    .portal-footer {
+      background: var(--et-navy);
+      padding: 1.125rem 1.5rem;
+      text-align: center;
+      font-size: 0.8125rem;
+      color: rgba(255,255,255,.45);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Minimal nav — logo only -->
+  <div class="portal-nav" role="banner">
+    <a href="../index.html" class="portal-logo" aria-label="EireTech Digital Solutions — Return to main site">
+      EireTech <span>Digital</span>
+    </a>
+  </div>
+
+  <!-- Login panel -->
+  <div class="portal-wrap">
+    <div class="portal-panel">
+      <p class="portal-heading">Client Portal</p>
+      <p class="portal-sub">Secure access to your project dashboards, documents, and updates.</p>
+
+      <form class="portal-form" action="#" method="post" novalidate aria-label="Portal sign-in form">
+        <div class="form-group">
+          <label for="portalEmail">Email address</label>
+          <input type="email" id="portalEmail" name="email" placeholder="you@yourorganisation.ie" required autocomplete="email">
+        </div>
+        <div class="form-group">
+          <label for="portalPassword">Password</label>
+          <input type="password" id="portalPassword" name="password" placeholder="Your password" required autocomplete="current-password">
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="width:100%;justify-content:center;margin-top:0.5rem;">Sign In</button>
+      </form>
+
+      <hr class="portal-divider">
+
+      <p class="portal-note">
+        Access is by invitation only. If you are an EireTech client and do not yet have credentials, please contact your project lead or email
+        <a href="mailto:hello@eiretech.ie">hello@eiretech.ie</a>.
+      </p>
+
+      <a href="../index.html" class="portal-back">&#x2190; Visit our website</a>
+    </div>
+  </div>
+
+  <footer class="portal-footer" role="contentinfo">
+    &copy; 2025 EireTech Digital Solutions Limited
+  </footer>
+
+</body>
+</html>
+

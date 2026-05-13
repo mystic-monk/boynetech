@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
+  <!-- Rounded square base — EireTech navy -->
+  <rect width="32" height="32" rx="7" fill="#0C1F3F"/>
+  <!-- Vertical spine — emerald (the left stroke of the E) -->
+  <rect x="6" y="7" width="4" height="18" rx="2" fill="#0D7A56"/>
+  <!-- Top horizontal bar — full width -->
+  <rect x="10" y="7" width="16" height="4.5" rx="2" fill="#FFFFFF"/>
+  <!-- Middle horizontal bar — shorter, forming the E letterform -->
+  <rect x="10" y="13.75" width="10" height="4.5" rx="2" fill="#FFFFFF"/>
+  <!-- Bottom horizontal bar — full width -->
+  <rect x="10" y="20.5" width="16" height="4.5" rx="2" fill="#FFFFFF"/>
+  <!-- Emerald data-point dot — reads as analytics cursor / chart node -->
+  <circle cx="23" cy="16" r="2.75" fill="#0D7A56"/>
+</svg>

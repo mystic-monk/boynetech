@@ -1,0 +1,414 @@
+﻿<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="About EireTech Digital Solutions — our story, values, and the experienced team behind Ireland's data and technology consultancy.">
+  <title>About | EireTech Digital Solutions</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <link rel="shortcut icon" href="favicon.svg">
+  <style>
+    /* Page hero — team collaboration background */
+    .page-hero {
+      background-image: url('https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=1200&q=80');
+      background-size: cover;
+      background-position: center;
+    }
+    .page-hero::before { background: rgba(12, 31, 63, 0.60); }
+
+    /* Our story — two-column with image */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+    .story-grid__image {
+      border-radius: var(--et-radius-lg);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .story-grid__image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .story-grid__content p {
+      color: var(--et-slate);
+      margin-bottom: 1.25rem;
+      line-height: 1.75;
+    }
+    .story-grid__content p:last-child { margin-bottom: 0; }
+
+    /* Values — 4 cards, 2-col */
+    .values-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+    }
+    .value-card {
+      background: var(--et-white);
+      border-radius: var(--et-radius-lg);
+      padding: 2rem;
+      border-left: 4px solid var(--et-emerald);
+      box-shadow: var(--et-shadow-sm);
+    }
+    .value-card h3 {
+      font-size: 1.0625rem;
+      margin-bottom: 0.625rem;
+    }
+    .value-card p {
+      color: var(--et-slate);
+      font-size: 0.9375rem;
+      line-height: 1.6;
+      margin-bottom: 0;
+    }
+
+    /* Team cards */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+    .team-card {
+      background: var(--et-white);
+      border-radius: var(--et-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--et-shadow-sm);
+      border: 1px solid rgba(136,151,168,.15);
+      text-align: center;
+    }
+    .team-card__photo {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      object-position: top;
+      display: block;
+    }
+    .team-card__body {
+      padding: 1.5rem;
+    }
+    .team-card__name {
+      font-family: var(--et-font-display);
+      font-size: 1.0625rem;
+      font-weight: 700;
+      color: var(--et-navy);
+      margin-bottom: 0.25rem;
+    }
+    .team-card__title {
+      font-size: 0.875rem;
+      color: var(--et-emerald);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+    }
+    .team-card__bio {
+      font-size: 0.875rem;
+      color: var(--et-slate);
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+    .team-card__linkedin {
+      color: var(--et-blue);
+      display: inline-flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8125rem;
+      font-weight: 500;
+    }
+    .team-card__linkedin:hover { color: var(--et-emerald); }
+
+    /* Accreditations strip */
+    .accreditation-strip {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem 3rem;
+      padding-block: 2rem;
+    }
+    .accreditation-item {
+      font-family: var(--et-font-display);
+      font-size: 0.9375rem;
+      font-weight: 700;
+      color: var(--et-slate);
+      letter-spacing: -0.01em;
+      opacity: 0.75;
+    }
+
+    @media (max-width: 768px) {
+      .story-grid { grid-template-columns: 1fr; gap: 2rem; }
+      .values-grid { grid-template-columns: 1fr; }
+      .team-grid { grid-template-columns: 1fr; max-width: 380px; margin-inline: auto; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-nav" role="banner">
+    <div class="nav-inner">
+      <a href="index.html" class="nav-logo">EireTech <span>Digital</span></a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="services.html">Services</a>
+        <a href="solutions.html">Solutions</a>
+        <a href="case-studies.html">Case Studies</a>
+        <a href="insights.html">Insights</a>
+        <a href="about.html" class="active">About</a>
+        <a href="careers.html">Careers</a>
+        <a href="contact.html" class="btn btn-primary btn-sm">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+      <a href="services.html">Services</a>
+      <a href="solutions.html">Solutions</a>
+      <a href="case-studies.html">Case Studies</a>
+      <a href="insights.html">Insights</a>
+      <a href="about.html" class="active">About</a>
+      <a href="careers.html">Careers</a>
+      <a href="contact.html" class="btn btn-primary btn-sm">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero" aria-labelledby="page-title">
+      <div class="page-hero__inner">
+        <span class="section-label">Who We Are</span>
+        <h1 id="page-title">Built in Ireland. Built to Last.</h1>
+        <p>EireTech was founded to give Irish organisations access to senior-level data and technology expertise — without the overhead of a global consultancy.</p>
+      </div>
+    </section>
+
+    <!-- ── Our Story ──────────────────────────────────────────── -->
+    <section class="section" aria-labelledby="story-heading">
+      <div class="container">
+        <div class="story-grid">
+          <div class="story-grid__content">
+            <span class="section-label">Our Story</span>
+            <h2 id="story-heading">Why we started EireTech</h2>
+            <div class="divider"></div>
+            <p>We saw a clear gap in the Irish market. Large global consultancies brought expensive day-rates and junior teams padded into engagements. Local generalist agencies lacked the specialist depth. Irish organisations — particularly in the public sector and regulated industries — were being underserved. EireTech was built to fill that gap: senior people, genuine domain expertise, and a commitment to staying through delivery.</p>
+            <p>The team behind EireTech brings experience across public sector analytics, financial services data platforms, healthcare information systems, and large-scale enterprise technology programmes. That breadth of background means we understand the contexts our clients work in — the governance requirements, the procurement processes, the internal politics that shape every programme.</p>
+            <p>We operate a deliberately small, senior model. We do not staff engagements with graduates supervised from a distance. Every person working on your project is an experienced practitioner who can contribute from day one — and who is accountable for the outcome.</p>
+          </div>
+          <div class="story-grid__image">
+            <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=600&q=80"
+                 alt="EireTech team collaborating in a modern open-plan office"
+                 loading="lazy">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Values ─────────────────────────────────────────────── -->
+    <section class="section section--cloud" aria-labelledby="values-heading">
+      <div class="container">
+        <div class="section-header--center text-center">
+          <span class="section-label">What We Stand For</span>
+          <h2 id="values-heading">How we operate</h2>
+          <div class="divider divider--center"></div>
+        </div>
+        <div class="values-grid mt-lg">
+
+          <div class="value-card">
+            <h3>Honesty over comfort</h3>
+            <p>We tell clients what they need to hear, not what they want to hear. If a proposed approach will not work, we say so early. That honesty earns longer relationships and better outcomes — even when it is uncomfortable in the short term.</p>
+          </div>
+
+          <div class="value-card">
+            <h3>Delivery over discussion</h3>
+            <p>We move from conversation to production as fast as possible. Reports and roadmaps are useful. Working software and live dashboards are better. We measure our contribution by what is running, not what is in a document.</p>
+          </div>
+
+          <div class="value-card">
+            <h3>Quality without ceremony</h3>
+            <p>We do not impose unnecessary process. We apply the right amount of rigour to the right problems — and no more. Pragmatism is not a shortcut; it is a discipline that keeps teams focused on what actually matters.</p>
+          </div>
+
+          <div class="value-card">
+            <h3>Irish, not generic</h3>
+            <p>We understand the context — public procurement, GDPR, the OGP frameworks, public sector pay constraints, the Irish tech talent market. That context is not incidental. It shapes every engagement and every recommendation we make.</p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Team ───────────────────────────────────────────────── -->
+    <section class="section" aria-labelledby="team-heading">
+      <div class="container">
+        <div class="section-header--center text-center">
+          <span class="section-label">The Team</span>
+          <h2 id="team-heading">The people behind the work</h2>
+          <div class="divider divider--center"></div>
+          <p>A small, senior group of practitioners. No layers of account management between you and the people doing the work.</p>
+        </div>
+        <div class="team-grid mt-lg">
+
+          <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&q=80"
+                 alt="Portrait photograph of EireTech Managing Director"
+                 class="team-card__photo" loading="lazy">
+            <div class="team-card__body">
+              <p class="team-card__name">[Managing Director]</p>
+              <p class="team-card__title">Managing Director</p>
+              <p class="team-card__bio">20+ years in data, analytics, and technology leadership across public sector, financial services, and healthcare. Founded EireTech to bring senior-level capability to Irish organisations.</p>
+              <a href="https://linkedin.com/company/eiretech" target="_blank" rel="noopener noreferrer" class="team-card__linkedin">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80"
+                 alt="Portrait photograph of EireTech Head of Delivery"
+                 class="team-card__photo" loading="lazy">
+            <div class="team-card__body">
+              <p class="team-card__name">[Head of Delivery]</p>
+              <p class="team-card__title">Head of Delivery</p>
+              <p class="team-card__bio">Experienced programme manager and solution architect with a background in enterprise analytics and cloud platform delivery. Leads EireTech's delivery practice and client engagement model.</p>
+              <a href="https://linkedin.com/company/eiretech" target="_blank" rel="noopener noreferrer" class="team-card__linkedin">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+
+          <div class="team-card">
+            <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=400&q=80"
+                 alt="Portrait photograph of EireTech Lead Data Engineer"
+                 class="team-card__photo" loading="lazy">
+            <div class="team-card__body">
+              <p class="team-card__name">[Lead Data Engineer]</p>
+              <p class="team-card__title">Lead Data Engineer</p>
+              <p class="team-card__bio">Specialist in data pipeline engineering, Microsoft Fabric, and Power BI — with deep experience in public sector data and large-scale analytics platform delivery.</p>
+              <a href="https://linkedin.com/company/eiretech" target="_blank" rel="noopener noreferrer" class="team-card__linkedin">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Accreditations ─────────────────────────────────────── -->
+    <section class="section section--cloud" aria-label="Accreditations and affiliations">
+      <div class="container">
+        <p class="text-center text-sm font-500" style="color:var(--et-grey);text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem;">Accreditations &amp; Affiliations</p>
+        <div class="accreditation-strip" role="list">
+          <span class="accreditation-item" role="listitem">Microsoft Partner</span>
+          <span class="accreditation-item" role="listitem">ISACA Member</span>
+          <span class="accreditation-item" role="listitem">IASA Ireland</span>
+          <span class="accreditation-item" role="listitem">Engineers Ireland</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="cta-banner" aria-labelledby="cta-heading">
+      <div class="cta-banner__inner">
+        <div>
+          <h2 id="cta-heading">Work with people who care about the outcome.</h2>
+          <p>Not just about the engagement. Come and have an honest conversation about what you are trying to achieve.</p>
+        </div>
+        <a href="contact.html" class="btn btn-emerald btn-lg">Start a Conversation</a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="index.html" class="footer-logo">EireTech <span>Digital</span></a>
+        <p>Ireland's partner for data, technology, and digital innovation.</p>
+        <p class="registered">Registered in Ireland &middot; Company No. [placeholder]</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="services.html#data-analytics">Data Analytics Consultancy</a></li>
+          <li><a href="services.html#software-development">Software Development</a></li>
+          <li><a href="services.html#managed-services">IT Managed Services</a></li>
+          <li><a href="services.html#ai-automation">AI &amp; Automation</a></li>
+          <li><a href="services.html#digital-transformation">Digital Transformation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="careers.html">Careers</a></li>
+          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="insights.html">Insights</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Dublin, Ireland</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:hello@eiretech.ie">hello@eiretech.ie</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://linkedin.com/company/eiretech" target="_blank" rel="noopener noreferrer">linkedin.com/company/eiretech</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-bar__inner">
+        <span>&copy; 2025 EireTech Digital Solutions Limited &middot; All rights reserved</span>
+        <a href="privacy.html">Privacy Policy</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chatWidget" role="complementary" aria-label="EireTech AI Assistant">
+    <div class="chat-panel" id="chatPanel" hidden>
+      <div class="chat-header">
+        <div><div class="chat-header__title">EireTech Assistant</div><div class="chat-header__sub">Ask me anything</div></div>
+        <button class="chat-close" id="chatClose" aria-label="Close assistant">&#x00D7;</button>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Type your message…" autocomplete="off" aria-label="Message to EireTech assistant">
+        <button class="chat-send" id="chatSend" aria-label="Send message"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle" aria-label="Open EireTech assistant" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </button>
+  </div>
+
+  <script>
+    (function(){var t=document.getElementById('navToggle'),m=document.getElementById('navMobile');t.addEventListener('click',function(){var o=m.classList.toggle('open');t.classList.toggle('open',o);t.setAttribute('aria-expanded',o);});m.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){m.classList.remove('open');t.classList.remove('open');t.setAttribute('aria-expanded','false');});});})();
+    (function(){var KEY='YOUR_API_KEY_HERE',EP='https://api.anthropic.com/v1/messages',SYS='You are the EireTech Digital Solutions assistant. EireTech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand EireTech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
+    var ct=document.getElementById('chatToggle'),cc=document.getElementById('chatClose'),cp=document.getElementById('chatPanel'),cm=document.getElementById('chatMessages'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
+    var hist=[],shown=false,waiting=false;
+    ct.addEventListener('click',function(){cp.hidden=false;ct.setAttribute('aria-expanded','true');if(!shown){shown=true;add('assistant','Hi, I am the EireTech Digital Assistant. Ask me about our services, team, or how we can help your organisation.');}ci.focus();});
+    cc.addEventListener('click',function(){cp.hidden=true;ct.setAttribute('aria-expanded','false');});
+    ci.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+    cs.addEventListener('click',send);
+    function add(r,t){var d=document.createElement('div');d.className='chat-message chat-message--'+r;d.textContent=t;cm.appendChild(d);cm.scrollTop=cm.scrollHeight;}
+    function typing(){var d=document.createElement('div');d.className='chat-message chat-message--assistant chat-message--typing';d.id='ct';d.innerHTML='<span></span><span></span><span></span>';cm.appendChild(d);cm.scrollTop=cm.scrollHeight;}
+    function untype(){var e=document.getElementById('ct');if(e)e.remove();}
+    async function send(){var txt=ci.value.trim();if(!txt||waiting)return;ci.value='';add('user',txt);hist.push({role:'user',content:txt});waiting=true;typing();
+    try{var r=await fetch(EP,{method:'POST',headers:{'content-type':'application/json','x-api-key':KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,system:SYS,messages:hist})});
+    untype();if(!r.ok)throw new Error();var d=await r.json();var rep=d.content[0].text;add('assistant',rep);hist.push({role:'assistant',content:rep});}
+    catch(e){untype();add('assistant','I\'m having trouble connecting. Please reach out directly at hello@eiretech.ie.');}waiting=false;}
+    })();
+  </script>
+</body>
+</html>
+
