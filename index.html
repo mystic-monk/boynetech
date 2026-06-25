@@ -3,37 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="EireTech Digital Solutions — Ireland's data, analytics, software delivery, and IT managed services consultancy. We turn data into decisions and technology into outcomes.">
-  <title>EireTech Digital Solutions | Data, Analytics &amp; Technology Consultancy Ireland</title>
+  <meta name="description" content="Boyne Tech — Ireland's data, analytics, software delivery, and IT managed services consultancy. We turn data into decisions and technology into outcomes.">
+  <link rel="canonical" href="https://www.boynetech.ie/">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Boyne Tech">
+  <meta property="og:title" content="Boyne Tech | Data, Analytics &amp; Technology Consultancy Ireland">
+  <meta property="og:description" content="Boyne Tech — Ireland's data, analytics, software delivery, and IT managed services consultancy. We turn data into decisions and technology into outcomes.">
+  <meta property="og:url" content="https://www.boynetech.ie/">
+  <meta property="og:image" content="https://www.boynetech.ie/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Boyne Tech | Data, Analytics &amp; Technology Consultancy Ireland">
+  <meta name="twitter:description" content="Boyne Tech — Ireland's data, analytics, software delivery, and IT managed services consultancy. We turn data into decisions and technology into outcomes.">
+  <meta name="twitter:image" content="https://www.boynetech.ie/images/og-image.png">
+  <title>Boyne Tech | Data, Analytics &amp; Technology Consultancy Ireland</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="shortcut icon" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0E2438">
   <style>
-    /* Homepage hero — photo background replaces the default gradient overlay */
+    /* Homepage hero — abstract data-network graphic replaces the default gradient overlay */
     .hero {
-      background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&q=80');
+      background-image: url('images/pattern-network.svg');
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
     }
-    /* Solid dark overlay instead of the default radial gradient */
+    /* Light scrim so hero copy stays legible over the busier right-hand side of the graphic */
     .hero::before {
-      background: rgba(0, 0, 0, 0.55);
+      background: rgba(14, 36, 56, 0.35);
     }
     /* Hero secondary button — white outline for legibility on dark photo background */
     .hero .btn-secondary {
-      color: var(--et-white);
+      color: var(--bt-white);
       border-color: rgba(255, 255, 255, 0.8);
     }
     .hero .btn-secondary:hover {
-      background-color: var(--et-white);
-      border-color: var(--et-white);
-      color: var(--et-navy);
+      background-color: var(--bt-white);
+      border-color: var(--bt-white);
+      color: var(--bt-navy);
     }
     /* Stats strip — navy background, transparent stat cards with white text */
     .stats-strip {
-      background-color: var(--et-navy);
-      padding-block: var(--et-space-xl);
+      background-color: var(--bt-navy);
+      padding-block: var(--bt-space-xl);
     }
     .stats-strip .stats-row {
       background-color: rgba(255, 255, 255, 0.08);
@@ -43,7 +61,7 @@
       background-color: transparent;
     }
     .stats-strip .stat-item__number {
-      color: var(--et-white);
+      color: var(--bt-white);
     }
     .stats-strip .stat-item__label {
       color: rgba(255, 255, 255, 0.7);
@@ -55,17 +73,36 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1rem;
-      margin-bottom: var(--et-space-lg);
+      margin-bottom: var(--bt-space-lg);
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Boyne Tech Limited",
+    "legalName": "Boyne Tech Limited",
+    "url": "https://www.boynetech.ie/",
+    "logo": "https://www.boynetech.ie/images/icon-512.png",
+    "email": "hello@boynetech.ie",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dublin",
+      "addressCountry": "IE"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/boynetech"
+    ]
+  }
+  </script>
 </head>
 <body>
 
   <!-- ── Navigation ─────────────────────────────────────────── -->
   <header class="site-nav" role="banner">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo" aria-label="EireTech Digital Solutions — Home">
-        EireTech <span>Digital</span>
+      <a href="index.html" class="nav-logo" aria-label="Boyne Tech — Home">
+        Boyne <span>Tech</span>
       </a>
 
       <nav class="nav-links" aria-label="Primary navigation">
@@ -106,7 +143,7 @@
           We Turn Data Into <span class="accent">Decisions.</span>
         </h1>
         <p class="hero__sub">
-          EireTech partners with Irish public sector bodies and private enterprises to deliver data, AI, and technology solutions that drive measurable outcomes.
+          Boyne Tech partners with Irish public sector bodies and private enterprises to deliver data, AI, and technology solutions that drive measurable outcomes.
         </p>
         <div class="hero__actions">
           <a href="contact.html" class="btn btn-emerald btn-lg">Get in Touch</a>
@@ -213,11 +250,11 @@
       </div>
     </section>
 
-    <!-- ── Why EireTech ───────────────────────────────────────── -->
+    <!-- ── Why Boyne Tech ───────────────────────────────────────── -->
     <section class="section" aria-labelledby="why-heading">
       <div class="container">
         <div class="section-header--center text-center">
-          <span class="section-label">Why EireTech</span>
+          <span class="section-label">Why Boyne Tech</span>
           <h2 id="why-heading">The difference is in how we work</h2>
           <div class="divider divider--center"></div>
         </div>
@@ -261,7 +298,7 @@
     </section>
 
     <!-- ── Stats Strip ────────────────────────────────────────── -->
-    <div class="stats-strip" aria-label="EireTech at a glance">
+    <div class="stats-strip" aria-label="Boyne Tech at a glance">
       <div class="container">
         <div class="stats-row">
           <div class="stat-item">
@@ -369,9 +406,9 @@
     <div class="footer-grid">
 
       <div class="footer-col">
-        <a href="index.html" class="footer-logo">EireTech <span>Digital</span></a>
+        <a href="index.html" class="footer-logo">Boyne <span>Tech</span></a>
         <p>Ireland's partner for data, technology, and digital innovation.</p>
-        <p class="registered">Registered in Ireland &middot; Company No. [placeholder]</p>
+        <p class="registered">Registered in Ireland &middot; Company No. 819354</p>
       </div>
 
       <div class="footer-col">
@@ -404,11 +441,11 @@
         </div>
         <div class="footer-contact-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <a href="mailto:hello@eiretech.ie">hello@eiretech.ie</a>
+          <a href="mailto:hello@boynetech.ie">hello@boynetech.ie</a>
         </div>
         <div class="footer-contact-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          <a href="https://linkedin.com/company/eiretech" target="_blank" rel="noopener noreferrer">linkedin.com/company/eiretech</a>
+          <a href="https://linkedin.com/company/boynetech" target="_blank" rel="noopener noreferrer">linkedin.com/company/boynetech</a>
         </div>
       </div>
 
@@ -416,19 +453,19 @@
 
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>&copy; 2025 EireTech Digital Solutions Limited &middot; All rights reserved</span>
+        <span>&copy; 2025 Boyne Tech Limited &middot; All rights reserved</span>
         <a href="privacy.html">Privacy Policy</a>
       </div>
     </div>
   </footer>
 
   <!-- ── AI Chat Widget ──────────────────────────────────────── -->
-  <div class="chat-widget" id="chatWidget" role="complementary" aria-label="EireTech AI Assistant">
+  <div class="chat-widget" id="chatWidget" role="complementary" aria-label="Boyne Tech AI Assistant">
 
     <div class="chat-panel" id="chatPanel" hidden>
       <div class="chat-header">
         <div>
-          <div class="chat-header__title">EireTech Assistant</div>
+          <div class="chat-header__title">Boyne Tech Assistant</div>
           <div class="chat-header__sub">Ask me anything</div>
         </div>
         <button class="chat-close" id="chatClose" aria-label="Close assistant">&#x00D7;</button>
@@ -441,7 +478,7 @@
           class="chat-input"
           placeholder="Type your message…"
           autocomplete="off"
-          aria-label="Message to EireTech assistant">
+          aria-label="Message to Boyne Tech assistant">
         <button class="chat-send" id="chatSend" aria-label="Send message">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/>
@@ -450,7 +487,7 @@
       </div>
     </div>
 
-    <button class="chat-toggle" id="chatToggle" aria-label="Open EireTech assistant" aria-expanded="false">
+    <button class="chat-toggle" id="chatToggle" aria-label="Open Boyne Tech assistant" aria-expanded="false">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
         <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
       </svg>
@@ -488,7 +525,7 @@
       // exposed in the browser.
       var ANTHROPIC_API_KEY = 'YOUR_API_KEY_HERE';
       var API_ENDPOINT      = 'https://api.anthropic.com/v1/messages';
-      var SYSTEM_PROMPT     = 'You are the EireTech Digital Solutions assistant. EireTech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand EireTech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
+      var SYSTEM_PROMPT     = 'You are the Boyne Tech assistant. Boyne Tech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand Boyne Tech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
 
       var chatToggle   = document.getElementById('chatToggle');
       var chatClose    = document.getElementById('chatClose');
@@ -511,7 +548,7 @@
 
         if (!greetingShown) {
           greetingShown = true;
-          appendMessage('assistant', 'Hi, I am the EireTech Digital Assistant. Ask me about our services, team, or how we can help your organisation.');
+          appendMessage('assistant', 'Hi, I am the Boyne Tech Assistant. Ask me about our services, team, or how we can help your organisation.');
         }
 
         chatInput.focus();
@@ -598,7 +635,7 @@
 
         } catch (err) {
           hideTyping();
-          appendMessage('assistant', 'I\'m having trouble connecting at the moment. Please reach out to us directly at hello@eiretech.ie or use the Contact page.');
+          appendMessage('assistant', 'I\'m having trouble connecting at the moment. Please reach out to us directly at hello@boynetech.ie or use the Contact page.');
         }
 
         isWaiting = false;

@@ -3,20 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contact EireTech Digital Solutions — get in touch to discuss your data, analytics, software, or technology needs. We respond within one business day.">
-  <title>Contact | EireTech Digital Solutions</title>
+  <meta name="description" content="Contact Boyne Tech — get in touch to discuss your data, analytics, software, or technology needs. We respond within one business day.">
+  <link rel="canonical" href="https://www.boynetech.ie/contact.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Boyne Tech">
+  <meta property="og:title" content="Contact | Boyne Tech">
+  <meta property="og:description" content="Contact Boyne Tech — get in touch to discuss your data, analytics, software, or technology needs. We respond within one business day.">
+  <meta property="og:url" content="https://www.boynetech.ie/contact.html">
+  <meta property="og:image" content="https://www.boynetech.ie/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Contact | Boyne Tech">
+  <meta name="twitter:description" content="Contact Boyne Tech — get in touch to discuss your data, analytics, software, or technology needs. We respond within one business day.">
+  <meta name="twitter:image" content="https://www.boynetech.ie/images/og-image.png">
+  <title>Contact | Boyne Tech</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="shortcut icon" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0E2438">
   <style>
     /* Contact page header — clean, no hero image */
     .contact-header {
-      background-color: var(--et-cloud);
-      padding-block: var(--et-space-xl);
+      background-color: var(--bt-cloud);
+      padding-block: var(--bt-space-xl);
       text-align: center;
     }
     .contact-header h1 { margin-bottom: 0.625rem; }
-    .contact-header p  { color: var(--et-slate); font-size: 1.0625rem; max-width: 44ch; margin-inline: auto; margin-bottom: 0; }
+    .contact-header p  { color: var(--bt-slate); font-size: 1.0625rem; max-width: 44ch; margin-inline: auto; margin-bottom: 0; }
 
     /* Two-column contact layout */
     .contact-grid {
@@ -28,28 +46,28 @@
 
     /* Form card */
     .form-card {
-      background: var(--et-white);
-      border-radius: var(--et-radius-lg);
+      background: var(--bt-white);
+      border-radius: var(--bt-radius-lg);
       padding: 2.5rem;
-      box-shadow: var(--et-shadow-sm);
-      border: 1px solid rgba(136,151,168,.15);
+      box-shadow: var(--bt-shadow-sm);
+      border: 1px solid rgba(140,153,148,.15);
     }
     .form-card h2 { font-size: 1.375rem; margin-bottom: 1.5rem; }
 
     /* Submit feedback */
     .form-note {
       font-size: 0.8125rem;
-      color: var(--et-grey);
+      color: var(--bt-grey);
       text-align: center;
       margin-top: 0.75rem;
     }
     .form-success {
       display: none;
-      background: rgba(13,122,86,.08);
-      border: 1.5px solid var(--et-emerald);
-      border-radius: var(--et-radius-md);
+      background: rgba(23,122,78,.08);
+      border: 1.5px solid var(--bt-emerald);
+      border-radius: var(--bt-radius-md);
       padding: 1rem 1.25rem;
-      color: var(--et-emerald);
+      color: var(--bt-emerald);
       font-weight: 500;
       font-size: 0.9375rem;
       margin-top: 1rem;
@@ -67,8 +85,8 @@
 
     /* Contact details card */
     .contact-details-card {
-      background: var(--et-cloud);
-      border-radius: var(--et-radius-lg);
+      background: var(--bt-cloud);
+      border-radius: var(--bt-radius-lg);
       padding: 2rem;
     }
     .contact-details-card h3 { font-size: 1.125rem; margin-bottom: 1.25rem; }
@@ -80,32 +98,32 @@
       align-items: flex-start;
     }
     .contact-detail-row__icon {
-      color: var(--et-emerald);
+      color: var(--bt-emerald);
       flex-shrink: 0;
       margin-top: 0.1rem;
     }
     .contact-detail-row__label {
       font-size: 0.8rem;
       font-weight: 500;
-      color: var(--et-grey);
+      color: var(--bt-grey);
       text-transform: uppercase;
       letter-spacing: 0.06em;
       margin-bottom: 0.2rem;
     }
     .contact-detail-row__value {
       font-size: 0.9375rem;
-      color: var(--et-navy);
+      color: var(--bt-navy);
     }
     .contact-detail-row__value a {
-      color: var(--et-navy);
+      color: var(--bt-navy);
     }
-    .contact-detail-row__value a:hover { color: var(--et-blue); }
+    .contact-detail-row__value a:hover { color: var(--bt-blue); }
 
     .contact-urgent {
       font-size: 0.8125rem;
-      color: var(--et-slate);
-      background: var(--et-white);
-      border-radius: var(--et-radius-md);
+      color: var(--bt-slate);
+      background: var(--bt-white);
+      border-radius: var(--bt-radius-md);
       padding: 0.875rem 1rem;
       margin-top: 1.25rem;
       line-height: 1.55;
@@ -114,36 +132,36 @@
     /* FAQ accordion */
     .faq-list { max-width: 720px; margin-inline: auto; }
     .faq-item {
-      border-bottom: 1px solid rgba(136,151,168,.2);
+      border-bottom: 1px solid rgba(140,153,148,.2);
     }
-    .faq-item:first-child { border-top: 1px solid rgba(136,151,168,.2); }
+    .faq-item:first-child { border-top: 1px solid rgba(140,153,148,.2); }
     .faq-question {
       width: 100%;
       background: none;
       border: none;
       text-align: left;
       padding: 1.25rem 0;
-      font-family: var(--et-font-body);
+      font-family: var(--bt-font-body);
       font-size: 1rem;
       font-weight: 500;
-      color: var(--et-navy);
+      color: var(--bt-navy);
       cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
       gap: 1rem;
     }
-    .faq-question:hover { color: var(--et-blue); }
+    .faq-question:hover { color: var(--bt-blue); }
     .faq-chevron {
       flex-shrink: 0;
       transition: transform 0.25s ease;
-      color: var(--et-grey);
+      color: var(--bt-grey);
     }
-    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--et-emerald); }
+    .faq-item.open .faq-chevron { transform: rotate(180deg); color: var(--bt-emerald); }
     .faq-answer {
       display: none;
       padding-bottom: 1.25rem;
-      color: var(--et-slate);
+      color: var(--bt-slate);
       font-size: 0.9375rem;
       line-height: 1.7;
     }
@@ -154,12 +172,31 @@
       .form-card { padding: 1.75rem; }
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Boyne Tech Limited",
+    "legalName": "Boyne Tech Limited",
+    "url": "https://www.boynetech.ie/",
+    "logo": "https://www.boynetech.ie/images/icon-512.png",
+    "email": "hello@boynetech.ie",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dublin",
+      "addressCountry": "IE"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/boynetech"
+    ]
+  }
+  </script>
 </head>
 <body>
 
   <header class="site-nav" role="banner">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">EireTech <span>Digital</span></a>
+      <a href="index.html" class="nav-logo">Boyne <span>Tech</span></a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="services.html">Services</a>
         <a href="solutions.html">Solutions</a>
@@ -167,7 +204,7 @@
         <a href="insights.html">Insights</a>
         <a href="about.html">About</a>
         <a href="careers.html">Careers</a>
-        <a href="contact.html" class="btn btn-primary btn-sm active" style="background-color:var(--et-emerald);border-color:var(--et-emerald);">Contact</a>
+        <a href="contact.html" class="btn btn-primary btn-sm active" style="background-color:var(--bt-emerald);border-color:var(--bt-emerald);">Contact</a>
       </nav>
       <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
         <span></span><span></span><span></span>
@@ -262,7 +299,7 @@
                 </div>
                 <div>
                   <p class="contact-detail-row__label">Email</p>
-                  <p class="contact-detail-row__value"><a href="mailto:hello@eiretech.ie">hello@eiretech.ie</a></p>
+                  <p class="contact-detail-row__value"><a href="mailto:hello@boynetech.ie">hello@boynetech.ie</a></p>
                 </div>
               </div>
 
@@ -272,7 +309,7 @@
                 </div>
                 <div>
                   <p class="contact-detail-row__label">LinkedIn</p>
-                  <p class="contact-detail-row__value"><a href="https://linkedin.com/company/eiretech" target="_blank" rel="noopener noreferrer">linkedin.com/company/eiretech</a></p>
+                  <p class="contact-detail-row__value"><a href="https://linkedin.com/company/boynetech" target="_blank" rel="noopener noreferrer">linkedin.com/company/boynetech</a></p>
                 </div>
               </div>
 
@@ -357,9 +394,9 @@
   <footer class="site-footer" role="contentinfo">
     <div class="footer-grid">
       <div class="footer-col">
-        <a href="index.html" class="footer-logo">EireTech <span>Digital</span></a>
+        <a href="index.html" class="footer-logo">Boyne <span>Tech</span></a>
         <p>Ireland's partner for data, technology, and digital innovation.</p>
-        <p class="registered">Registered in Ireland &middot; Company No. [placeholder]</p>
+        <p class="registered">Registered in Ireland &middot; Company No. 819354</p>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
@@ -389,35 +426,35 @@
         </div>
         <div class="footer-contact-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <a href="mailto:hello@eiretech.ie">hello@eiretech.ie</a>
+          <a href="mailto:hello@boynetech.ie">hello@boynetech.ie</a>
         </div>
         <div class="footer-contact-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          <a href="https://linkedin.com/company/eiretech" target="_blank" rel="noopener noreferrer">linkedin.com/company/eiretech</a>
+          <a href="https://linkedin.com/company/boynetech" target="_blank" rel="noopener noreferrer">linkedin.com/company/boynetech</a>
         </div>
       </div>
     </div>
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>&copy; 2025 EireTech Digital Solutions Limited &middot; All rights reserved</span>
+        <span>&copy; 2025 Boyne Tech Limited &middot; All rights reserved</span>
         <a href="privacy.html">Privacy Policy</a>
       </div>
     </div>
   </footer>
 
-  <div class="chat-widget" id="chatWidget" role="complementary" aria-label="EireTech AI Assistant">
+  <div class="chat-widget" id="chatWidget" role="complementary" aria-label="Boyne Tech AI Assistant">
     <div class="chat-panel" id="chatPanel" hidden>
       <div class="chat-header">
-        <div><div class="chat-header__title">EireTech Assistant</div><div class="chat-header__sub">Ask me anything</div></div>
+        <div><div class="chat-header__title">Boyne Tech Assistant</div><div class="chat-header__sub">Ask me anything</div></div>
         <button class="chat-close" id="chatClose" aria-label="Close assistant">&#x00D7;</button>
       </div>
       <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
       <div class="chat-input-row">
-        <input type="text" id="chatInput" class="chat-input" placeholder="Type your message…" autocomplete="off" aria-label="Message to EireTech assistant">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Type your message…" autocomplete="off" aria-label="Message to Boyne Tech assistant">
         <button class="chat-send" id="chatSend" aria-label="Send message"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
       </div>
     </div>
-    <button class="chat-toggle" id="chatToggle" aria-label="Open EireTech assistant" aria-expanded="false">
+    <button class="chat-toggle" id="chatToggle" aria-label="Open Boyne Tech assistant" aria-expanded="false">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
     </button>
   </div>
@@ -486,10 +523,10 @@
     }());
 
     // Chat widget
-    (function(){var KEY='YOUR_API_KEY_HERE',EP='https://api.anthropic.com/v1/messages',SYS='You are the EireTech Digital Solutions assistant. EireTech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand EireTech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
+    (function(){var KEY='YOUR_API_KEY_HERE',EP='https://api.anthropic.com/v1/messages',SYS='You are the Boyne Tech assistant. Boyne Tech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand Boyne Tech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
     var ct=document.getElementById('chatToggle'),cc=document.getElementById('chatClose'),cp=document.getElementById('chatPanel'),cm=document.getElementById('chatMessages'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
     var hist=[],shown=false,waiting=false;
-    ct.addEventListener('click',function(){cp.hidden=false;ct.setAttribute('aria-expanded','true');if(!shown){shown=true;add('assistant','Hi, I am the EireTech Digital Assistant. Ask me about our services, team, or how we can help your organisation.');}ci.focus();});
+    ct.addEventListener('click',function(){cp.hidden=false;ct.setAttribute('aria-expanded','true');if(!shown){shown=true;add('assistant','Hi, I am the Boyne Tech Assistant. Ask me about our services, team, or how we can help your organisation.');}ci.focus();});
     cc.addEventListener('click',function(){cp.hidden=true;ct.setAttribute('aria-expanded','false');});
     ci.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
     cs.addEventListener('click',send);
@@ -499,7 +536,7 @@
     async function send(){var txt=ci.value.trim();if(!txt||waiting)return;ci.value='';add('user',txt);hist.push({role:'user',content:txt});waiting=true;typing();
     try{var r=await fetch(EP,{method:'POST',headers:{'content-type':'application/json','x-api-key':KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,system:SYS,messages:hist})});
     untype();if(!r.ok)throw new Error();var d=await r.json();var rep=d.content[0].text;add('assistant',rep);hist.push({role:'assistant',content:rep});}
-    catch(e){untype();add('assistant','I\'m having trouble connecting. Please reach out directly at hello@eiretech.ie.');}waiting=false;}
+    catch(e){untype();add('assistant','I\'m having trouble connecting. Please reach out directly at hello@boynetech.ie.');}waiting=false;}
     })();
   </script>
 </body>

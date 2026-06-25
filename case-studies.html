@@ -3,11 +3,29 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="EireTech Digital Solutions case studies — real project outcomes across public sector, enterprise, AI and data, and infrastructure engagements in Ireland.">
-  <title>Case Studies | EireTech Digital Solutions</title>
+  <meta name="description" content="Boyne Tech case studies — real project outcomes across public sector, enterprise, AI and data, and infrastructure engagements in Ireland.">
+  <link rel="canonical" href="https://www.boynetech.ie/case-studies.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Boyne Tech">
+  <meta property="og:title" content="Case Studies | Boyne Tech">
+  <meta property="og:description" content="Boyne Tech case studies — real project outcomes across public sector, enterprise, AI and data, and infrastructure engagements in Ireland.">
+  <meta property="og:url" content="https://www.boynetech.ie/case-studies.html">
+  <meta property="og:image" content="https://www.boynetech.ie/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Case Studies | Boyne Tech">
+  <meta name="twitter:description" content="Boyne Tech case studies — real project outcomes across public sector, enterprise, AI and data, and infrastructure engagements in Ireland.">
+  <meta name="twitter:image" content="https://www.boynetech.ie/images/og-image.png">
+  <title>Case Studies | Boyne Tech</title>
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
-  <link rel="shortcut icon" href="favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="images/apple-touch-icon.png">
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="theme-color" content="#0E2438">
   <style>
     /* Page hero — project delivery background */
     .page-hero {
@@ -15,41 +33,41 @@
       background-size: cover;
       background-position: center top;
     }
-    .page-hero::before { background: rgba(12, 31, 63, 0.70); }
+    .page-hero::before { background: rgba(14, 36, 56, 0.70); }
 
     /* Filter row — horizontal pill buttons */
     .filter-row {
       display: flex;
       flex-wrap: wrap;
       gap: 0.625rem;
-      margin-bottom: var(--et-space-lg);
+      margin-bottom: var(--bt-space-lg);
     }
     .filter-btn {
-      font-family: var(--et-font-body);
+      font-family: var(--bt-font-body);
       font-size: 0.875rem;
       font-weight: 500;
-      color: var(--et-slate);
-      background: var(--et-white);
-      border: 1.5px solid rgba(136,151,168,.35);
+      color: var(--bt-slate);
+      background: var(--bt-white);
+      border: 1.5px solid rgba(140,153,148,.35);
       border-radius: 99px;
       padding: 0.45rem 1.1rem;
       cursor: pointer;
       transition: color 0.2s, border-color 0.2s, background 0.2s;
     }
-    .filter-btn:hover { border-color: var(--et-blue); color: var(--et-blue); }
+    .filter-btn:hover { border-color: var(--bt-blue); color: var(--bt-blue); }
     .filter-btn.active-filter {
-      background: var(--et-navy);
-      border-color: var(--et-navy);
-      color: var(--et-white);
+      background: var(--bt-navy);
+      border-color: var(--bt-navy);
+      color: var(--bt-white);
     }
 
     /* Case study card */
     .cs-card {
-      background: var(--et-white);
-      border-radius: var(--et-radius-lg);
+      background: var(--bt-white);
+      border-radius: var(--bt-radius-lg);
       overflow: hidden;
-      box-shadow: var(--et-shadow-sm);
-      border: 1px solid rgba(136,151,168,.15);
+      box-shadow: var(--bt-shadow-sm);
+      border: 1px solid rgba(140,153,148,.15);
       display: flex;
       flex-direction: column;
     }
@@ -70,20 +88,20 @@
       display: inline-block;
       margin-bottom: 0.875rem;
     }
-    .sector--public { background: rgba(13,122,86,.1); color: var(--et-emerald); }
-    .sector--ai     { background: rgba(26,79,140,.1); color: var(--et-blue); }
-    .sector--ent    { background: rgba(74,96,128,.1); color: var(--et-slate); }
+    .sector--public { background: rgba(23,122,78,.1); color: var(--bt-emerald); }
+    .sector--ai     { background: rgba(28,83,126,.1); color: var(--bt-blue); }
+    .sector--ent    { background: rgba(78,100,106,.1); color: var(--bt-slate); }
 
     .cs-card__title {
-      font-family: var(--et-font-display);
+      font-family: var(--bt-font-display);
       font-size: 1.125rem;
       font-weight: 700;
-      color: var(--et-navy);
+      color: var(--bt-navy);
       line-height: 1.35;
       margin-bottom: 0.75rem;
     }
     .cs-card__desc {
-      color: var(--et-slate);
+      color: var(--bt-slate);
       font-size: 0.9rem;
       line-height: 1.65;
       margin-bottom: 1.25rem;
@@ -91,7 +109,7 @@
     }
     .cs-card__outcomes {
       list-style: none;
-      border-top: 1px solid var(--et-cloud);
+      border-top: 1px solid var(--bt-cloud);
       padding-top: 1.125rem;
       margin-bottom: 1.25rem;
     }
@@ -99,7 +117,7 @@
       position: relative;
       padding-left: 1.25rem;
       font-size: 0.875rem;
-      color: var(--et-navy);
+      color: var(--bt-navy);
       font-weight: 500;
       margin-bottom: 0.4rem;
       line-height: 1.4;
@@ -112,13 +130,13 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--et-emerald);
+      background: var(--bt-emerald);
     }
 
     /* Testimonial strip */
     .testimonial-strip {
-      background: var(--et-cloud);
-      border-radius: var(--et-radius-lg);
+      background: var(--bt-cloud);
+      border-radius: var(--bt-radius-lg);
       padding: 3rem;
       text-align: center;
       max-width: 780px;
@@ -127,16 +145,16 @@
     .testimonial-strip__quote {
       font-size: clamp(1.0625rem, 2vw, 1.25rem);
       font-style: italic;
-      color: var(--et-navy);
+      color: var(--bt-navy);
       line-height: 1.65;
       margin-bottom: 1.5rem;
       position: relative;
     }
     .testimonial-strip__quote::before {
       content: '\201C';
-      font-family: var(--et-font-display);
+      font-family: var(--bt-font-display);
       font-size: 4rem;
-      color: var(--et-emerald);
+      color: var(--bt-emerald);
       line-height: 0;
       position: relative;
       top: 1.25rem;
@@ -145,15 +163,34 @@
     .testimonial-strip__attr {
       font-size: 0.875rem;
       font-weight: 500;
-      color: var(--et-slate);
+      color: var(--bt-slate);
     }
   </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Boyne Tech Limited",
+    "legalName": "Boyne Tech Limited",
+    "url": "https://www.boynetech.ie/",
+    "logo": "https://www.boynetech.ie/images/icon-512.png",
+    "email": "hello@boynetech.ie",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Dublin",
+      "addressCountry": "IE"
+    },
+    "sameAs": [
+      "https://linkedin.com/company/boynetech"
+    ]
+  }
+  </script>
 </head>
 <body>
 
   <header class="site-nav" role="banner">
     <div class="nav-inner">
-      <a href="index.html" class="nav-logo">EireTech <span>Digital</span></a>
+      <a href="index.html" class="nav-logo">Boyne <span>Tech</span></a>
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="services.html">Services</a>
         <a href="solutions.html">Solutions</a>
@@ -212,7 +249,7 @@
             <div class="cs-card__body">
               <span class="cs-card__sector sector--public">Public Sector</span>
               <h2 class="cs-card__title">Replacing a legacy reporting stack with a modern analytics platform across a national transport authority.</h2>
-              <p class="cs-card__desc">A government transport body needed to retire a fragmented collection of Excel-based reports and manual data extracts. EireTech designed and delivered a medallion-architecture data platform on Microsoft Fabric with governed Power BI dashboards.</p>
+              <p class="cs-card__desc">A government transport body needed to retire a fragmented collection of Excel-based reports and manual data extracts. Boyne Tech designed and delivered a medallion-architecture data platform on Microsoft Fabric with governed Power BI dashboards.</p>
               <ul class="cs-card__outcomes">
                 <li>Reporting cycle reduced from 5 days to same-day</li>
                 <li>Single source of truth for operational and planning data</li>
@@ -230,7 +267,7 @@
             <div class="cs-card__body">
               <span class="cs-card__sector sector--ai">AI &amp; Data</span>
               <h2 class="cs-card__title">Enabling staff to query 3,000 policy documents using natural language — with no data leaving the network.</h2>
-              <p class="cs-card__desc">A large public body with an extensive policy library needed to reduce the time staff spent locating procedural guidance. EireTech built a fully local RAG application using open-source models, deployed entirely on-premise.</p>
+              <p class="cs-card__desc">A large public body with an extensive policy library needed to reduce the time staff spent locating procedural guidance. Boyne Tech built a fully local RAG application using open-source models, deployed entirely on-premise.</p>
               <ul class="cs-card__outcomes">
                 <li>Average document retrieval time cut by 70%</li>
                 <li>Fully compliant with data governance requirements</li>
@@ -248,7 +285,7 @@
             <div class="cs-card__body">
               <span class="cs-card__sector sector--ent">Enterprise</span>
               <h2 class="cs-card__title">Building an in-house analytics function for a mid-market financial services firm from the ground up.</h2>
-              <p class="cs-card__desc">The client had strong operational data but no structured analytics capability. EireTech led a capability build covering people, process, tooling, and governance over 12 months — including hiring support and training.</p>
+              <p class="cs-card__desc">The client had strong operational data but no structured analytics capability. Boyne Tech led a capability build covering people, process, tooling, and governance over 12 months — including hiring support and training.</p>
               <ul class="cs-card__outcomes">
                 <li>Analytics team of 6 hired and onboarded</li>
                 <li>Core BI platform live within 90 days</li>
@@ -267,7 +304,7 @@
       <div class="container">
         <div class="testimonial-strip">
           <blockquote class="testimonial-strip__quote">
-            EireTech brought clarity to a problem we had been circling for two years. They understood our constraints — technical, organisational, and political — and delivered something we could actually use.
+            Boyne Tech brought clarity to a problem we had been circling for two years. They understood our constraints — technical, organisational, and political — and delivered something we could actually use.
           </blockquote>
           <p class="testimonial-strip__attr">— Director of Strategy, Irish Public Sector Body (name withheld)</p>
         </div>
@@ -289,9 +326,9 @@
   <footer class="site-footer" role="contentinfo">
     <div class="footer-grid">
       <div class="footer-col">
-        <a href="index.html" class="footer-logo">EireTech <span>Digital</span></a>
+        <a href="index.html" class="footer-logo">Boyne <span>Tech</span></a>
         <p>Ireland's partner for data, technology, and digital innovation.</p>
-        <p class="registered">Registered in Ireland &middot; Company No. [placeholder]</p>
+        <p class="registered">Registered in Ireland &middot; Company No. 819354</p>
       </div>
       <div class="footer-col">
         <h4>Services</h4>
@@ -321,45 +358,45 @@
         </div>
         <div class="footer-contact-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <a href="mailto:hello@eiretech.ie">hello@eiretech.ie</a>
+          <a href="mailto:hello@boynetech.ie">hello@boynetech.ie</a>
         </div>
         <div class="footer-contact-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-          <a href="https://linkedin.com/company/eiretech" target="_blank" rel="noopener noreferrer">linkedin.com/company/eiretech</a>
+          <a href="https://linkedin.com/company/boynetech" target="_blank" rel="noopener noreferrer">linkedin.com/company/boynetech</a>
         </div>
       </div>
     </div>
     <div class="footer-bar">
       <div class="footer-bar__inner">
-        <span>&copy; 2025 EireTech Digital Solutions Limited &middot; All rights reserved</span>
+        <span>&copy; 2025 Boyne Tech Limited &middot; All rights reserved</span>
         <a href="privacy.html">Privacy Policy</a>
       </div>
     </div>
   </footer>
 
-  <div class="chat-widget" id="chatWidget" role="complementary" aria-label="EireTech AI Assistant">
+  <div class="chat-widget" id="chatWidget" role="complementary" aria-label="Boyne Tech AI Assistant">
     <div class="chat-panel" id="chatPanel" hidden>
       <div class="chat-header">
-        <div><div class="chat-header__title">EireTech Assistant</div><div class="chat-header__sub">Ask me anything</div></div>
+        <div><div class="chat-header__title">Boyne Tech Assistant</div><div class="chat-header__sub">Ask me anything</div></div>
         <button class="chat-close" id="chatClose" aria-label="Close assistant">&#x00D7;</button>
       </div>
       <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
       <div class="chat-input-row">
-        <input type="text" id="chatInput" class="chat-input" placeholder="Type your message…" autocomplete="off" aria-label="Message to EireTech assistant">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Type your message…" autocomplete="off" aria-label="Message to Boyne Tech assistant">
         <button class="chat-send" id="chatSend" aria-label="Send message"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
       </div>
     </div>
-    <button class="chat-toggle" id="chatToggle" aria-label="Open EireTech assistant" aria-expanded="false">
+    <button class="chat-toggle" id="chatToggle" aria-label="Open Boyne Tech assistant" aria-expanded="false">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
     </button>
   </div>
 
   <script>
     (function(){var t=document.getElementById('navToggle'),m=document.getElementById('navMobile');t.addEventListener('click',function(){var o=m.classList.toggle('open');t.classList.toggle('open',o);t.setAttribute('aria-expanded',o);});m.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){m.classList.remove('open');t.classList.remove('open');t.setAttribute('aria-expanded','false');});});})();
-    (function(){var KEY='YOUR_API_KEY_HERE',EP='https://api.anthropic.com/v1/messages',SYS='You are the EireTech Digital Solutions assistant. EireTech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand EireTech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
+    (function(){var KEY='YOUR_API_KEY_HERE',EP='https://api.anthropic.com/v1/messages',SYS='You are the Boyne Tech assistant. Boyne Tech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand Boyne Tech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
     var ct=document.getElementById('chatToggle'),cc=document.getElementById('chatClose'),cp=document.getElementById('chatPanel'),cm=document.getElementById('chatMessages'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
     var hist=[],shown=false,waiting=false;
-    ct.addEventListener('click',function(){cp.hidden=false;ct.setAttribute('aria-expanded','true');if(!shown){shown=true;add('assistant','Hi, I am the EireTech Digital Assistant. Ask me about our services, team, or how we can help your organisation.');}ci.focus();});
+    ct.addEventListener('click',function(){cp.hidden=false;ct.setAttribute('aria-expanded','true');if(!shown){shown=true;add('assistant','Hi, I am the Boyne Tech Assistant. Ask me about our services, team, or how we can help your organisation.');}ci.focus();});
     cc.addEventListener('click',function(){cp.hidden=true;ct.setAttribute('aria-expanded','false');});
     ci.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
     cs.addEventListener('click',send);
@@ -369,7 +406,7 @@
     async function send(){var txt=ci.value.trim();if(!txt||waiting)return;ci.value='';add('user',txt);hist.push({role:'user',content:txt});waiting=true;typing();
     try{var r=await fetch(EP,{method:'POST',headers:{'content-type':'application/json','x-api-key':KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,system:SYS,messages:hist})});
     untype();if(!r.ok)throw new Error();var d=await r.json();var rep=d.content[0].text;add('assistant',rep);hist.push({role:'assistant',content:rep});}
-    catch(e){untype();add('assistant','I\'m having trouble connecting. Please reach out directly at hello@eiretech.ie.');}waiting=false;}
+    catch(e){untype();add('assistant','I\'m having trouble connecting. Please reach out directly at hello@boynetech.ie.');}waiting=false;}
     })();
   </script>
 </body>

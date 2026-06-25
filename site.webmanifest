@@ -1,0 +1,13 @@
+{
+  "name": "Boyne Tech Limited",
+  "short_name": "Boyne Tech",
+  "description": "Ireland's data, analytics, software delivery, and IT managed services consultancy.",
+  "start_url": "/index.html",
+  "display": "browser",
+  "background_color": "#FFFFFF",
+  "theme_color": "#0E2438",
+  "icons": [
+    { "src": "images/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
+}

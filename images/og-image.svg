@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <rect width="1200" height="630" fill="#0E2438"/>
+
+  <!-- Triple-spiral mark, scaled up from favicon.svg -->
+  <g fill="none" stroke-linecap="round">
+    <path d="M190,282 Q209.25,295.2 190,315" stroke="rgba(255,255,255,0.92)" stroke-width="17.6"/>
+    <path d="M218.6,331.5 Q197.52,341.57 190,315" stroke="rgba(255,255,255,0.92)" stroke-width="17.6"/>
+    <path d="M161.4,331.5 Q163.23,308.23 190,315" stroke="#177A4E" stroke-width="17.6"/>
+  </g>
+  <circle cx="190" cy="282" r="15.4" fill="rgba(255,255,255,0.92)"/>
+  <circle cx="218.6" cy="331.5" r="15.4" fill="rgba(255,255,255,0.92)"/>
+  <circle cx="161.4" cy="331.5" r="15.4" fill="#177A4E"/>
+
+  <text x="300" y="305" font-family="Helvetica, Arial, sans-serif" font-size="76" font-weight="700" fill="#FFFFFF">Boyne <tspan fill="#177A4E">Tech</tspan></text>
+  <text x="302" y="358" font-family="Helvetica, Arial, sans-serif" font-size="27" fill="rgba(255,255,255,0.78)">Data, Analytics &amp; Technology Consultancy</text>
+</svg>
