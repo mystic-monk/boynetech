@@ -1,1 +1,69 @@
-# =========================7# Dependencies8# =========================9node_modules/10bower_components/11 12# =========================13# Build output14# =========================15dist/16build/17out/18public/build/19.cache/20.parcel-cache/21.vite/22.next/23.nuxt/24.svelte-kit/25 26# =========================27# Environment files28# =========================29.env30.env.*31!.env.example32 33# =========================34# Logs35# =========================36logs/37*.log38npm-debug.log*39yarn-debug.log*40yarn-error.log*41pnpm-debug.log*42 43# =========================44# OS files45# =========================46.DS_Store47Thumbs.db48desktop.ini49 50# =========================51# Editor / IDE files52# =========================53.vscode/54.idea/55*.swp56*.swo57 58# =========================59# Temporary files60# =========================61tmp/62temp/63*.tmp64 65# =========================66# Test / coverage output67# =========================68coverage/69.nyc_output/70 71# =========================72# Tooling / local AI assistant files73# =========================74.claude/
+# =========================
+# Dependencies
+# =========================
+node_modules/
+bower_components/
+
+# =========================
+# Build output
+# =========================
+dist/
+build/
+out/
+public/build/
+.cache/
+.parcel-cache/
+.vite/
+.next/
+.nuxt/
+.svelte-kit/
+
+# =========================
+# Environment files
+# =========================
+.env
+.env.*
+!.env.example
+
+# =========================
+# Logs
+# =========================
+logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# =========================
+# OS files
+# =========================
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =========================
+# Editor / IDE files
+# =========================
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# =========================
+# Temporary files
+# =========================
+tmp/
+temp/
+*.tmp
+
+# =========================
+# Test / coverage output
+# =========================
+coverage/
+.nyc_output/
+
+# =========================
+# Tooling / local AI assistant files
+# =========================
+.claude/
