@@ -11,6 +11,7 @@
   --bt-navy:    #0E2438;
   --bt-blue:    #1C537E;
   --bt-emerald: #177A4E;
+  --bt-mint:    #7CFFB8; /* emerald is too dark to read on navy backgrounds — use this instead */
   --bt-slate:   #4E646A;
   --bt-grey:    #8C9994;
   --bt-cloud:   #EEF3EE;
@@ -539,7 +540,7 @@ p:last-child { margin-bottom: 0; }
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--bt-emerald);
+  color: var(--bt-mint);
   margin-bottom: 1rem;
 }
 
@@ -576,6 +577,10 @@ p:last-child { margin-bottom: 0; }
   color: var(--bt-emerald);
   margin-bottom: 0.625rem;
   display: block;
+}
+
+.page-hero .section-label {
+  color: var(--bt-mint);
 }
 
 .section-header {
@@ -764,7 +769,7 @@ textarea {
 }
 
 .footer-logo span {
-  color: var(--bt-emerald);
+  color: var(--bt-mint);
 }
 
 .footer-col p {
@@ -801,7 +806,7 @@ textarea {
 }
 
 .footer-col ul a:hover {
-  color: var(--bt-emerald);
+  color: var(--bt-mint);
 }
 
 .footer-contact-item {
@@ -818,7 +823,7 @@ textarea {
 }
 
 .footer-contact-item a:hover {
-  color: var(--bt-emerald);
+  color: var(--bt-mint);
 }
 
 .footer-bar {
