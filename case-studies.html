@@ -3,22 +3,23 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Boyne Tech case studies: real project outcomes across public sector, enterprise, AI and data, and infrastructure engagements in Ireland.">
+  <meta name="description" content="Boyne Tech works with Irish organisations on data analytics, AI, software development, and digital transformation. See the kinds of problems we're built to solve.">
   <link rel="canonical" href="https://www.boynetech.ie/case-studies.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Boyne Tech">
-  <meta property="og:title" content="Case Studies | Boyne Tech">
-  <meta property="og:description" content="Boyne Tech case studies: real project outcomes across public sector, enterprise, AI and data, and infrastructure engagements in Ireland.">
+  <meta property="og:title" content="Our Work | Boyne Tech">
+  <meta property="og:description" content="Boyne Tech works with Irish organisations on data analytics, AI, software development, and digital transformation. See the kinds of problems we're built to solve.">
   <meta property="og:url" content="https://www.boynetech.ie/case-studies.html">
   <meta property="og:image" content="https://www.boynetech.ie/images/og-image.png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta property="og:locale" content="en_IE">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Case Studies | Boyne Tech">
-  <meta name="twitter:description" content="Boyne Tech case studies: real project outcomes across public sector, enterprise, AI and data, and infrastructure engagements in Ireland.">
+  <meta name="twitter:title" content="Our Work | Boyne Tech">
+  <meta name="twitter:description" content="Boyne Tech works with Irish organisations on data analytics, AI, software development, and digital transformation. See the kinds of problems we're built to solve.">
   <meta name="twitter:image" content="https://www.boynetech.ie/images/og-image.png">
-  <title>Case Studies | Boyne Tech</title>
+  <title>Our Work | Boyne Tech</title>
+
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" type="image/svg+xml" href="favicon.svg">
   <link rel="icon" type="image/png" sizes="32x32" href="images/favicon-32x32.png">
@@ -27,7 +28,6 @@
   <link rel="manifest" href="site.webmanifest">
   <meta name="theme-color" content="#0E2438">
   <style>
-    /* Page hero — project delivery background */
     .page-hero {
       background-image: url('https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=1200&q=80');
       background-size: cover;
@@ -35,33 +35,7 @@
     }
     .page-hero::before { background: rgba(14, 36, 56, 0.70); }
 
-    /* Filter row — horizontal pill buttons */
-    .filter-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.625rem;
-      margin-bottom: var(--bt-space-lg);
-    }
-    .filter-btn {
-      font-family: var(--bt-font-body);
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--bt-slate);
-      background: var(--bt-white);
-      border: 1.5px solid rgba(140,153,148,.35);
-      border-radius: 99px;
-      padding: 0.45rem 1.1rem;
-      cursor: pointer;
-      transition: color 0.2s, border-color 0.2s, background 0.2s;
-    }
-    .filter-btn:hover { border-color: var(--bt-blue); color: var(--bt-blue); }
-    .filter-btn.active-filter {
-      background: var(--bt-navy);
-      border-color: var(--bt-navy);
-      color: var(--bt-white);
-    }
-
-    /* Case study card */
+    /* Scenario card */
     .cs-card {
       background: var(--bt-white);
       border-radius: var(--bt-radius-lg);
@@ -104,66 +78,28 @@
       color: var(--bt-slate);
       font-size: 0.9rem;
       line-height: 1.65;
-      margin-bottom: 1.25rem;
       flex: 1;
     }
-    .cs-card__outcomes {
-      list-style: none;
-      border-top: 1px solid var(--bt-cloud);
-      padding-top: 1.125rem;
-      margin-bottom: 1.25rem;
-    }
-    .cs-card__outcomes li {
-      position: relative;
-      padding-left: 1.25rem;
-      font-size: 0.875rem;
-      color: var(--bt-navy);
-      font-weight: 500;
-      margin-bottom: 0.4rem;
-      line-height: 1.4;
-    }
-    .cs-card__outcomes li::before {
-      content: '';
-      position: absolute;
-      left: 0;
-      top: 0.45em;
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--bt-emerald);
-    }
 
-    /* Testimonial strip */
-    .testimonial-strip {
+    /* Early-client callout */
+    .early-callout {
       background: var(--bt-cloud);
       border-radius: var(--bt-radius-lg);
       padding: 3rem;
       text-align: center;
-      max-width: 780px;
+      max-width: 700px;
       margin-inline: auto;
     }
-    .testimonial-strip__quote {
-      font-size: clamp(1.0625rem, 2vw, 1.25rem);
-      font-style: italic;
+    .early-callout h2 {
+      font-size: 1.375rem;
       color: var(--bt-navy);
-      line-height: 1.65;
-      margin-bottom: 1.5rem;
-      position: relative;
+      margin-bottom: 1rem;
     }
-    .testimonial-strip__quote::before {
-      content: '\201C';
-      font-family: var(--bt-font-display);
-      font-size: 4rem;
-      color: var(--bt-emerald);
-      line-height: 0;
-      position: relative;
-      top: 1.25rem;
-      margin-right: 0.25rem;
-    }
-    .testimonial-strip__attr {
-      font-size: 0.875rem;
-      font-weight: 500;
+    .early-callout p {
       color: var(--bt-slate);
+      font-size: 0.9375rem;
+      line-height: 1.7;
+      margin-bottom: 0;
     }
   </style>
   <script type="application/ld+json">
@@ -194,7 +130,7 @@
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="services.html">Services</a>
         <a href="solutions.html">Solutions</a>
-        <a href="case-studies.html" class="active">Case Studies</a>
+        <a href="case-studies.html" class="active">Our Work</a>
         <a href="insights.html">Insights</a>
         <a href="about.html">About</a>
         <a href="careers.html">Careers</a>
@@ -207,7 +143,7 @@
     <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
       <a href="services.html">Services</a>
       <a href="solutions.html">Solutions</a>
-      <a href="case-studies.html" class="active">Case Studies</a>
+      <a href="case-studies.html" class="active">Our Work</a>
       <a href="insights.html">Insights</a>
       <a href="about.html">About</a>
       <a href="careers.html">Careers</a>
@@ -219,79 +155,59 @@
 
     <section class="page-hero" aria-labelledby="page-title">
       <div class="page-hero__inner">
-        <span class="section-label">Client Work</span>
-        <h1 id="page-title">Delivered. Not Just Proposed.</h1>
-        <p>A selection of engagements where we helped clients achieve meaningful, measurable outcomes.</p>
+        <span class="section-label">Our Work</span>
+        <h1 id="page-title">The Problems We're Built to Solve</h1>
+        <p>We're actively building our first client engagements. Here's where we focus and how we approach these kinds of challenges.</p>
       </div>
     </section>
 
-    <!-- ── Case Studies ───────────────────────────────────────── -->
+    <!-- ── Intro note ─────────────────────────────────────────── -->
     <section class="section" aria-labelledby="cs-heading">
       <div class="container">
 
-        <div class="filter-row" role="group" aria-label="Filter case studies by sector">
-          <button class="filter-btn active-filter" type="button">All</button>
-          <button class="filter-btn" type="button">Public Sector</button>
-          <button class="filter-btn" type="button">Enterprise</button>
-          <button class="filter-btn" type="button">AI &amp; Data</button>
-          <button class="filter-btn" type="button">Infrastructure</button>
+        <div class="section-header" style="max-width:680px; margin-bottom: var(--bt-space-lg);">
+          <p style="color:var(--bt-slate); font-size:0.9375rem; line-height:1.75;">
+            We haven't published client case studies yet. We're deliberately getting our first engagements underway before we do. What we can share is the kind of work the practice is built around, based on the experience and expertise the team brings.
+          </p>
         </div>
 
-        <h2 class="sr-only" id="cs-heading">Case studies</h2>
+        <h2 class="sr-only" id="cs-heading">Example engagement types</h2>
 
         <div class="grid grid--3">
 
-          <!-- Case Study 1 -->
+          <!-- Scenario 1 -->
           <article class="cs-card">
             <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80"
-                 alt="Data analytics dashboard representing the transport analytics project"
+                 alt="Data analytics dashboard on a laptop screen"
                  class="cs-card__image" loading="lazy">
             <div class="cs-card__body">
               <span class="cs-card__sector sector--public">Public Sector</span>
-              <h2 class="cs-card__title">Replacing a legacy reporting stack with a modern analytics platform across a national transport authority.</h2>
-              <p class="cs-card__desc">A government transport body needed to retire a fragmented collection of Excel-based reports and manual data extracts. Boyne Tech designed and delivered a medallion-architecture data platform on Microsoft Fabric with governed Power BI dashboards.</p>
-              <ul class="cs-card__outcomes">
-                <li>Reporting cycle reduced from 5 days to same-day</li>
-                <li>Single source of truth for operational and planning data</li>
-                <li>Self-service analytics adopted by 40+ staff</li>
-              </ul>
-              <a href="#cs1" class="card-link">Read More</a>
+              <h2 class="cs-card__title">Replacing fragmented reporting with a modern, governed analytics platform</h2>
+              <p class="cs-card__desc">Many public sector organisations are running critical reporting off a patchwork of Excel files and manual extracts. We design and build proper data platforms — medallion architecture, governed Power BI dashboards, single source of truth — so teams stop fighting their data and start using it. This is work we know inside out, and it's one of the clearest wins available to Irish public bodies right now.</p>
             </div>
           </article>
 
-          <!-- Case Study 2 -->
+          <!-- Scenario 2 -->
           <article class="cs-card">
             <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80"
-                 alt="AI interface representing the document intelligence project"
+                 alt="AI chat interface on a screen"
                  class="cs-card__image" loading="lazy">
             <div class="cs-card__body">
               <span class="cs-card__sector sector--ai">AI &amp; Data</span>
-              <h2 class="cs-card__title">Enabling staff to query 3,000 policy documents using natural language, with no data leaving the network.</h2>
-              <p class="cs-card__desc">A large public body with an extensive policy library needed to reduce the time staff spent locating procedural guidance. Boyne Tech built a fully local RAG application using open-source models, deployed entirely on-premise.</p>
-              <ul class="cs-card__outcomes">
-                <li>Average document retrieval time cut by 70%</li>
-                <li>Fully compliant with data governance requirements</li>
-                <li>No third-party cloud dependency</li>
-              </ul>
-              <a href="#cs2" class="card-link">Read More</a>
+              <h2 class="cs-card__title">Making large document libraries searchable with AI, entirely on your own infrastructure</h2>
+              <p class="cs-card__desc">Organisations with large policy libraries, procedural documents, or knowledge bases spend enormous amounts of time on manual search. We build AI-assisted retrieval systems — fully on-premise, no data leaving the network — that meet the governance requirements of public bodies and regulated industries. The technology is mature; most organisations just haven't had someone build it for them properly yet.</p>
             </div>
           </article>
 
-          <!-- Case Study 3 -->
+          <!-- Scenario 3 -->
           <article class="cs-card">
             <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80"
-                 alt="Financial data and analytics reports representing the BI capability build"
+                 alt="Analytics reports and dashboards on a desk"
                  class="cs-card__image" loading="lazy">
             <div class="cs-card__body">
               <span class="cs-card__sector sector--ent">Enterprise</span>
-              <h2 class="cs-card__title">Building an in-house analytics function for a mid-market financial services firm from the ground up.</h2>
-              <p class="cs-card__desc">The client had strong operational data but no structured analytics capability. Boyne Tech led a capability build covering people, process, tooling, and governance over 12 months, including hiring support and training.</p>
-              <ul class="cs-card__outcomes">
-                <li>Analytics team of 6 hired and onboarded</li>
-                <li>Core BI platform live within 90 days</li>
-                <li>Board-level reporting pack delivered monthly</li>
-              </ul>
-              <a href="#cs3" class="card-link">Read More</a>
+              <h2 class="cs-card__title">Building an analytics function from scratch when the data is there but the capability isn't</h2>
+              <p class="cs-card__desc">Some organisations have decent data but no structured way to use it. We do end-to-end capability builds: tooling selection, governance frameworks, initial reporting layer, and where needed, support with hiring and onboarding the right people. The goal is a function that keeps running after we leave, not a dependency on us.</p>
             </div>
           </article>
 
@@ -299,14 +215,12 @@
       </div>
     </section>
 
-    <!-- ── Testimonial ────────────────────────────────────────── -->
-    <section class="section section--cloud" aria-label="Client testimonial">
+    <!-- ── Early client callout ───────────────────────────────── -->
+    <section class="section section--cloud" aria-label="Working with us early">
       <div class="container">
-        <div class="testimonial-strip">
-          <blockquote class="testimonial-strip__quote">
-            Boyne Tech brought clarity to a problem we had been circling for two years. They understood our constraints, technical, organisational, and political, and delivered something we could actually use.
-          </blockquote>
-          <p class="testimonial-strip__attr">Director of Strategy, Irish Public Sector Body (name withheld)</p>
+        <div class="early-callout">
+          <h2>Interested in working with us early?</h2>
+          <p>Being one of our first clients means you get senior attention on every part of the engagement, not just kickoff. We're selective about what we take on, and we're not trying to scale fast at the expense of doing good work. If you have a challenge that fits what we do, we'd genuinely like to hear about it.</p>
         </div>
       </div>
     </section>
@@ -314,8 +228,8 @@
     <section class="cta-banner" aria-labelledby="cta-heading">
       <div class="cta-banner__inner">
         <div>
-          <h2 id="cta-heading">Working on something similar?</h2>
-          <p>Tell us about your challenge, and we'll tell you honestly whether we can help, and how.</p>
+          <h2 id="cta-heading">Got a challenge like one of these?</h2>
+          <p>Tell us about it and we'll tell you honestly whether we can help, and how.</p>
         </div>
         <a href="contact.html" class="btn btn-emerald btn-lg">Get in Touch</a>
       </div>
@@ -345,7 +259,7 @@
         <ul>
           <li><a href="about.html">About Us</a></li>
           <li><a href="careers.html">Careers</a></li>
-          <li><a href="case-studies.html">Case Studies</a></li>
+          <li><a href="case-studies.html">Our Work</a></li>
           <li><a href="insights.html">Insights</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
