@@ -115,7 +115,7 @@
     "legalName": "Boyne Tech Limited",
     "url": "https://www.boynetech.ie/",
     "logo": "https://www.boynetech.ie/images/icon-512.png",
-    "email": "hello@boynetech.ie",
+    "email": "info@boynetech.ie",
     "address": {
       "@type": "PostalAddress",
       "addressLocality": "Dublin",
@@ -281,7 +281,7 @@
         </div>
         <div class="footer-contact-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-          <a href="mailto:hello@boynetech.ie">hello@boynetech.ie</a>
+          <a href="mailto:info@boynetech.ie">info@boynetech.ie</a>
         </div>
         <div class="footer-contact-item">
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
@@ -331,7 +331,7 @@
     async function send(){var txt=ci.value.trim();if(!txt||waiting)return;ci.value='';add('user',txt);hist.push({role:'user',content:txt});waiting=true;typing();
     try{var r=await fetch(EP,{method:'POST',headers:{'content-type':'application/json','x-api-key':KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,system:SYS,messages:hist})});
     untype();if(!r.ok)throw new Error();var d=await r.json();var rep=d.content[0].text;add('assistant',rep);hist.push({role:'assistant',content:rep});}
-    catch(e){untype();add('assistant','I\'m having trouble connecting. Please reach out directly at hello@boynetech.ie.');}waiting=false;}
+    catch(e){untype();add('assistant','I\'m having trouble connecting. Please reach out directly at info@boynetech.ie.');}waiting=false;}
     })();
   </script>
 </body>
