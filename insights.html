@@ -108,6 +108,14 @@
       flex: 1;
       min-width: 0;
     }
+    .newsletter-msg {
+      display: none;
+      margin-top: 1rem;
+      margin-bottom: 0;
+      font-size: 0.875rem;
+    }
+    .newsletter-msg--success { color: var(--bt-emerald); font-weight: 500; }
+    .newsletter-msg--error   { color: #c0392b; }
 
     @media (max-width: 768px) {
       .featured-article { grid-template-columns: 1fr; }
@@ -260,10 +268,14 @@
         <div class="newsletter-strip">
           <h2 id="newsletter-heading">Get our articles when they publish</h2>
           <p>We're writing up the pieces previewed above and publishing them soon. Leave your email and we'll send them through. No marketing, no frequency pressure. Unsubscribe at any time.</p>
-          <form class="newsletter-form" action="#" method="post" novalidate aria-label="Newsletter sign-up">
+          <form id="newsletterForm" class="newsletter-form" action="https://formspree.io/f/xpqvpyzr" method="POST" novalidate aria-label="Newsletter sign-up">
+            <input type="hidden" name="_subject" value="Newsletter signup from boynetech.ie">
+            <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
             <input type="email" name="email" placeholder="Work email address" required aria-label="Work email address" autocomplete="email">
             <button type="submit" class="btn btn-emerald">Subscribe</button>
           </form>
+          <p class="newsletter-msg newsletter-msg--success" id="newsletterSuccess" role="alert">Thanks, you're on the list. We'll email you when the first pieces are ready.</p>
+          <p class="newsletter-msg newsletter-msg--error" id="newsletterError" role="alert">Something went wrong. Please try again or email <a href="mailto:info@boynetech.ie">info@boynetech.ie</a> directly.</p>
         </div>
       </div>
     </section>
@@ -341,6 +353,37 @@
 
   <script>
     (function(){var t=document.getElementById('navToggle'),m=document.getElementById('navMobile');t.addEventListener('click',function(){var o=m.classList.toggle('open');t.classList.toggle('open',o);t.setAttribute('aria-expanded',o);});m.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){m.classList.remove('open');t.classList.remove('open');t.setAttribute('aria-expanded','false');});});})();
+
+    // Newsletter signup
+    (function () {
+      var form = document.getElementById('newsletterForm');
+      var success = document.getElementById('newsletterSuccess');
+      var error = document.getElementById('newsletterError');
+      var btn = form.querySelector('button[type="submit"]');
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        error.style.display = 'none';
+        btn.disabled = true;
+        btn.textContent = 'Subscribing…';
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function (res) {
+          if (!res.ok) throw new Error('Signup failed');
+          form.reset();
+          form.style.display = 'none';
+          success.style.display = 'block';
+        }).catch(function () {
+          error.style.display = 'block';
+        }).finally(function () {
+          btn.disabled = false;
+          btn.textContent = 'Subscribe';
+        });
+      });
+    }());
     (function(){var KEY='YOUR_API_KEY_HERE',EP='https://api.anthropic.com/v1/messages',SYS='You are the Boyne Tech assistant. Boyne Tech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand Boyne Tech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
     var ct=document.getElementById('chatToggle'),cc=document.getElementById('chatClose'),cp=document.getElementById('chatPanel'),cm=document.getElementById('chatMessages'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
     var hist=[],shown=false,waiting=false;
