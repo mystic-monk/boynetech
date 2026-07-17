@@ -99,15 +99,35 @@
     .newsletter-strip h2 { margin-bottom: 0.625rem; font-size: 1.625rem; }
     .newsletter-strip p  { color: var(--bt-slate); margin-bottom: 1.5rem; }
     .newsletter-form {
-      display: flex;
-      gap: 0.75rem;
       max-width: 440px;
       margin-inline: auto;
     }
-    .newsletter-form input {
+    .newsletter-form__row {
+      display: flex;
+      gap: 0.75rem;
+    }
+    .newsletter-form__row input {
       flex: 1;
       min-width: 0;
     }
+    .newsletter-consent {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+      margin-top: 0.875rem;
+      text-align: left;
+      font-size: 0.8125rem;
+      color: var(--bt-slate);
+      cursor: pointer;
+    }
+    .newsletter-consent input[type="checkbox"] {
+      margin-top: 0.2rem;
+      flex-shrink: 0;
+      width: 16px;
+      height: 16px;
+      cursor: pointer;
+    }
+    .newsletter-consent a { color: var(--bt-blue); }
     .newsletter-msg {
       display: none;
       margin-top: 1rem;
@@ -120,7 +140,7 @@
     @media (max-width: 768px) {
       .featured-article { grid-template-columns: 1fr; }
       .featured-article__image { min-height: 220px; }
-      .newsletter-form { flex-direction: column; }
+      .newsletter-form__row { flex-direction: column; }
       .newsletter-form .btn { width: 100%; justify-content: center; }
     }
   </style>
@@ -271,8 +291,14 @@
           <form id="newsletterForm" class="newsletter-form" action="https://formspree.io/f/xpqvpyzr" method="POST" novalidate aria-label="Newsletter sign-up">
             <input type="hidden" name="_subject" value="Newsletter signup from boynetech.ie">
             <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
-            <input type="email" name="email" placeholder="Work email address" required aria-label="Work email address" autocomplete="email">
-            <button type="submit" class="btn btn-emerald">Subscribe</button>
+            <div class="newsletter-form__row">
+              <input type="email" name="email" placeholder="Work email address" required aria-label="Work email address" autocomplete="email">
+              <button type="submit" class="btn btn-emerald">Subscribe</button>
+            </div>
+            <label class="newsletter-consent">
+              <input type="checkbox" name="consent" value="yes" required>
+              <span>I agree to Boyne Tech emailing me when these articles are published, in line with the <a href="privacy.html">Privacy Policy</a>. Unsubscribe at any time.</span>
+            </label>
           </form>
           <p class="newsletter-msg newsletter-msg--success" id="newsletterSuccess" role="alert">Thanks, you're on the list. We'll email you when the first pieces are ready.</p>
           <p class="newsletter-msg newsletter-msg--error" id="newsletterError" role="alert">Something went wrong. Please try again or email <a href="mailto:info@boynetech.ie">info@boynetech.ie</a> directly.</p>
