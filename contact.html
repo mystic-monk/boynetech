@@ -240,7 +240,9 @@
           <!-- Form -->
           <div class="form-card">
             <h2>Send us a message</h2>
-            <form id="contactForm" novalidate aria-label="Contact form">
+            <form id="contactForm" action="https://formspree.io/f/xpqvpyzr" method="POST" novalidate aria-label="Contact form">
+              <input type="hidden" name="_subject" value="New enquiry from boynetech.ie contact form">
+              <input type="text" name="_gotcha" tabindex="-1" autocomplete="off" style="position:absolute;left:-9999px;" aria-hidden="true">
 
               <div class="form-group">
                 <label for="fullName">Full name <span aria-hidden="true">*</span></label>
@@ -285,6 +287,7 @@
               <div class="form-success" id="formSuccess" role="alert">
                 Thank you, we've received your message and will be in touch within one business day.
               </div>
+              <p class="form-error-msg" id="formSubmitError" style="text-align:center;">Something went wrong sending your message. Please try again or email us directly at <a href="mailto:info@boynetech.ie">info@boynetech.ie</a>.</p>
             </form>
           </div>
 
@@ -480,6 +483,9 @@
 
       function isEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
 
+      var submitBtn = form.querySelector('button[type="submit"]');
+      var errorMsg = document.getElementById('formSubmitError');
+
       form.addEventListener('submit', function (e) {
         e.preventDefault();
         var fn = document.getElementById('fullName');
@@ -494,11 +500,27 @@
         var v4 = validate(sv, 'serviceErr',   function(v){ return v !== ''; });
         var v5 = validate(ms, 'messageErr',   function(v){ return v.length > 9; });
 
-        if (v1 && v2 && v3 && v4 && v5) {
+        if (!(v1 && v2 && v3 && v4 && v5)) return;
+
+        errorMsg.style.display = 'none';
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending…';
+
+        fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        }).then(function (res) {
+          if (!res.ok) throw new Error('Submission failed');
           form.reset();
           ['fullName','workEmail','company','service','message'].forEach(function(id){ document.getElementById(id).classList.remove('invalid'); });
           success.style.display = 'block';
-        }
+        }).catch(function () {
+          errorMsg.style.display = 'block';
+        }).finally(function () {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        });
       });
 
       ['fullName','workEmail','company','service','message'].forEach(function(id) {
