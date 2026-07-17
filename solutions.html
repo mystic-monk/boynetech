@@ -36,11 +36,20 @@
     .page-hero::before { background: rgba(14, 36, 56, 0.70); }
 
     /* Tech partner pills */
+    .tech-category { margin-top: var(--bt-space-lg); }
+    .tech-category:first-of-type { margin-top: var(--bt-space-md); }
+    .tech-category__label {
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--bt-slate);
+      margin-bottom: 0.75rem;
+    }
     .tech-grid {
       display: flex;
       flex-wrap: wrap;
       gap: 0.75rem;
-      margin-top: var(--bt-space-md);
     }
     .tech-pill {
       font-size: 0.875rem;
@@ -255,18 +264,37 @@
           <span class="section-label">Technology Stack</span>
           <h2 id="tech-heading">The tools we work with</h2>
           <div class="divider divider--center"></div>
-          <p>We're technology-pragmatic: we choose the right tool for the job. These are the platforms and frameworks we use most often across our engagements.</p>
+          <p>We're technology-pragmatic: we choose the right tool for the job, and adapt to whatever's already running in your environment — including AWS and Google Cloud where that's your platform. Microsoft Azure is where our deepest expertise sits.</p>
         </div>
-        <div class="tech-grid" role="list" aria-label="Technology partners and tools">
-          <span class="tech-pill" role="listitem">Microsoft Azure</span>
-          <span class="tech-pill" role="listitem">Microsoft Fabric</span>
-          <span class="tech-pill" role="listitem">Power BI</span>
-          <span class="tech-pill" role="listitem">Python</span>
-          <span class="tech-pill" role="listitem">FastAPI</span>
-          <span class="tech-pill" role="listitem">LlamaIndex</span>
-          <span class="tech-pill" role="listitem">ChromaDB</span>
-          <span class="tech-pill" role="listitem">Ollama</span>
-          <span class="tech-pill" role="listitem">Azure DevOps</span>
+
+        <div class="tech-category">
+          <h3 class="tech-category__label">Cloud &amp; Data Platforms</h3>
+          <div class="tech-grid" role="list" aria-label="Cloud and data platforms">
+            <span class="tech-pill" role="listitem">Microsoft Azure</span>
+            <span class="tech-pill" role="listitem">Microsoft Fabric</span>
+            <span class="tech-pill" role="listitem">Power BI</span>
+          </div>
+        </div>
+
+        <div class="tech-category">
+          <h3 class="tech-category__label">AI &amp; Automation</h3>
+          <div class="tech-grid" role="list" aria-label="AI and automation tools">
+            <span class="tech-pill" role="listitem">Anthropic Claude</span>
+            <span class="tech-pill" role="listitem">Azure OpenAI Service</span>
+            <span class="tech-pill" role="listitem">LangChain</span>
+            <span class="tech-pill" role="listitem">LlamaIndex</span>
+            <span class="tech-pill" role="listitem">ChromaDB</span>
+            <span class="tech-pill" role="listitem">Ollama</span>
+          </div>
+        </div>
+
+        <div class="tech-category">
+          <h3 class="tech-category__label">Engineering &amp; DevOps</h3>
+          <div class="tech-grid" role="list" aria-label="Engineering and DevOps tools">
+            <span class="tech-pill" role="listitem">Python</span>
+            <span class="tech-pill" role="listitem">FastAPI</span>
+            <span class="tech-pill" role="listitem">Azure DevOps</span>
+          </div>
         </div>
       </div>
     </section>
