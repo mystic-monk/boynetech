@@ -3,12 +3,12 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Boyne Tech's proprietary accelerators and solution frameworks reduce delivery time and de-risk your technology investment.">
+  <meta name="description" content="How Boyne Tech approaches delivery, the kinds of problems our team is built to solve, and the technology stack we work with for Irish organisations investing in data, AI, and technology.">
   <link rel="canonical" href="https://www.boynetech.ie/solutions.html">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Boyne Tech">
   <meta property="og:title" content="Solutions | Boyne Tech">
-  <meta property="og:description" content="Boyne Tech's proprietary accelerators and solution frameworks reduce delivery time and de-risk your technology investment.">
+  <meta property="og:description" content="How Boyne Tech approaches delivery, the kinds of problems our team is built to solve, and the technology stack we work with for Irish organisations investing in data, AI, and technology.">
   <meta property="og:url" content="https://www.boynetech.ie/solutions.html">
   <meta property="og:image" content="https://www.boynetech.ie/images/og-image.png">
   <meta property="og:image:width" content="1200">
@@ -16,7 +16,7 @@
   <meta property="og:locale" content="en_IE">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Solutions | Boyne Tech">
-  <meta name="twitter:description" content="Boyne Tech's proprietary accelerators and solution frameworks reduce delivery time and de-risk your technology investment.">
+  <meta name="twitter:description" content="How Boyne Tech approaches delivery, the kinds of problems our team is built to solve, and the technology stack we work with for Irish organisations investing in data, AI, and technology.">
   <meta name="twitter:image" content="https://www.boynetech.ie/images/og-image.png">
   <title>Solutions | Boyne Tech</title>
   <link rel="stylesheet" href="css/styles.css">
@@ -34,29 +34,6 @@
       background-position: center;
     }
     .page-hero::before { background: rgba(14, 36, 56, 0.70); }
-
-    /* Solution card status badge — positioned top-right */
-    .solution-card {
-      position: relative;
-    }
-    .solution-card .status-badge {
-      position: absolute;
-      top: 1.25rem;
-      right: 1.25rem;
-      font-size: 0.75rem;
-      font-weight: 500;
-      padding: 0.2rem 0.65rem;
-      border-radius: 99px;
-      line-height: 1.5;
-    }
-    .status-badge--available {
-      background-color: rgba(23,122,78,.12);
-      color: var(--bt-emerald);
-    }
-    .status-badge--dev {
-      background-color: rgba(78,100,106,.12);
-      color: var(--bt-slate);
-    }
 
     /* Tech partner pills */
     .tech-grid {
@@ -88,6 +65,52 @@
     }
     .bespoke-section h2 { margin-bottom: 1rem; }
     .bespoke-section p  { color: var(--bt-slate); font-size: 1.0625rem; margin-bottom: 1.75rem; }
+
+    /* Engagement scenario card */
+    .cs-card {
+      background: var(--bt-white);
+      border-radius: var(--bt-radius-lg);
+      overflow: hidden;
+      box-shadow: var(--bt-shadow-sm);
+      border: 1px solid rgba(140,153,148,.15);
+      display: flex;
+      flex-direction: column;
+    }
+    .cs-card__image {
+      width: 100%;
+      aspect-ratio: 16/9;
+      object-fit: cover;
+      display: block;
+    }
+    .cs-card__body { padding: 1.75rem; flex: 1; display: flex; flex-direction: column; }
+    .cs-card__sector {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.2rem 0.7rem;
+      border-radius: 99px;
+      display: inline-block;
+      margin-bottom: 0.875rem;
+    }
+    .sector--public { background: rgba(23,122,78,.1); color: var(--bt-emerald); }
+    .sector--ai     { background: rgba(28,83,126,.1); color: var(--bt-blue); }
+    .sector--ent    { background: rgba(78,100,106,.1); color: var(--bt-slate); }
+
+    .cs-card__title {
+      font-family: var(--bt-font-display);
+      font-size: 1.125rem;
+      font-weight: 700;
+      color: var(--bt-navy);
+      line-height: 1.35;
+      margin-bottom: 0.75rem;
+    }
+    .cs-card__desc {
+      color: var(--bt-slate);
+      font-size: 0.9rem;
+      line-height: 1.65;
+      flex: 1;
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -117,7 +140,6 @@
       <nav class="nav-links" aria-label="Primary navigation">
         <a href="services.html">Services</a>
         <a href="solutions.html" class="active">Solutions</a>
-        <a href="case-studies.html">Our Work</a>
         <a href="insights.html">Insights</a>
         <a href="about.html">About</a>
         <a href="careers.html">Careers</a>
@@ -130,7 +152,6 @@
     <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
       <a href="services.html">Services</a>
       <a href="solutions.html" class="active">Solutions</a>
-      <a href="case-studies.html">Our Work</a>
       <a href="insights.html">Insights</a>
       <a href="about.html">About</a>
       <a href="careers.html">Careers</a>
@@ -142,87 +163,80 @@
 
     <section class="page-hero" aria-labelledby="page-title">
       <div class="page-hero__inner">
-        <span class="section-label">Accelerators &amp; Frameworks</span>
-        <h1 id="page-title">Built-in Accelerators</h1>
-        <p>Proven frameworks and tools that reduce delivery time and de-risk your investment from day one.</p>
+        <span class="section-label">Delivery &amp; Approach</span>
+        <h1 id="page-title">What We Solve, and How We Build</h1>
+        <p>The kind of problems our team is built around solving, and how we approach delivery once you bring us in.</p>
       </div>
     </section>
 
-    <!-- ── Solutions Grid ─────────────────────────────────────── -->
-    <section class="section" aria-labelledby="solutions-heading">
+    <!-- ── Example Engagements ────────────────────────────────── -->
+    <section class="section section--cloud" aria-labelledby="engagements-heading">
       <div class="container">
         <div class="section-header--center text-center">
-          <span class="section-label">Our Solutions</span>
-          <h2 id="solutions-heading">Products we've already built. Configured for you.</h2>
+          <span class="section-label">Example Engagements</span>
+          <h2 id="engagements-heading">The problems we're built to solve</h2>
           <div class="divider divider--center"></div>
-          <p>These aren't service pitches. They're tools we've already designed, built, and tested. You get the benefit of that prior work: faster deployment, fewer unknowns, and a starting point that's already been through the hard yards. We configure each one to your environment, data, and governance requirements.</p>
+          <p>We haven't published client case studies yet — we're deliberately getting our first engagements underway before we do. What we can share is the kind of work the practice is built around, based on the experience and expertise the team brings.</p>
         </div>
 
         <div class="grid grid--3 mt-lg">
 
-          <!-- Solution 1: Analytics Accelerator Kit -->
-          <article class="card solution-card">
-            <span class="status-badge status-badge--available">Available</span>
-            <div class="card-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>
-                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
-              </svg>
+          <!-- Scenario 1 -->
+          <article class="cs-card">
+            <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80"
+                 alt="Data analytics dashboard on a laptop screen"
+                 class="cs-card__image" loading="lazy">
+            <div class="cs-card__body">
+              <span class="cs-card__sector sector--public">Public Sector</span>
+              <h3 class="cs-card__title">Replacing fragmented reporting with a modern, governed analytics platform</h3>
+              <p class="cs-card__desc">Many public sector organisations are running critical reporting off a patchwork of Excel files and manual extracts. We design and build proper data platforms: medallion architecture, governed Power BI dashboards, a single source of truth. Teams stop fighting their data and start using it. This is work we know inside out, and it's one of the clearest wins available to Irish public bodies right now.</p>
             </div>
-            <h3 class="card-title">Analytics Accelerator Kit</h3>
-            <p class="card-body">A pre-built set of data pipeline templates, data quality checks, and BI reporting standards designed to accelerate analytics delivery in Microsoft Fabric and Power BI environments. Cuts typical setup time by 40–60%.</p>
-            <a href="contact.html" class="card-link">Request a Demo</a>
           </article>
 
-          <!-- Solution 2: Document Intelligence Assistant -->
-          <article class="card solution-card">
-            <span class="status-badge status-badge--dev">In Development</span>
-            <div class="card-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-              </svg>
+          <!-- Scenario 2 -->
+          <article class="cs-card">
+            <img src="https://images.unsplash.com/photo-1677442135703-1787eea5ce01?w=600&q=80"
+                 alt="AI chat interface on a screen"
+                 class="cs-card__image" loading="lazy">
+            <div class="cs-card__body">
+              <span class="cs-card__sector sector--ai">AI &amp; Data</span>
+              <h3 class="cs-card__title">Making large document libraries searchable with AI, entirely on your own infrastructure</h3>
+              <p class="cs-card__desc">Organisations with large policy libraries, procedural documents, or knowledge bases spend enormous amounts of time on manual search. We build AI-assisted retrieval systems that run fully on-premise, with no data leaving the network, and meet the governance requirements of public bodies and regulated industries. The technology is mature; most organisations just haven't had someone build it for them properly yet.</p>
             </div>
-            <h3 class="card-title">Document Intelligence Assistant</h3>
-            <p class="card-body">A RAG-based assistant that enables staff to query policy documents, procedural guides, and knowledge bases using natural language. Deployable on-premise or in Azure with full data governance. No data leaves your network.</p>
-            <a href="contact.html" class="card-link">Join the Early Access List</a>
           </article>
 
-          <!-- Solution 3: Request Intake Automation -->
-          <!-- TODO: Confirm status before launch — is this Available, In Development, or Concept?
-               CTA should be updated to match: "Request a Demo" (Available), "Join the Early Access List" (In Development), or held back entirely (Concept). -->
-          <article class="card solution-card">
-            <span class="status-badge status-badge--available">Available</span>
-            <div class="card-icon" aria-hidden="true">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/>
-                <rect x="8" y="2" width="8" height="4" rx="1"/>
-                <line x1="9" y1="12" x2="15" y2="12"/><line x1="9" y1="16" x2="13" y2="16"/>
-              </svg>
+          <!-- Scenario 3 -->
+          <article class="cs-card">
+            <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=600&q=80"
+                 alt="Analytics reports and dashboards on a desk"
+                 class="cs-card__image" loading="lazy">
+            <div class="cs-card__body">
+              <span class="cs-card__sector sector--ent">Enterprise</span>
+              <h3 class="cs-card__title">Building an analytics function from scratch when the data is there but the capability isn't</h3>
+              <p class="cs-card__desc">Some organisations have decent data but no structured way to use it. We do end-to-end capability builds: tooling selection, governance frameworks, initial reporting layer, and where needed, support with hiring and onboarding the right people. The goal is a function that keeps running after we leave, not a dependency on us.</p>
             </div>
-            <h3 class="card-title">Request Intake Automation</h3>
-            <p class="card-body">A conversational intake tool that gathers analytics and BI requirements from business stakeholders and generates structured work items for project management platforms such as Azure DevOps. Eliminates unstructured email trails.</p>
-            <a href="contact.html" class="card-link">Request a Demo</a>
           </article>
 
         </div>
       </div>
     </section>
 
-    <!-- ── Bespoke Development ────────────────────────────────── -->
-    <section class="section section--cloud" aria-labelledby="bespoke-heading">
+    <!-- ── Custom Build ───────────────────────────────────────── -->
+    <section class="section" aria-labelledby="bespoke-heading">
       <div class="container">
         <div class="bespoke-section">
           <span class="section-label">Custom Build</span>
           <h2 id="bespoke-heading">Every organisation is different.</h2>
           <div class="divider divider--center"></div>
-          <p>If none of our off-the-shelf accelerators fit your context, we build from scratch. We've delivered bespoke solutions across data engineering, AI, operational tooling, and process automation, always scoped to what you actually need, not what looks impressive on a proposal.</p>
+          <p>We build from scratch, scoped to what you actually need: data engineering, AI, operational tooling, and process automation, always grounded in your context rather than what looks impressive on a proposal.</p>
+          <p>Being one of our first clients means senior attention on every part of the engagement, not just kickoff. We're selective about what we take on, and we're not trying to scale fast at the expense of doing good work.</p>
           <a href="contact.html" class="btn btn-primary btn-lg">Discuss a Custom Build</a>
         </div>
       </div>
     </section>
 
     <!-- ── Technology Partners ────────────────────────────────── -->
-    <section class="section" aria-labelledby="tech-heading">
+    <section class="section section--cloud" aria-labelledby="tech-heading">
       <div class="container">
         <div class="section-header--center text-center">
           <span class="section-label">Technology Stack</span>
@@ -247,8 +261,8 @@
     <section class="cta-banner" aria-labelledby="cta-heading">
       <div class="cta-banner__inner">
         <div>
-          <h2 id="cta-heading">Want to see any of these in action?</h2>
-          <p>We're happy to run a demonstration or walk through how we've deployed these in similar organisations.</p>
+          <h2 id="cta-heading">Got a challenge like one of these?</h2>
+          <p>Tell us about it and we'll tell you honestly whether we can help, and how.</p>
         </div>
         <a href="contact.html" class="btn btn-emerald btn-lg">Get in Touch</a>
       </div>
@@ -278,7 +292,6 @@
         <ul>
           <li><a href="about.html">About Us</a></li>
           <li><a href="careers.html">Careers</a></li>
-          <li><a href="case-studies.html">Our Work</a></li>
           <li><a href="insights.html">Insights</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
