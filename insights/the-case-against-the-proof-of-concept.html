@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Organisations have become addicted to proofs of concept that never reach production. Why a PoC is often just a way to avoid a decision, and what to do instead.">
+  <link rel="canonical" href="https://www.boynetech.ie/insights/the-case-against-the-proof-of-concept.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Boyne Tech">
+  <meta property="og:title" content="The Case Against the Proof of Concept | Boyne Tech">
+  <meta property="og:description" content="Organisations have become addicted to proofs of concept that never reach production. Why a PoC is often just a way to avoid a decision, and what to do instead.">
+  <meta property="og:url" content="https://www.boynetech.ie/insights/the-case-against-the-proof-of-concept.html">
+  <meta property="og:image" content="https://www.boynetech.ie/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Case Against the Proof of Concept | Boyne Tech">
+  <meta name="twitter:description" content="Organisations have become addicted to proofs of concept that never reach production. Why a PoC is often just a way to avoid a decision, and what to do instead.">
+  <meta name="twitter:image" content="https://www.boynetech.ie/images/og-image.png">
+  <title>The Case Against the Proof of Concept | Boyne Tech</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <meta name="theme-color" content="#0E2438">
+  <style>
+    .page-hero--article { padding-block: 3rem 2.5rem; }
+    .article-breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 1.25rem;
+    }
+    .article-breadcrumb a { color: rgba(255,255,255,.85); }
+    .article-breadcrumb a:hover { color: var(--bt-mint); }
+    .page-hero--article .section-label { color: var(--bt-mint); }
+    .page-hero--article h1 { max-width: 42ch; }
+    .article-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+      margin-top: 1.25rem;
+      font-size: 0.9375rem;
+      color: rgba(255,255,255,.75);
+    }
+
+    .article-wrap { max-width: 700px; margin-inline: auto; }
+    .article-content h2 { margin-top: 2.5rem; margin-bottom: 1rem; }
+    .article-content h2:first-child { margin-top: 0; }
+    .article-content p {
+      color: var(--bt-slate);
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+    .article-content p.lead { font-size: 1.1875rem; color: var(--bt-navy); line-height: 1.65; }
+    .article-content ul { margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .article-content ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      color: var(--bt-slate);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+    }
+    .article-content ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      background-color: var(--bt-emerald);
+    }
+    .article-content ul li strong { color: var(--bt-navy); }
+    .article-pullquote {
+      border-left: 3px solid var(--bt-emerald);
+      padding: 0.25rem 0 0.25rem 1.5rem;
+      margin: 2rem 0;
+      font-family: var(--bt-font-display);
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--bt-navy);
+      line-height: 1.4;
+    }
+    .article-author {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      padding-top: 2rem;
+      margin-top: 2.5rem;
+      border-top: 1px solid rgba(140,153,148,.2);
+    }
+    .article-author__mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--bt-navy);
+      color: var(--bt-mint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--bt-font-display);
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .article-author p { margin: 0; font-size: 0.9375rem; color: var(--bt-slate); }
+    .article-author strong { color: var(--bt-navy); }
+
+    .article-cta {
+      background-color: var(--bt-cloud);
+      border-radius: var(--bt-radius-lg);
+      padding: 2.5rem;
+      text-align: center;
+      max-width: 700px;
+      margin-inline: auto;
+    }
+    .article-cta h2 { margin-bottom: 0.625rem; }
+    .article-cta p { color: var(--bt-slate); margin-bottom: 1.5rem; }
+
+    @media (max-width: 640px) {
+      .article-cta { padding: 2rem 1.5rem; }
+      .article-content p.lead { font-size: 1.0625rem; }
+      .article-pullquote { font-size: 1.1875rem; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Case Against the Proof of Concept",
+    "description": "Organisations have become addicted to proofs of concept that never reach production. Why a PoC is often just a way to avoid a decision, and what to do instead.",
+    "datePublished": "2026-07-29",
+    "dateModified": "2026-07-29",
+    "author": { "@type": "Organization", "name": "Boyne Tech Limited" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Boyne Tech Limited",
+      "logo": { "@type": "ImageObject", "url": "https://www.boynetech.ie/images/icon-512.png" }
+    },
+    "mainEntityOfPage": "https://www.boynetech.ie/insights/the-case-against-the-proof-of-concept.html"
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-nav" role="banner">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Boyne <span>Tech</span></a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../services.html">Services</a>
+        <a href="../solutions.html">Solutions</a>
+        <a href="../insights.html" class="active">Insights</a>
+        <a href="../about.html">About</a>
+        <a href="../careers.html">Careers</a>
+        <a href="../contact.html" class="btn btn-emerald btn-sm">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+      <a href="../services.html">Services</a>
+      <a href="../solutions.html">Solutions</a>
+      <a href="../insights.html" class="active">Insights</a>
+      <a href="../about.html">About</a>
+      <a href="../careers.html">Careers</a>
+      <a href="../contact.html" class="btn btn-emerald btn-sm">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero page-hero--article" aria-labelledby="page-title">
+      <div class="page-hero__inner">
+        <p class="article-breadcrumb"><a href="../insights.html">Insights</a> &nbsp;/&nbsp; Delivery</p>
+        <span class="section-label">Delivery</span>
+        <h1 id="page-title">The Case Against the Proof of Concept</h1>
+        <p>Why the open-ended PoC is often a way of avoiding a decision, and how to validate an idea without falling into it.</p>
+        <div class="article-hero-meta">
+          <span>Boyne Tech Editorial</span>
+          <span>&middot;</span>
+          <span>29 July 2026</span>
+          <span>&middot;</span>
+          <span>4 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <article class="section" aria-labelledby="page-title">
+      <div class="container">
+        <div class="article-wrap article-content">
+
+          <p class="lead">"Let's do a quick proof of concept first" is one of the most reasonable-sounding sentences in technology delivery, and one of the most likely to lead nowhere. Not because validating an idea is a bad instinct. Because most PoCs are designed, from the outset, to avoid the harder decision of actually committing to something.</p>
+
+          <h2>What a PoC promises, and what it actually delivers</h2>
+          <p>A proof of concept is sold as a low-risk way to test an idea before spending real money on it. In practice, most are built to demo well, not to survive contact with production. They skip the messy parts on purpose: real data volumes, security review, integration with the systems that already exist, the edge cases that only show up once actual users are involved. That's not a criticism of how they're built. It's the entire point of a PoC. It's just that a thing designed to skip those problems tells you very little about whether the real version will work.</p>
+
+          <h2>Why organisations reach for one anyway</h2>
+          <p>PoCs are politically convenient. They let a sponsor show momentum without asking anyone to commit a full budget. They provide cover: if it doesn't work out, nobody has to explain a failed project, because it was "only a proof of concept." The trouble is that this convenience comes at the cost of ever actually deciding anything. A PoC that succeeds on its own narrow terms still leaves the organisation exactly where it started: needing to decide whether to build the real thing, usually with less appetite and less budget than when the idea was fresh.</p>
+
+          <div class="article-pullquote">A PoC that was never going to graduate to production was never really a proof of anything. It was a way of postponing the decision.</div>
+
+          <h2>The cost that never shows up on the PoC budget line</h2>
+          <p>The direct cost of a PoC is usually small, which is exactly why it's easy to approve. The indirect cost is bigger and harder to see: the re-architecture needed once real constraints show up, the momentum lost while the idea sits in "we proved it works, now what" limbo, and the team fatigue that builds after the second or third prototype that never ships. Organisations that run a lot of PoCs often end up with a graveyard of half-finished ideas and a growing scepticism, deserved, about whether the next one will go anywhere either.</p>
+
+          <h2>Validation without the trap</h2>
+          <p>None of this is an argument against testing an idea before committing fully to it. Early validation is genuinely useful, and it should happen. The difference is whether that validation is embedded in a real delivery process with a clear path to production, or floating on its own with no defined graduation criteria. Our own process builds this in deliberately: discovery to understand the real constraints, a design phase that includes prototypes and early validation before full commitment, then structured delivery against those constraints, not a rebuild once the prototype has proven the idea in isolation.</p>
+          <p>The practical difference is a small set of questions answered upfront, before any prototype gets built:</p>
+          <ul>
+            <li><strong>What decision will this actually inform?</strong> Not "let's see if it's possible," but a specific go or no-go call it will answer.</li>
+            <li><strong>What does success look like, in advance?</strong> Defined before the work starts, not decided retroactively based on how the demo goes.</li>
+            <li><strong>Who owns production if it works?</strong> Named before the prototype starts, so success has somewhere to go.</li>
+            <li><strong>What real constraints does the prototype need to respect?</strong> Enough of the actual data, security, and integration reality that the result means something.</li>
+            <li><strong>What happens if it doesn't work?</strong> A defined stopping point, so a "no" is also a useful, budgeted outcome.</li>
+          </ul>
+
+          <h2>The honest version</h2>
+          <p>If you can't answer those five questions before you start, what you're planning probably isn't a proof of concept. It's a way of feeling like progress is being made without committing to a decision. That's not always the wrong call, sometimes an organisation genuinely isn't ready to commit, but it's worth naming honestly rather than dressing it up as validation.</p>
+          <p>If you're weighing whether an idea deserves a scoped pilot with a real path to production, we're happy to help you think it through before you write the brief.</p>
+
+          <div class="article-author">
+            <div class="article-author__mark" aria-hidden="true">BT</div>
+            <p><strong>Boyne Tech Editorial</strong><br>Perspectives from the Boyne Tech team on data, AI, and technology delivery.</p>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <section class="section section--cloud" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="article-cta">
+          <h2 id="cta-heading">Weighing up a proof of concept?</h2>
+          <p>Let's talk through whether it needs to be one, or whether it's really a decision you're ready to commit to.</p>
+          <a href="../contact.html" class="btn btn-emerald">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="../index.html" class="footer-logo">Boyne <span>Tech</span></a>
+        <p>Ireland's partner for data, technology, and digital innovation.</p>
+        <p class="registered">Registered in Ireland &middot; Company No. 819354 &middot; VAT No. IE4753322MH</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="../services.html#managed-services">IT Managed Services</a></li>
+          <li><a href="../services.html#data-analytics">Data Analytics Consultancy</a></li>
+          <li><a href="../services.html#software-development">Software Development</a></li>
+          <li><a href="../services.html#ai-automation">AI &amp; Automation</a></li>
+          <li><a href="../services.html#digital-transformation">Digital Transformation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../careers.html">Careers</a></li>
+          <li><a href="../insights.html">Insights</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Dublin, Ireland</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:info@boynetech.ie">info@boynetech.ie</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://linkedin.com/company/boynetech" target="_blank" rel="noopener noreferrer">linkedin.com/company/boynetech</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-bar__inner">
+        <span>&copy; 2025 Boyne Tech Limited &middot; All rights reserved</span>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../cookie-policy.html">Cookie Policy</a>
+        <a href="../terms.html">Terms and Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chatWidget" role="complementary" aria-label="Boyne Tech AI Assistant">
+    <div class="chat-panel" id="chatPanel" hidden>
+      <div class="chat-header">
+        <div><div class="chat-header__title">Boyne Tech Assistant</div><div class="chat-header__sub">Ask me anything</div></div>
+        <button class="chat-close" id="chatClose" aria-label="Close assistant">&#x00D7;</button>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Type your message…" autocomplete="off" aria-label="Message to Boyne Tech assistant">
+        <button class="chat-send" id="chatSend" aria-label="Send message"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle" aria-label="Open Boyne Tech assistant" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </button>
+  </div>
+
+  <script>
+    (function(){var t=document.getElementById('navToggle'),m=document.getElementById('navMobile');t.addEventListener('click',function(){var o=m.classList.toggle('open');t.classList.toggle('open',o);t.setAttribute('aria-expanded',o);});m.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){m.classList.remove('open');t.classList.remove('open');t.setAttribute('aria-expanded','false');});});})();
+
+    (function(){var KEY='YOUR_API_KEY_HERE',EP='https://api.anthropic.com/v1/messages',SYS='You are the Boyne Tech assistant. Boyne Tech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand Boyne Tech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
+    var ct=document.getElementById('chatToggle'),cc=document.getElementById('chatClose'),cp=document.getElementById('chatPanel'),cm=document.getElementById('chatMessages'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
+    var hist=[],shown=false,waiting=false;
+    ct.addEventListener('click',function(){cp.hidden=false;ct.setAttribute('aria-expanded','true');if(!shown){shown=true;add('assistant','Hi, I am the Boyne Tech Assistant. Ask me about our services, team, or how we can help your organisation.');}ci.focus();});
+    cc.addEventListener('click',function(){cp.hidden=true;ct.setAttribute('aria-expanded','false');});
+    ci.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+    cs.addEventListener('click',send);
+    function add(r,t){var d=document.createElement('div');d.className='chat-message chat-message--'+r;d.textContent=t;cm.appendChild(d);cm.scrollTop=cm.scrollHeight;}
+    function typing(){var d=document.createElement('div');d.className='chat-message chat-message--assistant chat-message--typing';d.id='ct';d.innerHTML='<span></span><span></span><span></span>';cm.appendChild(d);cm.scrollTop=cm.scrollHeight;}
+    function untype(){var e=document.getElementById('ct');if(e)e.remove();}
+    async function send(){var txt=ci.value.trim();if(!txt||waiting)return;ci.value='';add('user',txt);hist.push({role:'user',content:txt});waiting=true;typing();
+    try{var r=await fetch(EP,{method:'POST',headers:{'content-type':'application/json','x-api-key':KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,system:SYS,messages:hist})});
+    untype();if(!r.ok)throw new Error();var d=await r.json();var rep=d.content[0].text;add('assistant',rep);hist.push({role:'assistant',content:rep});}
+    catch(e){untype();add('assistant','I\'m having trouble connecting. Please reach out directly at info@boynetech.ie.');}waiting=false;}
+    })();
+  </script>
+</body>
+</html>

@@ -20,9 +20,39 @@
   </url>
   <url>
     <loc>https://www.boynetech.ie/insights.html</loc>
-    <lastmod>2026-06-24</lastmod>
+    <lastmod>2026-07-29</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.boynetech.ie/insights/what-rag-actually-means-for-your-organisation.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.boynetech.ie/insights/making-the-case-for-a-data-strategy-in-the-irish-public-sector.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.boynetech.ie/insights/why-most-bi-projects-fail-before-they-start.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.boynetech.ie/insights/the-case-against-the-proof-of-concept.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://www.boynetech.ie/insights/it-managed-services-what-to-expect-from-a-good-provider.html</loc>
+    <lastmod>2026-07-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.boynetech.ie/about.html</loc>
