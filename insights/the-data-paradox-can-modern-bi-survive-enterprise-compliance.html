@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="You can't get a blanket GDPR sign-off for a BI pipeline. Here's how smart teams break the cycle of contractor delays and budget limits without breaking the law.">
+  <link rel="canonical" href="https://www.boynetech.ie/insights/the-data-paradox-can-modern-bi-survive-enterprise-compliance.html">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Boyne Tech">
+  <meta property="og:title" content="The Data Paradox: Can Modern BI Survive Enterprise Compliance? | Boyne Tech">
+  <meta property="og:description" content="You can't get a blanket GDPR sign-off for a BI pipeline. Here's how smart teams break the cycle of contractor delays and budget limits without breaking the law.">
+  <meta property="og:url" content="https://www.boynetech.ie/insights/the-data-paradox-can-modern-bi-survive-enterprise-compliance.html">
+  <meta property="og:image" content="https://www.boynetech.ie/images/og-image.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta property="og:locale" content="en_IE">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="The Data Paradox: Can Modern BI Survive Enterprise Compliance? | Boyne Tech">
+  <meta name="twitter:description" content="You can't get a blanket GDPR sign-off for a BI pipeline. Here's how smart teams break the cycle of contractor delays and budget limits without breaking the law.">
+  <meta name="twitter:image" content="https://www.boynetech.ie/images/og-image.png">
+  <title>The Data Paradox: Can Modern BI Survive Enterprise Compliance? | Boyne Tech</title>
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" type="image/svg+xml" href="../favicon.svg">
+  <link rel="icon" type="image/png" sizes="32x32" href="../images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="../images/favicon-16x16.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../images/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+  <meta name="theme-color" content="#0E2438">
+  <style>
+    .page-hero--article { padding-block: 3rem 2.5rem; }
+    .article-breadcrumb {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.375rem;
+      font-size: 0.875rem;
+      color: rgba(255,255,255,.7);
+      margin-bottom: 1.25rem;
+    }
+    .article-breadcrumb a { color: rgba(255,255,255,.85); }
+    .article-breadcrumb a:hover { color: var(--bt-mint); }
+    .page-hero--article .section-label { color: var(--bt-mint); }
+    .page-hero--article h1 { max-width: 42ch; }
+    .article-hero-meta {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 1.25rem;
+      margin-top: 1.25rem;
+      font-size: 0.9375rem;
+      color: rgba(255,255,255,.75);
+    }
+
+    .article-wrap { max-width: 700px; margin-inline: auto; }
+    .article-content h2 { margin-top: 2.5rem; margin-bottom: 1rem; }
+    .article-content h2:first-child { margin-top: 0; }
+    .article-content h3 {
+      font-size: 1.0625rem;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+    }
+    .article-content p {
+      color: var(--bt-slate);
+      font-size: 1.0625rem;
+      line-height: 1.75;
+      margin-bottom: 1.25rem;
+    }
+    .article-content p.lead { font-size: 1.1875rem; color: var(--bt-navy); line-height: 1.65; }
+    .article-content ul { margin: 0 0 1.5rem; display: flex; flex-direction: column; gap: 0.75rem; }
+    .article-content ul li {
+      position: relative;
+      padding-left: 1.5rem;
+      color: var(--bt-slate);
+      font-size: 1.0625rem;
+      line-height: 1.6;
+    }
+    .article-content ul li::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.55em;
+      width: 8px;
+      height: 8px;
+      border-radius: 2px;
+      background-color: var(--bt-emerald);
+    }
+    .article-content ul li strong { color: var(--bt-navy); }
+    .article-pullquote {
+      border-left: 3px solid var(--bt-emerald);
+      padding: 0.25rem 0 0.25rem 1.5rem;
+      margin: 2rem 0;
+      font-family: var(--bt-font-display);
+      font-size: 1.375rem;
+      font-weight: 700;
+      color: var(--bt-navy);
+      line-height: 1.4;
+    }
+    .article-note {
+      background-color: var(--bt-cloud);
+      border-radius: var(--bt-radius-md);
+      padding: 1.25rem 1.5rem;
+      margin: 1.5rem 0;
+      font-size: 0.9375rem;
+      color: var(--bt-slate);
+      line-height: 1.6;
+    }
+    .article-note strong { color: var(--bt-navy); }
+
+    /* Figure panels */
+    .figure-panel {
+      background-color: var(--bt-cloud);
+      border-radius: var(--bt-radius-lg);
+      padding: 1.75rem;
+      margin: 2rem 0;
+    }
+    .figure-panel__label {
+      text-align: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--bt-slate);
+      margin-bottom: 1.25rem;
+    }
+    .figure-grid {
+      display: grid;
+      gap: 1rem;
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .figure-grid--3 { grid-template-columns: repeat(3, 1fr); }
+    .figure-card {
+      background-color: var(--bt-white);
+      border-radius: var(--bt-radius-md);
+      padding: 1.25rem;
+      border: 1px solid rgba(140,153,148,.2);
+    }
+    .figure-card__num {
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background-color: var(--bt-emerald);
+      color: var(--bt-white);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--bt-font-display);
+      font-weight: 800;
+      font-size: 0.8125rem;
+      margin-bottom: 0.75rem;
+      flex-shrink: 0;
+    }
+    .figure-card h4 {
+      font-family: var(--bt-font-display);
+      font-weight: 700;
+      font-size: 0.9375rem;
+      color: var(--bt-navy);
+      margin-bottom: 0.5rem;
+      line-height: 1.3;
+    }
+    .figure-card p {
+      font-size: 0.8438rem;
+      color: var(--bt-slate);
+      line-height: 1.55;
+      margin: 0;
+    }
+
+    /* Code block */
+    .article-code-label {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--bt-emerald);
+      margin-bottom: 0.5rem;
+    }
+    .article-code {
+      background-color: var(--bt-navy);
+      border-radius: var(--bt-radius-md);
+      padding: 1.25rem 1.5rem;
+      overflow-x: auto;
+      margin: 0 0 1.5rem;
+    }
+    .article-code code {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: 0.8125rem;
+      line-height: 1.7;
+      color: var(--bt-cloud);
+      white-space: pre;
+    }
+
+    .article-author {
+      display: flex;
+      align-items: center;
+      gap: 0.875rem;
+      padding-top: 2rem;
+      margin-top: 2.5rem;
+      border-top: 1px solid rgba(140,153,148,.2);
+    }
+    .article-author__mark {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--bt-navy);
+      color: var(--bt-mint);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--bt-font-display);
+      font-weight: 800;
+      font-size: 1rem;
+      flex-shrink: 0;
+    }
+    .article-author p { margin: 0; font-size: 0.9375rem; color: var(--bt-slate); }
+    .article-author strong { color: var(--bt-navy); }
+
+    .article-cta {
+      background-color: var(--bt-cloud);
+      border-radius: var(--bt-radius-lg);
+      padding: 2.5rem;
+      text-align: center;
+      max-width: 700px;
+      margin-inline: auto;
+    }
+    .article-cta h2 { margin-bottom: 0.625rem; }
+    .article-cta p { color: var(--bt-slate); margin-bottom: 1.5rem; }
+
+    @media (max-width: 768px) {
+      .figure-grid, .figure-grid--3 { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 640px) {
+      .figure-grid, .figure-grid--3 { grid-template-columns: 1fr; }
+      .article-cta { padding: 2rem 1.5rem; }
+      .article-content p.lead { font-size: 1.0625rem; }
+      .article-pullquote { font-size: 1.1875rem; }
+      .article-code { padding: 1rem; }
+      .article-code code { font-size: 0.75rem; }
+    }
+  </style>
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Article",
+    "headline": "The Data Paradox: Can Modern BI Survive Enterprise Compliance?",
+    "description": "You can't get a blanket GDPR sign-off for a BI pipeline. Here's how smart teams break the cycle of contractor delays and budget limits without breaking the law.",
+    "datePublished": "2026-07-29",
+    "dateModified": "2026-07-29",
+    "author": { "@type": "Organization", "name": "Boyne Tech Limited" },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Boyne Tech Limited",
+      "logo": { "@type": "ImageObject", "url": "https://www.boynetech.ie/images/icon-512.png" }
+    },
+    "mainEntityOfPage": "https://www.boynetech.ie/insights/the-data-paradox-can-modern-bi-survive-enterprise-compliance.html"
+  }
+  </script>
+</head>
+<body>
+
+  <header class="site-nav" role="banner">
+    <div class="nav-inner">
+      <a href="../index.html" class="nav-logo">Boyne <span>Tech</span></a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="../services.html">Services</a>
+        <a href="../solutions.html">Solutions</a>
+        <a href="../insights.html" class="active">Insights</a>
+        <a href="../about.html">About</a>
+        <a href="../careers.html">Careers</a>
+        <a href="../contact.html" class="btn btn-emerald btn-sm">Contact</a>
+      </nav>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+      <a href="../services.html">Services</a>
+      <a href="../solutions.html">Solutions</a>
+      <a href="../insights.html" class="active">Insights</a>
+      <a href="../about.html">About</a>
+      <a href="../careers.html">Careers</a>
+      <a href="../contact.html" class="btn btn-emerald btn-sm">Contact</a>
+    </nav>
+  </header>
+
+  <main>
+
+    <section class="page-hero page-hero--article" aria-labelledby="page-title">
+      <div class="page-hero__inner">
+        <p class="article-breadcrumb"><a href="../insights.html">Insights</a> &nbsp;/&nbsp; Governance</p>
+        <span class="section-label">Governance</span>
+        <h1 id="page-title">The Data Paradox: Can Modern BI Survive Enterprise Compliance?</h1>
+        <p>How smart teams break the cycle of contractor delays, budget limits, and strict GDPR rules without breaking the law.</p>
+        <div class="article-hero-meta">
+          <span>Boyne Tech Editorial</span>
+          <span>&middot;</span>
+          <span>29 July 2026</span>
+          <span>&middot;</span>
+          <span>6 min read</span>
+        </div>
+      </div>
+    </section>
+
+    <article class="section" aria-labelledby="page-title">
+      <div class="container">
+        <div class="article-wrap article-content">
+
+          <p class="lead">Every data leader has had the same daydream at some point: a single, blanket GDPR sign-off for the whole BI ecosystem. Legal approves the pipeline once, and analysts get on with finding value in whatever lands in the warehouse. It's an appealing idea. It's also not how the regulation works.</p>
+
+          <h2>The Data Paradox</h2>
+          <p>You cannot declare an entire data warehouse pre-approved. GDPR's purpose limitation principle (Article 5(1)(b)) and data minimisation principle (Article 5(1)(c)) both require an organisation to define why it's collecting a dataset before ingesting it, and to keep only what's strictly necessary for that purpose. Neither principle allows for "we'll figure out the value later."</p>
+          <p>That runs straight into an operational problem, one that shows up in almost every lean data team sooner or later.</p>
+
+          <div class="article-pullquote">To justify collecting or staging a dataset, you need to prove its business value. But to prove its business value, your analysts need to explore the dataset first.</div>
+
+          <h2>The structural catch-22</h2>
+          <p>When engineering capacity is limited and much of the pipeline work runs through contractors or tight budget cycles, this legal paradox stops being theoretical and starts being expensive.</p>
+
+          <div class="figure-panel">
+            <p class="figure-panel__label">Figure 1 &middot; The Enterprise Data Exploration Friction Loop</p>
+            <div class="figure-grid">
+              <div class="figure-card">
+                <div class="figure-card__num" aria-hidden="true">1</div>
+                <h4>Business Hypothesis</h4>
+                <p>An analyst spots a potential insight sitting in an unmapped data stream.</p>
+              </div>
+              <div class="figure-card">
+                <div class="figure-card__num" aria-hidden="true">2</div>
+                <h4>Legal Gatekeeping</h4>
+                <p>Legal reasonably asks for an explicit business case and a predefined purpose.</p>
+              </div>
+              <div class="figure-card">
+                <div class="figure-card__num" aria-hidden="true">3</div>
+                <h4>Budget Barrier</h4>
+                <p>Building a full pipeline means paying contractors before there's any proof of ROI.</p>
+              </div>
+              <div class="figure-card">
+                <div class="figure-card__num" aria-hidden="true">4</div>
+                <h4>Innovation Paralysis</h4>
+                <p>The delay and upfront financial risk are enough that the idea gets shelved.</p>
+              </div>
+            </div>
+          </div>
+
+          <p>That loop produces three recurring bottlenecks:</p>
+          <ul>
+            <li><strong>Financial risk and contractor spend.</strong> Leadership is understandably reluctant to commit contractor budget or engineering sprints to a pipeline for an idea that hasn't been validated yet.</li>
+            <li><strong>Turnaround delays.</strong> By the time a request clears legal review and gets scheduled into an engineering sprint, the commercial window has often closed.</li>
+            <li><strong>Regulatory exposure.</strong> The alternative, letting analysts explore raw production data to skip the wait, creates real GDPR non-compliance risk.</li>
+          </ul>
+
+          <h2>Breaking the paradox: architectural patterns</h2>
+          <p>You can't legally work around GDPR. What you can do is design the pipeline so the paradox mostly doesn't arise in the first place. Three patterns do most of the work.</p>
+
+          <div class="figure-panel">
+            <p class="figure-panel__label">Figure 2 &middot; Privacy-First Data Architecture</p>
+            <div class="figure-grid figure-grid--3">
+              <div class="figure-card">
+                <div class="figure-card__num" aria-hidden="true">1</div>
+                <h4>Synthetic Data Sandboxes</h4>
+                <p>Non-personal datasets that mirror real schema and statistical variance, so contractors can build and test safely without touching live user data.</p>
+              </div>
+              <div class="figure-card">
+                <div class="figure-card__num" aria-hidden="true">2</div>
+                <h4>Dynamic Ingestion Masking</h4>
+                <p>Tokenisation, keyed hashing, and row-level masking applied at the staging layer, supporting exploratory analytics under Legitimate Interest.</p>
+              </div>
+              <div class="figure-card">
+                <div class="figure-card__num" aria-hidden="true">3</div>
+                <h4>Active Metadata Catalogs</h4>
+                <p>Schemas, null distributions, and column profiles exposed without exposing raw values, so value gets proven before pipeline budget is spent.</p>
+              </div>
+            </div>
+          </div>
+
+          <h3>1. Synthetic data sandboxes</h3>
+          <p>Instead of waiting on legal sign-off to touch live production data, engineering teams can mock schemas with synthetic data tooling. Properly generated synthetic records replace personally identifiable information with artificial data, which takes them out of GDPR's scope entirely, provided the generation process is rigorous enough to avoid recreating real individuals through overfitting. Done well, this lets contractors and analysts write and validate queries and models immediately, without waiting on a legal review cycle.</p>
+
+          <h3>2. Pseudonymised landing zones and legitimate interest</h3>
+          <p>For exploration that genuinely needs real historical distributions, teams use staging layers that strip direct identifiers, names, emails, IP addresses, on ingestion. It's worth being precise about what this achieves: hashing or tokenising an identifier is <strong>pseudonymisation</strong>, not anonymisation. Under GDPR, pseudonymised data is still personal data, which is exactly why this pattern needs a lawful basis to rely on, typically Legitimate Interest (Article 6(1)(f)), backed by a documented Legitimate Interest Assessment and enforced access controls. If the data qualified as truly anonymous, none of that would be necessary, because GDPR wouldn't apply to it at all. Treat the two as different tools solving different problems, not interchangeable labels for the same thing.</p>
+          <div class="article-note"><strong>Worth noting:</strong> a Legitimate Interest Assessment still has to name a specific purpose and survive a genuine balancing test against the individual's rights. "Let analysts explore" isn't specific enough on its own, it needs to be scoped to what's actually being investigated.</div>
+
+          <h3>3. Metadata profiling before pipeline investment</h3>
+          <p>Analysts often don't need raw values to know whether a dataset is worth pursuing. They need to see its shape: null rates, value distributions, field types. A well-maintained, searchable data catalogue with automated profiling lets a team make the business case before a formal data request goes in or a contractor gets hired, which is the point in the friction loop where most good ideas currently die.</p>
+
+          <h2>Example: a defensible pseudonymisation view</h2>
+          <p>Below is an illustrative view that applies masking at the query layer for exploratory BI access. The detail that matters most here is the key: it comes from the warehouse's secrets manager or KMS, not a literal string in the query, and it rotates on a schedule. A hardcoded salt shared across every row is deterministic and, if the underlying ID space is guessable, practically reversible. That defeats the point of pseudonymising in the first place.</p>
+
+          <div class="article-code-label">SQL &middot; illustrative, exact syntax varies by warehouse</div>
+          <pre class="article-code"><code>-- Privacy-preserving analytics view for exploratory BI
+CREATE VIEW bi_sandbox.vw_customer_behavior AS
+SELECT
+  -- Pseudonymise via a keyed HMAC, not a hardcoded salt.
+  -- The key lives in the warehouse's secrets manager / KMS,
+  -- rotates on a schedule, and is never stored with the data.
+  HMAC_SHA256(c.customer_id, secrets.get('bi_sandbox_pseudonym_key'))
+    AS pseudonymized_user_id,
+
+  -- Generalise granular age into bands to reduce re-identification risk
+  CASE
+    WHEN c.age < 25 THEN '18-24'
+    WHEN c.age BETWEEN 25 AND 40 THEN '25-40'
+    ELSE '41+'
+  END AS age_bracket,
+
+  -- Preserve transactional fields needed for statistical analysis
+  t.transaction_amount,
+  t.transaction_timestamp,
+  t.product_category
+
+FROM raw_staging.customers c
+JOIN raw_staging.transactions t ON c.customer_id = t.customer_id
+WHERE c.consent_analytics = TRUE; -- enforce consent at the view layer</code></pre>
+          <p>Even with a properly managed key, this is still pseudonymised, not anonymised, data. Access to the view should be as tightly scoped as access to the underlying tables, and the key rotation schedule is what limits the blast radius if the key is ever exposed.</p>
+
+          <h2>The strategic takeaway</h2>
+          <p>GDPR exists to protect people, and that's not in tension with running a good BI programme, but a rigid, entirely manual approach to compliance will quietly freeze innovation, especially on teams where engineering time and contractor budget are already tight.</p>
+          <p>The goal isn't a blanket pass for the whole warehouse, and it isn't treating legal as an obstacle to route around. It's building a pipeline where analysts can explore structure freely, validate ideas cheaply against synthetic or masked data, and only spend real pipeline budget once the business case is proven. For Irish organisations, that also means keeping the Data Protection Commission's expectations in view from the design stage, not retrofitting compliance once a pattern is already in production.</p>
+          <p>If this friction loop sounds familiar, we build synthetic data pipelines and governed data platforms as part of our data and AI practice. Happy to talk through where it would make sense to start.</p>
+
+          <div class="article-author">
+            <div class="article-author__mark" aria-hidden="true">BT</div>
+            <p><strong>Boyne Tech Editorial</strong><br>Perspectives from the Boyne Tech team on data, AI, and technology delivery.</p>
+          </div>
+
+        </div>
+      </div>
+    </article>
+
+    <section class="section section--cloud" aria-labelledby="cta-heading">
+      <div class="container">
+        <div class="article-cta">
+          <h2 id="cta-heading">Stuck in the data exploration friction loop?</h2>
+          <p>Talk to us about synthetic data sandboxes, pseudonymisation patterns, and governed pipelines that don't ask legal and engineering to fight each other.</p>
+          <a href="../contact.html" class="btn btn-emerald">Get in touch</a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer" role="contentinfo">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <a href="../index.html" class="footer-logo">Boyne <span>Tech</span></a>
+        <p>Ireland's partner for data, technology, and digital innovation.</p>
+        <p class="registered">Registered in Ireland &middot; Company No. 819354 &middot; VAT No. IE4753322MH</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="../services.html#managed-services">IT Managed Services</a></li>
+          <li><a href="../services.html#data-analytics">Data Analytics Consultancy</a></li>
+          <li><a href="../services.html#software-development">Software Development</a></li>
+          <li><a href="../services.html#ai-automation">AI &amp; Automation</a></li>
+          <li><a href="../services.html#digital-transformation">Digital Transformation</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <ul>
+          <li><a href="../about.html">About Us</a></li>
+          <li><a href="../careers.html">Careers</a></li>
+          <li><a href="../insights.html">Insights</a></li>
+          <li><a href="../contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Get in Touch</h4>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+          <span>Dublin, Ireland</span>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+          <a href="mailto:info@boynetech.ie">info@boynetech.ie</a>
+        </div>
+        <div class="footer-contact-item">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+          <a href="https://linkedin.com/company/boynetech" target="_blank" rel="noopener noreferrer">linkedin.com/company/boynetech</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bar">
+      <div class="footer-bar__inner">
+        <span>&copy; 2025 Boyne Tech Limited &middot; All rights reserved</span>
+        <a href="../privacy.html">Privacy Policy</a>
+        <a href="../cookie-policy.html">Cookie Policy</a>
+        <a href="../terms.html">Terms and Conditions</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="chat-widget" id="chatWidget" role="complementary" aria-label="Boyne Tech AI Assistant">
+    <div class="chat-panel" id="chatPanel" hidden>
+      <div class="chat-header">
+        <div><div class="chat-header__title">Boyne Tech Assistant</div><div class="chat-header__sub">Ask me anything</div></div>
+        <button class="chat-close" id="chatClose" aria-label="Close assistant">&#x00D7;</button>
+      </div>
+      <div class="chat-messages" id="chatMessages" role="log" aria-live="polite"></div>
+      <div class="chat-input-row">
+        <input type="text" id="chatInput" class="chat-input" placeholder="Type your message…" autocomplete="off" aria-label="Message to Boyne Tech assistant">
+        <button class="chat-send" id="chatSend" aria-label="Send message"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg></button>
+      </div>
+    </div>
+    <button class="chat-toggle" id="chatToggle" aria-label="Open Boyne Tech assistant" aria-expanded="false">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+    </button>
+  </div>
+
+  <script>
+    (function(){var t=document.getElementById('navToggle'),m=document.getElementById('navMobile');t.addEventListener('click',function(){var o=m.classList.toggle('open');t.classList.toggle('open',o);t.setAttribute('aria-expanded',o);});m.querySelectorAll('a').forEach(function(l){l.addEventListener('click',function(){m.classList.remove('open');t.classList.remove('open');t.setAttribute('aria-expanded','false');});});})();
+
+    (function(){var KEY='YOUR_API_KEY_HERE',EP='https://api.anthropic.com/v1/messages',SYS='You are the Boyne Tech assistant. Boyne Tech is an Irish technology and analytics consultancy offering data analytics, software development, IT managed services, AI and automation, and digital transformation advisory. You help website visitors understand Boyne Tech\'s services, experience, and approach. Be helpful, concise, and professional. Always recommend the visitor contact the team via the Contact page for specific project enquiries. Do not make up specific pricing, client names, or case study details. If asked something you cannot answer, say so and invite them to reach out directly.';
+    var ct=document.getElementById('chatToggle'),cc=document.getElementById('chatClose'),cp=document.getElementById('chatPanel'),cm=document.getElementById('chatMessages'),ci=document.getElementById('chatInput'),cs=document.getElementById('chatSend');
+    var hist=[],shown=false,waiting=false;
+    ct.addEventListener('click',function(){cp.hidden=false;ct.setAttribute('aria-expanded','true');if(!shown){shown=true;add('assistant','Hi, I am the Boyne Tech Assistant. Ask me about our services, team, or how we can help your organisation.');}ci.focus();});
+    cc.addEventListener('click',function(){cp.hidden=true;ct.setAttribute('aria-expanded','false');});
+    ci.addEventListener('keydown',function(e){if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+    cs.addEventListener('click',send);
+    function add(r,t){var d=document.createElement('div');d.className='chat-message chat-message--'+r;d.textContent=t;cm.appendChild(d);cm.scrollTop=cm.scrollHeight;}
+    function typing(){var d=document.createElement('div');d.className='chat-message chat-message--assistant chat-message--typing';d.id='ct';d.innerHTML='<span></span><span></span><span></span>';cm.appendChild(d);cm.scrollTop=cm.scrollHeight;}
+    function untype(){var e=document.getElementById('ct');if(e)e.remove();}
+    async function send(){var txt=ci.value.trim();if(!txt||waiting)return;ci.value='';add('user',txt);hist.push({role:'user',content:txt});waiting=true;typing();
+    try{var r=await fetch(EP,{method:'POST',headers:{'content-type':'application/json','x-api-key':KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,system:SYS,messages:hist})});
+    untype();if(!r.ok)throw new Error();var d=await r.json();var rep=d.content[0].text;add('assistant',rep);hist.push({role:'assistant',content:rep});}
+    catch(e){untype();add('assistant','I\'m having trouble connecting. Please reach out directly at info@boynetech.ie.');}waiting=false;}
+    })();
+  </script>
+</body>
+</html>
