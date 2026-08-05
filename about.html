@@ -46,8 +46,10 @@
       border-radius: var(--bt-radius-lg);
       overflow: hidden;
       aspect-ratio: 4/3;
+      background-color: var(--bt-navy);
     }
-    .story-grid__image img {
+    .story-grid__image img,
+    .story-grid__image canvas {
       width: 100%;
       height: 100%;
       object-fit: cover;
@@ -105,6 +107,112 @@
     @media (max-width: 768px) {
       .story-grid { grid-template-columns: 1fr; gap: 2rem; }
       .values-grid { grid-template-columns: 1fr; }
+    }
+
+    /* Stat distribution showcase — signature "how we think about data" section */
+    .stat-showcase {
+      background-color: var(--bt-navy);
+      position: relative;
+      overflow: hidden;
+    }
+    .stat-showcase__intro {
+      max-width: 640px;
+      margin: 0 auto 2.5rem;
+      text-align: center;
+    }
+    .stat-showcase__river {
+      display: block;
+      margin: 0 auto 1rem;
+    }
+    .stat-showcase__river-path {
+      stroke: var(--bt-mint);
+      opacity: 0.55;
+    }
+    .stat-showcase__label { color: var(--bt-mint); }
+    .stat-showcase__intro h2 { color: var(--bt-white); margin-bottom: 0.875rem; }
+    .stat-showcase__dek { color: rgba(255,255,255,.72); font-size: 1.0625rem; line-height: 1.7; }
+
+    .stat-card {
+      max-width: 720px;
+      margin: 0 auto;
+      background-color: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: var(--bt-radius-lg);
+      padding: 1.75rem;
+    }
+    .stat-card__head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      margin-bottom: 1rem;
+      gap: 1rem;
+    }
+    .stat-card__head h3 {
+      color: var(--bt-white);
+      font-size: 1.0625rem;
+      margin: 0;
+    }
+    .stat-dots { display: flex; gap: 0.375rem; }
+    .stat-dots span {
+      display: block;
+      height: 6px;
+      width: 6px;
+      border-radius: 999px;
+      background-color: rgba(255,255,255,.25);
+      transition: all .3s ease;
+    }
+    .stat-dots span.is-active { width: 22px; background-color: var(--bt-mint); }
+
+    .stat-plot { position: relative; width: 100%; height: 260px; }
+    .stat-plot canvas { position: absolute; inset: 0; width: 100%; height: 100%; }
+    .stat-callouts {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .stat-callouts.is-visible { opacity: 1; }
+    .stat-callout {
+      position: absolute;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+    .stat-callout__dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--bt-mint);
+      margin-bottom: 4px;
+    }
+    .stat-callout__value {
+      font-size: 0.8125rem;
+      font-weight: 700;
+      color: var(--bt-white);
+      white-space: nowrap;
+    }
+    .stat-callout__label {
+      font-size: 0.6875rem;
+      color: rgba(255,255,255,.55);
+      white-space: nowrap;
+    }
+
+    .stat-insight {
+      margin-top: 1.5rem;
+      color: rgba(255,255,255,.85);
+      font-size: 1rem;
+      line-height: 1.6;
+      opacity: 0;
+      transition: opacity .3s ease;
+    }
+    .stat-insight.is-visible { opacity: 1; }
+
+    @media (max-width: 640px) {
+      .stat-card { padding: 1.25rem; }
+      .stat-plot { height: 220px; }
     }
   </style>
   <script type="application/ld+json">
@@ -175,11 +283,10 @@
             <p>We saw a clear gap in the Irish market. Large global consultancies brought expensive day rates and junior teams padded into engagements. Local generalist agencies lacked the specialist depth. Irish organisations, particularly in the public sector and regulated industries, were being underserved. We built Boyne Tech to fill that gap with senior people, genuine domain expertise, and a commitment to staying through delivery.</p>
             <p>Our team brings experience across public sector analytics, financial services data platforms, healthcare information systems, and large-scale enterprise technology programmes. That breadth means we understand the contexts our clients work in: the governance requirements, the procurement processes, the internal politics that shape every programme.</p>
             <p>We run a deliberately small, senior model. We don't staff engagements with graduates supervised from a distance. Everyone working on your project is an experienced practitioner who can contribute from day one and is accountable for the outcome.</p>
+            <p>The name comes from home. Our founders have lived in Navan, County Meath, right on the River Boyne, for the past decade. It's a small thing, but a river that's shaped this part of Ireland for thousands of years felt like the right image for a company built to stick around, not fly in and out.</p>
           </div>
           <div class="story-grid__image">
-            <img src="images/pattern-network-light.svg"
-                 alt="Abstract illustration of a connected data network"
-                 loading="lazy">
+            <canvas id="riverCanvas" aria-hidden="true"></canvas>
           </div>
         </div>
       </div>
@@ -216,6 +323,34 @@
           </div>
 
         </div>
+      </div>
+    </section>
+
+    <!-- ── How We Read Data ──────────────────────────────────── -->
+    <section class="section stat-showcase" aria-labelledby="stat-showcase-heading">
+      <div class="container">
+        <div class="stat-showcase__intro">
+          <svg class="stat-showcase__river" width="120" height="20" viewBox="0 0 120 20" fill="none" aria-hidden="true">
+            <path class="stat-showcase__river-path" d="M2 10c8-8 16 8 24 0s16-8 24 0 16 8 24 0 16-8 24 0 16 8 22 0" stroke-width="2" stroke-linecap="round"/>
+          </svg>
+          <span class="section-label stat-showcase__label">How We Read Data</span>
+          <h2 id="stat-showcase-heading">The shape of the data changes the answer</h2>
+          <p class="stat-showcase__dek">Every distribution tells a different story about risk, capacity, and where to focus. Fitting the wrong one is how dashboards end up confidently wrong. It's also where the name comes from: the river that's run through Navan for thousands of years. We like our thinking the same way. Grounded, and always moving.</p>
+        </div>
+
+        <div class="stat-card">
+          <div class="stat-card__head">
+            <h3 id="statTitle">Normal distribution</h3>
+            <div class="stat-dots" id="statDots" aria-hidden="true"></div>
+          </div>
+          <div class="stat-plot">
+            <canvas id="statCanvas" aria-hidden="true"></canvas>
+            <div class="stat-callouts" id="statCallouts"></div>
+          </div>
+          <p class="stat-insight" id="statInsight"></p>
+        </div>
+
+        <p class="sr-only" id="statSrSummary"></p>
       </div>
     </section>
 
@@ -316,6 +451,642 @@
     try{var r=await fetch(EP,{method:'POST',headers:{'content-type':'application/json','x-api-key':KEY,'anthropic-version':'2023-06-01','anthropic-dangerous-direct-browser-access':'true'},body:JSON.stringify({model:'claude-sonnet-4-20250514',max_tokens:500,system:SYS,messages:hist})});
     untype();if(!r.ok)throw new Error();var d=await r.json();var rep=d.content[0].text;add('assistant',rep);hist.push({role:'assistant',content:rep});}
     catch(e){untype();add('assistant','I\'m having trouble connecting. Please reach out directly at info@boynetech.ie.');}waiting=false;}
+    })();
+
+    // River canvas — the Boyne as a data/neural motif beside "Our Story".
+    // Three meandering strands (Catmull-Rom through a handful of points) carry
+    // flowing data particles; an even, jittered-grid node graph with pulsing
+    // connections fills the rest of the frame; fine drifting specks add depth.
+    // Vanilla canvas, respects prefers-reduced-motion.
+    (function () {
+      var canvas = document.getElementById('riverCanvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      var rootStyle = getComputedStyle(document.documentElement);
+      var MINT = (rootStyle.getPropertyValue('--bt-mint') || '#7CFFB8').trim();
+      var NAVY = (rootStyle.getPropertyValue('--bt-navy') || '#0E2438').trim();
+
+      function hexToRgb(hex) {
+        var h = hex.replace('#', '');
+        return {
+          r: parseInt(h.substring(0, 2), 16),
+          g: parseInt(h.substring(2, 4), 16),
+          b: parseInt(h.substring(4, 6), 16)
+        };
+      }
+      var mintRgb = hexToRgb(MINT);
+      var navyRgb = hexToRgb(NAVY);
+      function mintA(a) { return 'rgba(' + mintRgb.r + ',' + mintRgb.g + ',' + mintRgb.b + ',' + a + ')'; }
+      function navyA(a) { return 'rgba(' + navyRgb.r + ',' + navyRgb.g + ',' + navyRgb.b + ',' + a + ')'; }
+
+      function catmullRom(p0, p1, p2, p3, t) {
+        var t2 = t * t, t3 = t2 * t;
+        var x = 0.5 * ((2 * p1[0]) + (-p0[0] + p2[0]) * t + (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * t2 + (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * t3);
+        var y = 0.5 * ((2 * p1[1]) + (-p0[1] + p2[1]) * t + (2 * p0[1] - 5 * p1[1] + 4 * p2[1] - p3[1]) * t2 + (-p0[1] + 3 * p1[1] - 3 * p2[1] + p3[1]) * t3);
+        return [x, y];
+      }
+
+      function makeStrand(points) {
+        var padded = [points[0]].concat(points, [points[points.length - 1]]);
+        var segCount = points.length - 1;
+        return function (t) {
+          var segT = t * segCount;
+          var seg = Math.min(segCount - 1, Math.floor(segT));
+          var localT = segT - seg;
+          return catmullRom(padded[seg], padded[seg + 1], padded[seg + 2], padded[seg + 3], localT);
+        };
+      }
+
+      // Three strands: the main river plus two tributaries feeding into it,
+      // so the whole frame carries motion, not just a single thin line.
+      var STRANDS = [
+        {
+          at: makeStrand([[-0.10, 0.62], [0.12, 0.40], [0.30, 0.55], [0.48, 0.30], [0.66, 0.50], [0.84, 0.32], [1.10, 0.46]]),
+          width: 1.6, glowWidth: 11, alpha: 0.30, glowAlpha: 0.07, particles: 9, speed: [0.05, 0.10]
+        },
+        {
+          at: makeStrand([[-0.05, 0.06], [0.18, 0.16], [0.36, 0.24], [0.52, 0.34], [0.68, 0.46], [0.9, 0.5]]),
+          width: 1, glowWidth: 7, alpha: 0.18, glowAlpha: 0.045, particles: 6, speed: [0.045, 0.085]
+        },
+        {
+          at: makeStrand([[0.15, 1.04], [0.32, 0.9], [0.5, 0.76], [0.68, 0.64], [0.85, 0.52], [1.05, 0.48]]),
+          width: 1, glowWidth: 7, alpha: 0.18, glowAlpha: 0.045, particles: 6, speed: [0.045, 0.085]
+        }
+      ];
+
+      var width = 0, height = 0, dpr = 1;
+      function toPx(norm) { return { x: norm[0] * width, y: norm[1] * height }; }
+
+      // Even, jittered-grid node coverage so the graph fills the frame instead
+      // of clumping — a 4:3-ish cell grid with randomised offsets per cell.
+      var GRID_COLS = 8, GRID_ROWS = 6;
+      var nodes = [];
+      for (var gy = 0; gy < GRID_ROWS; gy++) {
+        for (var gx = 0; gx < GRID_COLS; gx++) {
+          var cellW = 1 / GRID_COLS, cellH = 1 / GRID_ROWS;
+          var nx = (gx + 0.15 + Math.random() * 0.7) * cellW;
+          var ny = (gy + 0.15 + Math.random() * 0.7) * cellH;
+          var hub = Math.random() < 0.16;
+          nodes.push({
+            x: nx, y: ny,
+            r: hub ? 2.6 + Math.random() * 1.4 : 1.1 + Math.random() * 1.3,
+            alpha: hub ? 0.6 + Math.random() * 0.3 : 0.25 + Math.random() * 0.4,
+            hub: hub
+          });
+        }
+      }
+
+      // Connect each node to its 2-3 nearest neighbours for a denser mesh.
+      var edges = [];
+      var edgeKeys = {};
+      nodes.forEach(function (node, i) {
+        var dists = nodes.map(function (other, j) {
+          if (j === i) return null;
+          var dx = other.x - node.x, dy = other.y - node.y;
+          return { j: j, d: Math.sqrt(dx * dx + dy * dy) };
+        }).filter(Boolean).sort(function (a, b) { return a.d - b.d; });
+        var links = dists.slice(0, node.hub ? 3 : 2);
+        links.forEach(function (l) {
+          if (l.d > 0.24) return;
+          var key = Math.min(i, l.j) + '-' + Math.max(i, l.j);
+          if (edgeKeys[key]) return;
+          edgeKeys[key] = true;
+          edges.push({ a: i, b: l.j });
+        });
+      });
+
+      // Fine drifting specks — sediment in the water — fill the empty space
+      // between the strands and the node graph with quiet ambient motion.
+      var SPECK_COUNT = 46;
+      var specks = [];
+      for (var s = 0; s < SPECK_COUNT; s++) {
+        var angle = Math.random() * Math.PI * 2;
+        var speed = 0.006 + Math.random() * 0.012;
+        specks.push({
+          x: Math.random(), y: Math.random(),
+          vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
+          r: 0.5 + Math.random() * 0.9,
+          alpha: 0.12 + Math.random() * 0.22
+        });
+      }
+
+      // Pulses travel edges over time, like signals firing across the graph.
+      var pulses = [];
+      function spawnPulse() {
+        if (!edges.length) return;
+        var count = 1 + Math.floor(Math.random() * 2);
+        for (var i = 0; i < count; i++) {
+          pulses.push({ edge: edges[Math.floor(Math.random() * edges.length)], start: performance.now(), dur: 650 + Math.random() * 500 });
+        }
+        if (!reducedMotion) setTimeout(spawnPulse, 380 + Math.random() * 520);
+      }
+
+      var particles = [];
+      STRANDS.forEach(function (strand, si) {
+        for (var p = 0; p < strand.particles; p++) {
+          particles.push({
+            strand: si,
+            t: Math.random(),
+            speed: strand.speed[0] + Math.random() * (strand.speed[1] - strand.speed[0])
+          });
+        }
+      });
+
+      // A small, unmistakable neural network — fixed layers (not randomised
+      // like the loose mesh) so it reads instantly, tucked into the upper
+      // right where the strands leave the most open space.
+      var NN_LAYERS = [
+        [[0.58, 0.10], [0.58, 0.24], [0.58, 0.38]],
+        [[0.70, 0.05], [0.70, 0.15], [0.70, 0.24], [0.70, 0.33], [0.70, 0.43]],
+        [[0.82, 0.05], [0.82, 0.15], [0.82, 0.24], [0.82, 0.33], [0.82, 0.43]],
+        [[0.94, 0.16], [0.94, 0.32]]
+      ];
+      var nnEdges = [];
+      for (var nl = 0; nl < NN_LAYERS.length - 1; nl++) {
+        NN_LAYERS[nl].forEach(function (_, i) {
+          NN_LAYERS[nl + 1].forEach(function (__, j) {
+            nnEdges.push({ layer: nl, from: i, to: j });
+          });
+        });
+      }
+      function makeNnSignal() {
+        var layer = Math.floor(Math.random() * (NN_LAYERS.length - 1));
+        var from = Math.floor(Math.random() * NN_LAYERS[layer].length);
+        var to = Math.floor(Math.random() * NN_LAYERS[layer + 1].length);
+        return { layer: layer, from: from, to: to, t: Math.random(), speed: 0.8 + Math.random() * 0.6 };
+      }
+      var nnSignals = [];
+      for (var ns = 0; ns < 6; ns++) nnSignals.push(makeNnSignal());
+      function advanceNnSignal(sig, dt) {
+        sig.t += sig.speed * dt;
+        while (sig.t >= 1) {
+          sig.t -= 1;
+          sig.from = sig.to;
+          sig.layer += 1;
+          if (sig.layer >= NN_LAYERS.length - 1) {
+            sig.layer = 0;
+            sig.from = Math.floor(Math.random() * NN_LAYERS[0].length);
+          }
+          sig.to = Math.floor(Math.random() * NN_LAYERS[sig.layer + 1].length);
+        }
+      }
+
+      function resize() {
+        dpr = window.devicePixelRatio || 1;
+        width = canvas.clientWidth;
+        height = canvas.clientHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+      }
+
+      function drawStrands() {
+        STRANDS.forEach(function (strand) {
+          var samples = 90, i, pt;
+          ctx.beginPath();
+          for (i = 0; i <= samples; i++) {
+            pt = toPx(strand.at(i / samples));
+            i === 0 ? ctx.moveTo(pt.x, pt.y) : ctx.lineTo(pt.x, pt.y);
+          }
+          ctx.strokeStyle = mintA(strand.glowAlpha);
+          ctx.lineWidth = strand.glowWidth;
+          ctx.lineCap = 'round';
+          ctx.stroke();
+
+          ctx.beginPath();
+          for (i = 0; i <= samples; i++) {
+            pt = toPx(strand.at(i / samples));
+            i === 0 ? ctx.moveTo(pt.x, pt.y) : ctx.lineTo(pt.x, pt.y);
+          }
+          ctx.strokeStyle = mintA(strand.alpha);
+          ctx.lineWidth = strand.width;
+          ctx.stroke();
+        });
+      }
+
+      function drawSpecks() {
+        specks.forEach(function (speck) {
+          ctx.beginPath();
+          ctx.arc(speck.x * width, speck.y * height, speck.r, 0, Math.PI * 2);
+          ctx.fillStyle = mintA(speck.alpha);
+          ctx.fill();
+        });
+      }
+
+      function drawNodes(now) {
+        edges.forEach(function (edge) {
+          var a = nodes[edge.a], b = nodes[edge.b];
+          ctx.beginPath();
+          ctx.moveTo(a.x * width, a.y * height);
+          ctx.lineTo(b.x * width, b.y * height);
+          ctx.strokeStyle = mintA(0.09);
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        });
+
+        if (!reducedMotion) {
+          pulses = pulses.filter(function (pulse) {
+            var elapsed = now - pulse.start;
+            if (elapsed > pulse.dur) return false;
+            var progress = elapsed / pulse.dur;
+            var glow = Math.sin(progress * Math.PI);
+            var a = nodes[pulse.edge.a], b = nodes[pulse.edge.b];
+            ctx.beginPath();
+            ctx.moveTo(a.x * width, a.y * height);
+            ctx.lineTo(b.x * width, b.y * height);
+            ctx.strokeStyle = mintA(0.15 + glow * 0.55);
+            ctx.lineWidth = 1 + glow * 0.8;
+            ctx.stroke();
+            return true;
+          });
+        }
+
+        nodes.forEach(function (node) {
+          if (node.hub) {
+            ctx.beginPath();
+            ctx.arc(node.x * width, node.y * height, node.r * 2.6, 0, Math.PI * 2);
+            ctx.fillStyle = mintA(0.05);
+            ctx.fill();
+          }
+          ctx.beginPath();
+          ctx.arc(node.x * width, node.y * height, node.r, 0, Math.PI * 2);
+          ctx.fillStyle = mintA(node.alpha);
+          ctx.fill();
+        });
+      }
+
+      function drawParticles() {
+        particles.forEach(function (particle) {
+          var pos = toPx(STRANDS[particle.strand].at(particle.t));
+          ctx.save();
+          ctx.shadowColor = mintA(0.9);
+          ctx.shadowBlur = 7;
+          ctx.beginPath();
+          ctx.arc(pos.x, pos.y, 2.2, 0, Math.PI * 2);
+          ctx.fillStyle = mintA(0.95);
+          ctx.fill();
+          ctx.restore();
+        });
+      }
+
+      function drawNeuralNet() {
+        nnEdges.forEach(function (edge) {
+          var a = toPx(NN_LAYERS[edge.layer][edge.from]);
+          var b = toPx(NN_LAYERS[edge.layer + 1][edge.to]);
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = mintA(0.07);
+          ctx.lineWidth = 1;
+          ctx.stroke();
+        });
+
+        nnSignals.forEach(function (sig) {
+          var a = toPx(NN_LAYERS[sig.layer][sig.from]);
+          var b = toPx(NN_LAYERS[sig.layer + 1][sig.to]);
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.lineTo(b.x, b.y);
+          ctx.strokeStyle = mintA(0.32);
+          ctx.lineWidth = 1.2;
+          ctx.stroke();
+        });
+
+        NN_LAYERS.forEach(function (layer) {
+          layer.forEach(function (pos) {
+            var px = toPx(pos);
+            ctx.beginPath();
+            ctx.arc(px.x, px.y, 6.5, 0, Math.PI * 2);
+            ctx.fillStyle = mintA(0.06);
+            ctx.fill();
+            ctx.beginPath();
+            ctx.arc(px.x, px.y, 2.6, 0, Math.PI * 2);
+            ctx.fillStyle = mintA(0.75);
+            ctx.fill();
+          });
+        });
+
+        nnSignals.forEach(function (sig) {
+          var a = NN_LAYERS[sig.layer][sig.from], b = NN_LAYERS[sig.layer + 1][sig.to];
+          var px = toPx([a[0] + (b[0] - a[0]) * sig.t, a[1] + (b[1] - a[1]) * sig.t]);
+          ctx.save();
+          ctx.shadowColor = mintA(0.9);
+          ctx.shadowBlur = 8;
+          ctx.beginPath();
+          ctx.arc(px.x, px.y, 2.4, 0, Math.PI * 2);
+          ctx.fillStyle = mintA(0.95);
+          ctx.fill();
+          ctx.restore();
+        });
+      }
+
+      function paint(now) {
+        drawSpecks();
+        drawStrands();
+        drawNodes(now);
+        drawNeuralNet();
+        drawParticles();
+      }
+
+      var lastTime = 0;
+      function frame(now) {
+        if (!lastTime) lastTime = now;
+        var dt = (now - lastTime) / 1000;
+        lastTime = now;
+
+        ctx.fillStyle = navyA(0.2);
+        ctx.fillRect(0, 0, width, height);
+
+        specks.forEach(function (speck) {
+          speck.x += speck.vx * dt;
+          speck.y += speck.vy * dt;
+          if (speck.x < 0) speck.x += 1; else if (speck.x > 1) speck.x -= 1;
+          if (speck.y < 0) speck.y += 1; else if (speck.y > 1) speck.y -= 1;
+        });
+        particles.forEach(function (particle) {
+          particle.t += particle.speed * dt;
+          if (particle.t > 1) particle.t -= 1;
+        });
+        nnSignals.forEach(function (sig) { advanceNnSignal(sig, dt); });
+
+        paint(now);
+        requestAnimationFrame(frame);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      ctx.fillStyle = NAVY;
+      ctx.fillRect(0, 0, width, height);
+
+      if (reducedMotion) {
+        paint(performance.now());
+      } else {
+        spawnPulse();
+        requestAnimationFrame(frame);
+      }
+    })();
+
+    // Stat distribution showcase — cycles four distributions on a canvas.
+    // Vanilla JS/canvas port (no framework on this site); colors are read from
+    // the CSS custom properties so the brand palette stays the single source of truth.
+    (function () {
+      var canvas = document.getElementById('statCanvas');
+      if (!canvas) return;
+      var ctx = canvas.getContext('2d');
+      var titleEl = document.getElementById('statTitle');
+      var dotsEl = document.getElementById('statDots');
+      var calloutsEl = document.getElementById('statCallouts');
+      var insightEl = document.getElementById('statInsight');
+      var srEl = document.getElementById('statSrSummary');
+
+      var rootStyle = getComputedStyle(document.documentElement);
+      var COLOR = {
+        mark: (rootStyle.getPropertyValue('--bt-mint') || '#7CFFB8').trim(),
+        wash: 'rgba(124, 255, 184, 0.10)',
+        washBorder: 'rgba(124, 255, 184, 0.35)',
+        axis: 'rgba(255, 255, 255, 0.15)'
+      };
+
+      function gaussian(x, mean, sd) {
+        return Math.exp(-((x - mean) * (x - mean)) / (2 * sd * sd));
+      }
+
+      var DISTRIBUTIONS = [
+        {
+          name: 'Normal distribution',
+          insight: '“Typical” has a shape. Most of it sits closer than people assume.',
+          kind: 'curve',
+          curve: function (x) { return gaussian(x * 6 - 3, 0, 1); },
+          shadedRange: [0.335, 0.665],
+          callouts: [
+            { xNorm: 0.5, label: 'μ (mean)', value: '0' },
+            { xNorm: 0.665, label: '68% of values', value: 'within ±1σ' }
+          ]
+        },
+        {
+          name: 'Exponential distribution',
+          insight: 'Right-skewed data makes the average misleading. The median tells the truer story.',
+          kind: 'curve',
+          curve: function (x) { return Math.exp(-x * 4.2); },
+          shadedRange: [0, 1],
+          callouts: [
+            { xNorm: 0.165, label: 'median', value: '0.69λ⁻¹' },
+            { xNorm: 0.42, label: 'mean', value: '1.0λ⁻¹' }
+          ]
+        },
+        {
+          name: 'Poisson distribution',
+          insight: 'Count data like support tickets or arrivals clusters around a rate, not a fixed number.',
+          kind: 'bars',
+          bars: [0.02, 0.09, 0.18, 0.28, 0.33, 0.31, 0.24, 0.16, 0.09, 0.04, 0.02],
+          callouts: [
+            { xNorm: 4 / 10, label: 'λ (rate)', value: '≈ 4 events' },
+            { xNorm: 6 / 10, label: 'mode', value: '4–5' }
+          ]
+        },
+        {
+          name: 'Pareto distribution',
+          insight: 'Outliers aren’t noise to filter out. In most real data, they’re where the signal sits.',
+          kind: 'curve',
+          curve: function (x) { return Math.pow(0.06 / (x + 0.06), 1.16); },
+          shadedRange: [0, 0.2],
+          callouts: [
+            { xNorm: 0.1, label: 'top 20% of cases', value: '≈ 80% of impact' }
+          ]
+        }
+      ];
+
+      var DRAW_MS = 1400, HOLD_MS = 2600, FADE_MS = 500;
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var activeIndex = 0, phase = 'drawing', phaseStart = 0;
+      var width = 0, height = 0, dpr = 1;
+      var padding = { top: 20, right: 16, bottom: 20, left: 16 };
+
+      srEl.textContent = 'Distributions shown: ' + DISTRIBUTIONS.map(function (d) { return d.name; }).join(', ') + '. ' + DISTRIBUTIONS[0].insight;
+
+      function buildDots() {
+        if (reducedMotion) { dotsEl.style.display = 'none'; return; }
+        dotsEl.innerHTML = '';
+        DISTRIBUTIONS.forEach(function (d, i) {
+          var span = document.createElement('span');
+          if (i === activeIndex) span.className = 'is-active';
+          dotsEl.appendChild(span);
+        });
+      }
+
+      function buildCallouts(dist) {
+        calloutsEl.innerHTML = '';
+        dist.callouts.forEach(function (c, i) {
+          var box = document.createElement('div');
+          box.className = 'stat-callout';
+          box.style.left = (c.xNorm * 100) + '%';
+          box.style.top = (i % 2 === 0 ? 4 : 34) + 'px';
+          var dot = document.createElement('div');
+          dot.className = 'stat-callout__dot';
+          var value = document.createElement('div');
+          value.className = 'stat-callout__value';
+          value.textContent = c.value;
+          var label = document.createElement('div');
+          label.className = 'stat-callout__label';
+          label.textContent = c.label;
+          box.appendChild(dot);
+          box.appendChild(value);
+          box.appendChild(label);
+          calloutsEl.appendChild(box);
+        });
+      }
+
+      function renderChrome() {
+        var dist = DISTRIBUTIONS[activeIndex];
+        titleEl.textContent = dist.name;
+        buildDots();
+        buildCallouts(dist);
+        insightEl.textContent = dist.insight;
+        var visible = reducedMotion || phase !== 'drawing';
+        calloutsEl.classList.toggle('is-visible', visible);
+        insightEl.classList.toggle('is-visible', visible);
+      }
+
+      function scheduleNext() {
+        if (reducedMotion) return;
+        if (phase === 'drawing') {
+          setTimeout(function () { phase = 'holding'; phaseStart = performance.now(); renderChrome(); scheduleNext(); }, DRAW_MS);
+        } else if (phase === 'holding') {
+          setTimeout(function () { phase = 'fading'; phaseStart = performance.now(); renderChrome(); scheduleNext(); }, HOLD_MS);
+        } else if (phase === 'fading') {
+          setTimeout(function () {
+            activeIndex = (activeIndex + 1) % DISTRIBUTIONS.length;
+            phase = 'drawing';
+            phaseStart = performance.now();
+            renderChrome();
+            scheduleNext();
+          }, FADE_MS);
+        }
+      }
+
+      function resize() {
+        dpr = window.devicePixelRatio || 1;
+        var parent = canvas.parentElement;
+        width = parent.clientWidth;
+        height = parent.clientHeight;
+        canvas.width = width * dpr;
+        canvas.height = height * dpr;
+        canvas.style.width = width + 'px';
+        canvas.style.height = height + 'px';
+        ctx.setTransform(1, 0, 0, 1, 0, 0);
+        ctx.scale(dpr, dpr);
+      }
+
+      function plotW() { return width - padding.left - padding.right; }
+      function plotH() { return height - padding.top - padding.bottom; }
+      function toPx(xNorm, yNorm) {
+        return { x: padding.left + xNorm * plotW(), y: padding.top + (1 - yNorm) * plotH() };
+      }
+
+      function draw(dist, progress, opacity) {
+        ctx.clearRect(0, 0, width, height);
+        ctx.globalAlpha = opacity;
+
+        ctx.strokeStyle = COLOR.axis;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        var base = toPx(0, 0), baseEnd = toPx(1, 0);
+        ctx.moveTo(base.x, base.y);
+        ctx.lineTo(baseEnd.x, baseEnd.y);
+        ctx.stroke();
+
+        if (dist.kind === 'curve') {
+          var samples = 160, points = [], maxY = 0, i, xNorm, yNorm, p;
+          for (i = 0; i <= samples; i++) { maxY = Math.max(maxY, dist.curve(i / samples)); }
+          for (i = 0; i <= samples; i++) {
+            xNorm = i / samples;
+            yNorm = (dist.curve(xNorm) / maxY) * 0.85;
+            points.push(toPx(xNorm, yNorm));
+          }
+          var visibleCount = Math.max(2, Math.floor(points.length * progress));
+          var visible = points.slice(0, visibleCount);
+
+          if (dist.shadedRange && progress > 0.4) {
+            var s = dist.shadedRange[0], e = dist.shadedRange[1];
+            ctx.fillStyle = COLOR.wash;
+            ctx.strokeStyle = COLOR.washBorder;
+            ctx.beginPath();
+            var startPx = toPx(s, 0);
+            ctx.moveTo(startPx.x, startPx.y);
+            for (i = 0; i <= samples; i++) {
+              xNorm = s + (e - s) * (i / samples);
+              yNorm = (dist.curve(xNorm) / maxY) * 0.85;
+              p = toPx(xNorm, yNorm);
+              ctx.lineTo(p.x, p.y);
+            }
+            var endPx = toPx(e, 0);
+            ctx.lineTo(endPx.x, endPx.y);
+            ctx.closePath();
+            ctx.fill();
+          }
+
+          ctx.strokeStyle = COLOR.mark;
+          ctx.lineWidth = 2.5;
+          ctx.lineJoin = 'round';
+          ctx.lineCap = 'round';
+          ctx.beginPath();
+          visible.forEach(function (pt, idx) { idx === 0 ? ctx.moveTo(pt.x, pt.y) : ctx.lineTo(pt.x, pt.y); });
+          ctx.stroke();
+        }
+
+        if (dist.kind === 'bars') {
+          var n = dist.bars.length, gap = 4;
+          var barW = (plotW() - gap * (n - 1)) / n;
+          var visibleBars = Math.max(0, Math.floor(n * progress));
+          dist.bars.forEach(function (h, idx) {
+            if (idx > visibleBars) return;
+            var grow = idx === visibleBars ? Math.min(1, (progress * n) % 1 || 1) : 1;
+            var x = padding.left + idx * (barW + gap);
+            var barHeight = h * plotH() * 0.85 * grow;
+            var y = height - padding.bottom - barHeight;
+            var r = Math.min(4, barW / 2);
+            ctx.fillStyle = COLOR.mark;
+            ctx.beginPath();
+            ctx.moveTo(x, y + r);
+            ctx.arcTo(x, y, x + r, y, r);
+            ctx.lineTo(x + barW - r, y);
+            ctx.arcTo(x + barW, y, x + barW, y + r, r);
+            ctx.lineTo(x + barW, y + barHeight);
+            ctx.lineTo(x, y + barHeight);
+            ctx.closePath();
+            ctx.fill();
+          });
+        }
+
+        ctx.globalAlpha = 1;
+      }
+
+      function frame() {
+        var dist = DISTRIBUTIONS[activeIndex];
+        var progress = 1, opacity = 1;
+        if (!reducedMotion) {
+          var elapsed = performance.now() - phaseStart;
+          if (phase === 'drawing') progress = Math.min(1, elapsed / DRAW_MS);
+          else if (phase === 'fading') opacity = Math.max(0, 1 - elapsed / FADE_MS);
+        }
+        draw(dist, progress, opacity);
+        if (!reducedMotion) requestAnimationFrame(frame);
+      }
+
+      window.addEventListener('resize', resize);
+      resize();
+      renderChrome();
+
+      if (reducedMotion) {
+        draw(DISTRIBUTIONS[0], 1, 1);
+      } else {
+        phaseStart = performance.now();
+        scheduleNext();
+        requestAnimationFrame(frame);
+      }
     })();
   </script>
 </body>
