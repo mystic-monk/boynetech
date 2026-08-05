@@ -214,6 +214,21 @@
       .stat-card { padding: 1.25rem; }
       .stat-plot { height: 220px; }
     }
+
+    /* Content halos — an organic, node-strung border that wraps specific
+       content blocks (not the whole viewport), with neurons flowing around
+       each one. Applied to a handful of blocks via JS; each host just needs
+       position:relative so its halo canvas can sit flush around it. */
+    .halo-host {
+      position: relative;
+    }
+    .content-halo {
+      position: absolute;
+      inset: -22px;
+      width: calc(100% + 44px);
+      height: calc(100% + 44px);
+      pointer-events: none;
+    }
   </style>
   <script type="application/ld+json">
   {
@@ -276,7 +291,8 @@
     <section class="section" aria-labelledby="story-heading">
       <div class="container">
         <div class="story-grid">
-          <div class="story-grid__content">
+          <div class="story-grid__content halo-host">
+            <canvas class="content-halo" data-halo-color="emerald" aria-hidden="true"></canvas>
             <span class="section-label">Our Story</span>
             <h2 id="story-heading">Why we started Boyne Tech</h2>
             <div class="divider"></div>
@@ -300,7 +316,8 @@
           <h2 id="values-heading">How we operate</h2>
           <div class="divider divider--center"></div>
         </div>
-        <div class="values-grid mt-lg">
+        <div class="values-grid mt-lg halo-host">
+          <canvas class="content-halo" data-halo-color="emerald" aria-hidden="true"></canvas>
 
           <div class="value-card">
             <h3>Honesty over comfort</h3>
@@ -321,7 +338,6 @@
             <h3>Irish, not generic</h3>
             <p>We understand the context: public procurement, GDPR, the OGP frameworks, public sector pay constraints, the Irish tech talent market. That context isn't incidental. It shapes every engagement and every recommendation we make.</p>
           </div>
-
         </div>
       </div>
     </section>
@@ -355,7 +371,8 @@
     </section>
 
     <section class="cta-banner" aria-labelledby="cta-heading">
-      <div class="cta-banner__inner">
+      <div class="cta-banner__inner halo-host">
+        <canvas class="content-halo" data-halo-color="mint" aria-hidden="true"></canvas>
         <div>
           <h2 id="cta-heading">Work with people who care about the outcome.</h2>
           <p>Not just about the engagement. Come and have an honest conversation about what you're trying to achieve.</p>
@@ -454,10 +471,13 @@
     })();
 
     // River canvas — the Boyne as a data/neural motif beside "Our Story".
-    // Three meandering strands (Catmull-Rom through a handful of points) carry
-    // flowing data particles; an even, jittered-grid node graph with pulsing
-    // connections fills the rest of the frame; fine drifting specks add depth.
-    // Vanilla canvas, respects prefers-reduced-motion.
+    // A stylised Ireland outline anchors the scene (shape only, never named);
+    // the Boyne and its real tributary the Blackwater trace a route across it,
+    // with small "synapse" nodes strung along the water that light up as data
+    // particles pass through them — neurons flowing in the river. A compact
+    // causal self-attention diagram (how an LLM actually reads context) sits
+    // in the open corner, plus a loose ambient mesh and drifting specks for
+    // texture. Vanilla canvas, respects prefers-reduced-motion.
     (function () {
       var canvas = document.getElementById('riverCanvas');
       if (!canvas) return;
@@ -481,6 +501,49 @@
       function mintA(a) { return 'rgba(' + mintRgb.r + ',' + mintRgb.g + ',' + mintRgb.b + ',' + a + ')'; }
       function navyA(a) { return 'rgba(' + navyRgb.r + ',' + navyRgb.g + ',' + navyRgb.b + ',' + a + ')'; }
 
+      var width = 0, height = 0, dpr = 1;
+      function toPx(norm) { return { x: norm[0] * width, y: norm[1] * height }; }
+
+      // ── Stylised Ireland outline ─────────────────────────────────────
+      // A simplified, low-poly impression of the coastline (not surveyed
+      // data) — enough to read as "the island" at a glance, at low opacity,
+      // with no text anywhere naming it. Local unit space: x 0(west)-0.7(east),
+      // y 0(south, Mizen Head)-1(north, Malin Head).
+      var IRELAND_LOCAL = [
+        [0.42, 1.00], [0.55, 0.93], [0.60, 0.86], [0.62, 0.78], [0.64, 0.70],
+        [0.66, 0.62], [0.64, 0.53], [0.68, 0.42], [0.58, 0.36], [0.44, 0.32],
+        [0.30, 0.28], [0.20, 0.34], [0.05, 0.42], [0.08, 0.50], [0.20, 0.54],
+        [0.10, 0.60], [0.06, 0.68], [0.04, 0.78], [0.18, 0.84], [0.16, 0.90],
+        [0.10, 0.95], [0.30, 0.98]
+      ];
+      var IRELAND_CENTER = IRELAND_LOCAL.reduce(function (acc, p) {
+        return [acc[0] + p[0] / IRELAND_LOCAL.length, acc[1] + p[1] / IRELAND_LOCAL.length];
+      }, [0, 0]);
+      var IRELAND_ANGLE = -0.62; // radians — tilts the N-S axis diagonally across the wide frame
+      var IRELAND_SCALE = 0.88;
+      function irelandProject(local) {
+        var lx = local[0] - IRELAND_CENTER[0], ly = local[1] - IRELAND_CENTER[1];
+        var cos = Math.cos(IRELAND_ANGLE), sin = Math.sin(IRELAND_ANGLE);
+        var rx = lx * cos - ly * sin, ry = lx * sin + ly * cos;
+        var pxPerUnit = Math.min(width, height) * IRELAND_SCALE;
+        var cx = width * 0.54, cy = height * 0.52;
+        return [(cx + rx * pxPerUnit) / width, (cy + ry * pxPerUnit) / height];
+      }
+
+      function drawIrelandOutline() {
+        ctx.beginPath();
+        IRELAND_LOCAL.forEach(function (p, i) {
+          var pt = toPx(irelandProject(p));
+          i === 0 ? ctx.moveTo(pt.x, pt.y) : ctx.lineTo(pt.x, pt.y);
+        });
+        ctx.closePath();
+        ctx.fillStyle = mintA(0.025);
+        ctx.fill();
+        ctx.strokeStyle = mintA(0.16);
+        ctx.lineWidth = 1;
+        ctx.stroke();
+      }
+
       function catmullRom(p0, p1, p2, p3, t) {
         var t2 = t * t, t3 = t2 * t;
         var x = 0.5 * ((2 * p1[0]) + (-p0[0] + p2[0]) * t + (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * t2 + (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * t3);
@@ -488,100 +551,44 @@
         return [x, y];
       }
 
-      function makeStrand(points) {
-        var padded = [points[0]].concat(points, [points[points.length - 1]]);
-        var segCount = points.length - 1;
+      // Strands are authored as points in the SAME local Ireland space as the
+      // outline above, then projected — so the river actually sits on the map,
+      // not floating independently of it.
+      function makeStrand(localPoints) {
+        var padded = [localPoints[0]].concat(localPoints, [localPoints[localPoints.length - 1]]);
+        var segCount = localPoints.length - 1;
         return function (t) {
           var segT = t * segCount;
           var seg = Math.min(segCount - 1, Math.floor(segT));
           var localT = segT - seg;
-          return catmullRom(padded[seg], padded[seg + 1], padded[seg + 2], padded[seg + 3], localT);
+          var local = catmullRom(padded[seg], padded[seg + 1], padded[seg + 2], padded[seg + 3], localT);
+          return irelandProject(local);
         };
       }
 
-      // Three strands: the main river plus two tributaries feeding into it,
-      // so the whole frame carries motion, not just a single thin line.
+      // The Boyne, west to east, with a tightened bend where the real river
+      // loops back on itself at the Newgrange bend, out to the coast.
+      // The Blackwater joins it as a real tributary, roughly where it meets
+      // the Boyne in the midlands.
       var STRANDS = [
         {
-          at: makeStrand([[-0.10, 0.62], [0.12, 0.40], [0.30, 0.55], [0.48, 0.30], [0.66, 0.50], [0.84, 0.32], [1.10, 0.46]]),
-          width: 1.6, glowWidth: 11, alpha: 0.30, glowAlpha: 0.07, particles: 9, speed: [0.05, 0.10]
+          at: makeStrand([[0.26, 0.775], [0.36, 0.775], [0.44, 0.765], [0.50, 0.745], [0.545, 0.715], [0.585, 0.735], [0.625, 0.715], [0.655, 0.70], [0.70, 0.685]]),
+          width: 1.8, glowWidth: 12, alpha: 0.32, glowAlpha: 0.075, particles: 10, speed: [0.045, 0.09], nodeCount: 9
         },
         {
-          at: makeStrand([[-0.05, 0.06], [0.18, 0.16], [0.36, 0.24], [0.52, 0.34], [0.68, 0.46], [0.9, 0.5]]),
-          width: 1, glowWidth: 7, alpha: 0.18, glowAlpha: 0.045, particles: 6, speed: [0.045, 0.085]
-        },
-        {
-          at: makeStrand([[0.15, 1.04], [0.32, 0.9], [0.5, 0.76], [0.68, 0.64], [0.85, 0.52], [1.05, 0.48]]),
-          width: 1, glowWidth: 7, alpha: 0.18, glowAlpha: 0.045, particles: 6, speed: [0.045, 0.085]
+          at: makeStrand([[0.34, 0.865], [0.40, 0.82], [0.44, 0.765]]),
+          width: 1.1, glowWidth: 7, alpha: 0.2, glowAlpha: 0.05, particles: 4, speed: [0.06, 0.1], nodeCount: 3
         }
       ];
 
-      var width = 0, height = 0, dpr = 1;
-      function toPx(norm) { return { x: norm[0] * width, y: norm[1] * height }; }
-
-      // Even, jittered-grid node coverage so the graph fills the frame instead
-      // of clumping — a 4:3-ish cell grid with randomised offsets per cell.
-      var GRID_COLS = 8, GRID_ROWS = 6;
-      var nodes = [];
-      for (var gy = 0; gy < GRID_ROWS; gy++) {
-        for (var gx = 0; gx < GRID_COLS; gx++) {
-          var cellW = 1 / GRID_COLS, cellH = 1 / GRID_ROWS;
-          var nx = (gx + 0.15 + Math.random() * 0.7) * cellW;
-          var ny = (gy + 0.15 + Math.random() * 0.7) * cellH;
-          var hub = Math.random() < 0.16;
-          nodes.push({
-            x: nx, y: ny,
-            r: hub ? 2.6 + Math.random() * 1.4 : 1.1 + Math.random() * 1.3,
-            alpha: hub ? 0.6 + Math.random() * 0.3 : 0.25 + Math.random() * 0.4,
-            hub: hub
-          });
-        }
-      }
-
-      // Connect each node to its 2-3 nearest neighbours for a denser mesh.
-      var edges = [];
-      var edgeKeys = {};
-      nodes.forEach(function (node, i) {
-        var dists = nodes.map(function (other, j) {
-          if (j === i) return null;
-          var dx = other.x - node.x, dy = other.y - node.y;
-          return { j: j, d: Math.sqrt(dx * dx + dy * dy) };
-        }).filter(Boolean).sort(function (a, b) { return a.d - b.d; });
-        var links = dists.slice(0, node.hub ? 3 : 2);
-        links.forEach(function (l) {
-          if (l.d > 0.24) return;
-          var key = Math.min(i, l.j) + '-' + Math.max(i, l.j);
-          if (edgeKeys[key]) return;
-          edgeKeys[key] = true;
-          edges.push({ a: i, b: l.j });
-        });
+      // ── Neurons strung along the water ────────────────────────────────
+      // Fixed points along each strand; each brightens when a flowing
+      // particle passes near it, then decays — a synapse the current runs through.
+      var riverNodes = STRANDS.map(function (strand) {
+        var arr = [];
+        for (var i = 0; i < strand.nodeCount; i++) arr.push({ t: (i + 0.5) / strand.nodeCount, activation: 0 });
+        return arr;
       });
-
-      // Fine drifting specks — sediment in the water — fill the empty space
-      // between the strands and the node graph with quiet ambient motion.
-      var SPECK_COUNT = 46;
-      var specks = [];
-      for (var s = 0; s < SPECK_COUNT; s++) {
-        var angle = Math.random() * Math.PI * 2;
-        var speed = 0.006 + Math.random() * 0.012;
-        specks.push({
-          x: Math.random(), y: Math.random(),
-          vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
-          r: 0.5 + Math.random() * 0.9,
-          alpha: 0.12 + Math.random() * 0.22
-        });
-      }
-
-      // Pulses travel edges over time, like signals firing across the graph.
-      var pulses = [];
-      function spawnPulse() {
-        if (!edges.length) return;
-        var count = 1 + Math.floor(Math.random() * 2);
-        for (var i = 0; i < count; i++) {
-          pulses.push({ edge: edges[Math.floor(Math.random() * edges.length)], start: performance.now(), dur: 650 + Math.random() * 500 });
-        }
-        if (!reducedMotion) setTimeout(spawnPulse, 380 + Math.random() * 520);
-      }
 
       var particles = [];
       STRANDS.forEach(function (strand, si) {
@@ -594,43 +601,160 @@
         }
       });
 
-      // A small, unmistakable neural network — fixed layers (not randomised
-      // like the loose mesh) so it reads instantly, tucked into the upper
-      // right where the strands leave the most open space.
-      var NN_LAYERS = [
-        [[0.58, 0.10], [0.58, 0.24], [0.58, 0.38]],
-        [[0.70, 0.05], [0.70, 0.15], [0.70, 0.24], [0.70, 0.33], [0.70, 0.43]],
-        [[0.82, 0.05], [0.82, 0.15], [0.82, 0.24], [0.82, 0.33], [0.82, 0.43]],
-        [[0.94, 0.16], [0.94, 0.32]]
-      ];
-      var nnEdges = [];
-      for (var nl = 0; nl < NN_LAYERS.length - 1; nl++) {
-        NN_LAYERS[nl].forEach(function (_, i) {
-          NN_LAYERS[nl + 1].forEach(function (__, j) {
-            nnEdges.push({ layer: nl, from: i, to: j });
+      // ── Loose ambient mesh — background texture, not the focal element ──
+      var GRID_COLS = 7, GRID_ROWS = 5;
+      var nodes = [];
+      for (var gy = 0; gy < GRID_ROWS; gy++) {
+        for (var gx = 0; gx < GRID_COLS; gx++) {
+          var cellW = 1 / GRID_COLS, cellH = 1 / GRID_ROWS;
+          var nx = (gx + 0.15 + Math.random() * 0.7) * cellW;
+          var ny = (gy + 0.15 + Math.random() * 0.7) * cellH;
+          var hub = Math.random() < 0.14;
+          nodes.push({
+            x: nx, y: ny,
+            r: hub ? 2.4 + Math.random() * 1.2 : 1 + Math.random() * 1.1,
+            alpha: hub ? 0.5 + Math.random() * 0.25 : 0.16 + Math.random() * 0.28,
+            hub: hub
           });
+        }
+      }
+      var edges = [];
+      var edgeKeys = {};
+      nodes.forEach(function (node, i) {
+        var dists = nodes.map(function (other, j) {
+          if (j === i) return null;
+          var dx = other.x - node.x, dy = other.y - node.y;
+          return { j: j, d: Math.sqrt(dx * dx + dy * dy) };
+        }).filter(Boolean).sort(function (a, b) { return a.d - b.d; });
+        dists.slice(0, node.hub ? 3 : 2).forEach(function (l) {
+          if (l.d > 0.26) return;
+          var key = Math.min(i, l.j) + '-' + Math.max(i, l.j);
+          if (edgeKeys[key]) return;
+          edgeKeys[key] = true;
+          edges.push({ a: i, b: l.j });
+        });
+      });
+      var pulses = [];
+      function spawnPulse() {
+        if (!edges.length) return;
+        pulses.push({ edge: edges[Math.floor(Math.random() * edges.length)], start: performance.now(), dur: 650 + Math.random() * 500 });
+        if (!reducedMotion) setTimeout(spawnPulse, 500 + Math.random() * 650);
+      }
+
+      var SPECK_COUNT = 34;
+      var specks = [];
+      for (var s = 0; s < SPECK_COUNT; s++) {
+        var angle = Math.random() * Math.PI * 2;
+        var speed = 0.006 + Math.random() * 0.012;
+        specks.push({
+          x: Math.random(), y: Math.random(),
+          vx: Math.cos(angle) * speed, vy: Math.sin(angle) * speed,
+          r: 0.5 + Math.random() * 0.8,
+          alpha: 0.1 + Math.random() * 0.18
         });
       }
-      function makeNnSignal() {
-        var layer = Math.floor(Math.random() * (NN_LAYERS.length - 1));
-        var from = Math.floor(Math.random() * NN_LAYERS[layer].length);
-        var to = Math.floor(Math.random() * NN_LAYERS[layer + 1].length);
-        return { layer: layer, from: from, to: to, t: Math.random(), speed: 0.8 + Math.random() * 0.6 };
-      }
-      var nnSignals = [];
-      for (var ns = 0; ns < 6; ns++) nnSignals.push(makeNnSignal());
-      function advanceNnSignal(sig, dt) {
-        sig.t += sig.speed * dt;
-        while (sig.t >= 1) {
-          sig.t -= 1;
-          sig.from = sig.to;
-          sig.layer += 1;
-          if (sig.layer >= NN_LAYERS.length - 1) {
-            sig.layer = 0;
-            sig.from = Math.floor(Math.random() * NN_LAYERS[0].length);
+
+      // A faint triple spiral — the shape carved on the old stones upriver,
+      // used only as a shape, never named on the page.
+      var SPIRAL_CENTER = [0.14, 0.85];
+      function drawSpiralWatermark(rotation) {
+        var cx = SPIRAL_CENTER[0] * width, cy = SPIRAL_CENTER[1] * height;
+        var maxR = Math.min(width, height) * 0.12;
+        var arms = 3, turns = 1.5, steps = 44;
+        for (var a = 0; a < arms; a++) {
+          var armOffset = (a / arms) * Math.PI * 2 + rotation;
+          ctx.beginPath();
+          for (var i = 0; i <= steps; i++) {
+            var frac = i / steps;
+            var theta = frac * turns * Math.PI * 2 + armOffset;
+            var r = frac * maxR;
+            var x = cx + Math.cos(theta) * r;
+            var y = cy + Math.sin(theta) * r;
+            i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
           }
-          sig.to = Math.floor(Math.random() * NN_LAYERS[sig.layer + 1].length);
+          ctx.strokeStyle = mintA(0.06);
+          ctx.lineWidth = 1.2;
+          ctx.lineCap = 'round';
+          ctx.stroke();
         }
+      }
+
+      // ── Causal self-attention — how an LLM actually reads context ───────
+      // Six tokens in a row; each attends back to every earlier token (the
+      // real triangular pattern behind GPT-style models), arc depth scaling
+      // with distance. Focus sweeps token to token; its incoming arcs light
+      // up by weight and carry a particle from source to focus.
+      var TOKEN_COUNT = 6, TOKEN_Y = 0.10, TOKEN_X0 = 0.58, TOKEN_X1 = 0.96;
+      var TOKENS = [];
+      for (var ti = 0; ti < TOKEN_COUNT; ti++) {
+        TOKENS.push([TOKEN_X0 + (TOKEN_X1 - TOKEN_X0) * (ti / (TOKEN_COUNT - 1)), TOKEN_Y]);
+      }
+      var attnEdges = [];
+      for (var ti2 = 1; ti2 < TOKEN_COUNT; ti2++) {
+        for (var tj = 0; tj < ti2; tj++) {
+          attnEdges.push({ from: tj, to: ti2, weight: 0.15 + Math.random() * 0.65 });
+        }
+      }
+      function attnArcPoint(from, to, t) {
+        var a = TOKENS[from], b = TOKENS[to];
+        var span = to - from;
+        var midX = (a[0] + b[0]) / 2, midY = TOKEN_Y + 0.05 + span * 0.032;
+        var x = (1 - t) * (1 - t) * a[0] + 2 * (1 - t) * t * midX + t * t * b[0];
+        var y = (1 - t) * (1 - t) * a[1] + 2 * (1 - t) * t * midY + t * t * b[1];
+        return [x, y];
+      }
+      var attnFocus = 1, attnT = 0;
+      var ATTN_FOCUS_DUR = 1.5;
+      function advanceAttention(dt) {
+        attnT += dt / ATTN_FOCUS_DUR;
+        if (attnT >= 1) {
+          attnT = 0;
+          attnFocus += 1;
+          if (attnFocus >= TOKEN_COUNT) attnFocus = 1;
+        }
+      }
+      function drawAttention() {
+        attnEdges.forEach(function (e) {
+          var active = e.to === attnFocus;
+          var a = toPx(TOKENS[e.from]);
+          var mid = toPx([(TOKENS[e.from][0] + TOKENS[e.to][0]) / 2, TOKEN_Y + 0.05 + (e.to - e.from) * 0.032]);
+          var b = toPx(TOKENS[e.to]);
+          ctx.beginPath();
+          ctx.moveTo(a.x, a.y);
+          ctx.quadraticCurveTo(mid.x, mid.y, b.x, b.y);
+          ctx.strokeStyle = mintA(active ? 0.12 + e.weight * 0.55 : e.weight * 0.09);
+          ctx.lineWidth = active ? 1 + e.weight * 1.3 : 1;
+          ctx.stroke();
+        });
+
+        TOKENS.forEach(function (pos, i) {
+          var px = toPx(pos);
+          var active = i === attnFocus;
+          if (active) {
+            ctx.beginPath();
+            ctx.arc(px.x, px.y, 7, 0, Math.PI * 2);
+            ctx.fillStyle = mintA(0.14);
+            ctx.fill();
+          }
+          ctx.beginPath();
+          ctx.arc(px.x, px.y, active ? 3.1 : 2.2, 0, Math.PI * 2);
+          ctx.fillStyle = mintA(active ? 0.95 : 0.45);
+          ctx.fill();
+        });
+
+        if (reducedMotion) return;
+        attnEdges.forEach(function (e) {
+          if (e.to !== attnFocus) return;
+          var pos = toPx(attnArcPoint(e.from, e.to, attnT));
+          ctx.save();
+          ctx.shadowColor = mintA(0.9);
+          ctx.shadowBlur = 6;
+          ctx.beginPath();
+          ctx.arc(pos.x, pos.y, 1.7, 0, Math.PI * 2);
+          ctx.fillStyle = mintA(0.95);
+          ctx.fill();
+          ctx.restore();
+        });
       }
 
       function resize() {
@@ -667,6 +791,25 @@
         });
       }
 
+      function drawRiverNodes() {
+        STRANDS.forEach(function (strand, si) {
+          riverNodes[si].forEach(function (node) {
+            var pos = toPx(strand.at(node.t));
+            var glow = node.activation;
+            if (glow > 0.03) {
+              ctx.beginPath();
+              ctx.arc(pos.x, pos.y, 3 + glow * 5, 0, Math.PI * 2);
+              ctx.fillStyle = mintA(glow * 0.16);
+              ctx.fill();
+            }
+            ctx.beginPath();
+            ctx.arc(pos.x, pos.y, 1.6 + glow * 1.4, 0, Math.PI * 2);
+            ctx.fillStyle = mintA(0.35 + glow * 0.6);
+            ctx.fill();
+          });
+        });
+      }
+
       function drawSpecks() {
         specks.forEach(function (speck) {
           ctx.beginPath();
@@ -682,7 +825,7 @@
           ctx.beginPath();
           ctx.moveTo(a.x * width, a.y * height);
           ctx.lineTo(b.x * width, b.y * height);
-          ctx.strokeStyle = mintA(0.09);
+          ctx.strokeStyle = mintA(0.07);
           ctx.lineWidth = 1;
           ctx.stroke();
         });
@@ -706,10 +849,13 @@
 
         nodes.forEach(function (node) {
           if (node.hub) {
-            ctx.beginPath();
-            ctx.arc(node.x * width, node.y * height, node.r * 2.6, 0, Math.PI * 2);
-            ctx.fillStyle = mintA(0.05);
-            ctx.fill();
+            [1.7, 2.5, 3.3].forEach(function (mult, ri) {
+              ctx.beginPath();
+              ctx.arc(node.x * width, node.y * height, node.r * mult, 0, Math.PI * 2);
+              ctx.strokeStyle = mintA(0.08 - ri * 0.018);
+              ctx.lineWidth = 1;
+              ctx.stroke();
+            });
           }
           ctx.beginPath();
           ctx.arc(node.x * width, node.y * height, node.r, 0, Math.PI * 2);
@@ -725,58 +871,7 @@
           ctx.shadowColor = mintA(0.9);
           ctx.shadowBlur = 7;
           ctx.beginPath();
-          ctx.arc(pos.x, pos.y, 2.2, 0, Math.PI * 2);
-          ctx.fillStyle = mintA(0.95);
-          ctx.fill();
-          ctx.restore();
-        });
-      }
-
-      function drawNeuralNet() {
-        nnEdges.forEach(function (edge) {
-          var a = toPx(NN_LAYERS[edge.layer][edge.from]);
-          var b = toPx(NN_LAYERS[edge.layer + 1][edge.to]);
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.strokeStyle = mintA(0.07);
-          ctx.lineWidth = 1;
-          ctx.stroke();
-        });
-
-        nnSignals.forEach(function (sig) {
-          var a = toPx(NN_LAYERS[sig.layer][sig.from]);
-          var b = toPx(NN_LAYERS[sig.layer + 1][sig.to]);
-          ctx.beginPath();
-          ctx.moveTo(a.x, a.y);
-          ctx.lineTo(b.x, b.y);
-          ctx.strokeStyle = mintA(0.32);
-          ctx.lineWidth = 1.2;
-          ctx.stroke();
-        });
-
-        NN_LAYERS.forEach(function (layer) {
-          layer.forEach(function (pos) {
-            var px = toPx(pos);
-            ctx.beginPath();
-            ctx.arc(px.x, px.y, 6.5, 0, Math.PI * 2);
-            ctx.fillStyle = mintA(0.06);
-            ctx.fill();
-            ctx.beginPath();
-            ctx.arc(px.x, px.y, 2.6, 0, Math.PI * 2);
-            ctx.fillStyle = mintA(0.75);
-            ctx.fill();
-          });
-        });
-
-        nnSignals.forEach(function (sig) {
-          var a = NN_LAYERS[sig.layer][sig.from], b = NN_LAYERS[sig.layer + 1][sig.to];
-          var px = toPx([a[0] + (b[0] - a[0]) * sig.t, a[1] + (b[1] - a[1]) * sig.t]);
-          ctx.save();
-          ctx.shadowColor = mintA(0.9);
-          ctx.shadowBlur = 8;
-          ctx.beginPath();
-          ctx.arc(px.x, px.y, 2.4, 0, Math.PI * 2);
+          ctx.arc(pos.x, pos.y, 2.1, 0, Math.PI * 2);
           ctx.fillStyle = mintA(0.95);
           ctx.fill();
           ctx.restore();
@@ -784,11 +879,14 @@
       }
 
       function paint(now) {
+        drawIrelandOutline();
+        drawSpiralWatermark(reducedMotion ? 0 : now * 0.00004);
         drawSpecks();
-        drawStrands();
         drawNodes(now);
-        drawNeuralNet();
+        drawStrands();
+        drawRiverNodes();
         drawParticles();
+        drawAttention();
       }
 
       var lastTime = 0;
@@ -806,11 +904,20 @@
           if (speck.x < 0) speck.x += 1; else if (speck.x > 1) speck.x -= 1;
           if (speck.y < 0) speck.y += 1; else if (speck.y > 1) speck.y -= 1;
         });
+
         particles.forEach(function (particle) {
           particle.t += particle.speed * dt;
           if (particle.t > 1) particle.t -= 1;
+          // Wake the nearest river node as the current passes through it.
+          riverNodes[particle.strand].forEach(function (node) {
+            if (Math.abs(node.t - particle.t) < 0.025) node.activation = 1;
+          });
         });
-        nnSignals.forEach(function (sig) { advanceNnSignal(sig, dt); });
+        riverNodes.forEach(function (group) {
+          group.forEach(function (node) { node.activation = Math.max(0, node.activation - dt * 1.6); });
+        });
+
+        advanceAttention(dt);
 
         paint(now);
         requestAnimationFrame(frame);
@@ -822,11 +929,290 @@
       ctx.fillRect(0, 0, width, height);
 
       if (reducedMotion) {
+        attnFocus = TOKEN_COUNT - 1;
         paint(performance.now());
       } else {
         spawnPulse();
         requestAnimationFrame(frame);
       }
+    })();
+
+    // Content halos — an organic node-strung border that wraps specific
+    // content blocks (the Our Story text, the Values grid, the closing CTA)
+    // rather than the whole viewport. Same river-with-neurons language as
+    // the box widget above: a wobbly loop, easing to zero at each corner,
+    // with synapse nodes that wake as flowing neurons pass them. Colour is
+    // chosen per host — mint reads on the navy CTA, emerald on everything
+    // else, since mint is nearly invisible on white/light backgrounds.
+    (function () {
+      var canvases = document.querySelectorAll('.content-halo');
+      if (!canvases.length) return;
+      var reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      var rootStyle = getComputedStyle(document.documentElement);
+      function hexToRgb(hex) {
+        var h = hex.replace('#', '');
+        return { r: parseInt(h.substring(0, 2), 16), g: parseInt(h.substring(2, 4), 16), b: parseInt(h.substring(4, 6), 16) };
+      }
+      var PALETTE = {
+        mint: hexToRgb((rootStyle.getPropertyValue('--bt-mint') || '#7CFFB8').trim()),
+        emerald: hexToRgb((rootStyle.getPropertyValue('--bt-emerald') || '#177A4E').trim())
+      };
+
+      function makeHalo(canvas) {
+        var ctx = canvas.getContext('2d');
+        var rgb = canvas.getAttribute('data-halo-color') === 'mint' ? PALETTE.mint : PALETTE.emerald;
+        function colA(a) { return 'rgba(' + rgb.r + ',' + rgb.g + ',' + rgb.b + ',' + a + ')'; }
+
+        var width = 0, height = 0, dpr = 1;
+        var MARGIN = 9, WOBBLE_FREQ = 0.05, WOBBLE_SPEED = 0.8, WOBBLE_AMP = 5, TAPER_DIST = 20;
+        var phase = Math.random() * 1000; // desyncs multiple halos so they don't pulse in lockstep
+        var rectW = 0, rectH = 0, perim = 0;
+        var nodes = [], neurons = [];
+
+        function computeRect() {
+          rectW = Math.max(4, width - MARGIN * 2);
+          rectH = Math.max(4, height - MARGIN * 2);
+          perim = 2 * (rectW + rectH);
+        }
+
+        function smoothTaper(d) {
+          if (d >= TAPER_DIST) return 1;
+          var x = Math.max(0, d / TAPER_DIST);
+          return x * x * (3 - 2 * x);
+        }
+
+        function perimeterPoint(s, t) {
+          var dist = (((s % 1) + 1) % 1) * perim;
+          var x, y, nx, ny, before, after;
+          if (dist < rectW) {
+            x = MARGIN + dist; y = MARGIN; nx = 0; ny = -1;
+            before = dist; after = rectW - dist;
+          } else if (dist < rectW + rectH) {
+            var d2 = dist - rectW;
+            x = MARGIN + rectW; y = MARGIN + d2; nx = 1; ny = 0;
+            before = d2; after = rectH - d2;
+          } else if (dist < rectW + rectH + rectW) {
+            var d3 = dist - rectW - rectH;
+            x = MARGIN + rectW - d3; y = MARGIN + rectH; nx = 0; ny = 1;
+            before = d3; after = rectW - d3;
+          } else {
+            var d4 = dist - rectW - rectH - rectW;
+            x = MARGIN; y = MARGIN + rectH - d4; nx = -1; ny = 0;
+            before = d4; after = rectH - d4;
+          }
+          var taper = Math.min(smoothTaper(before), smoothTaper(after));
+          var wobble = Math.sin(dist * WOBBLE_FREQ + t * WOBBLE_SPEED + phase) * WOBBLE_AMP * taper;
+          return [x + nx * wobble, y + ny * wobble];
+        }
+
+        function rebuild() {
+          var nodeCount = Math.max(10, Math.round(perim / 55));
+          nodes = [];
+          for (var i = 0; i < nodeCount; i++) nodes.push({ s: i / nodeCount, activation: 0 });
+          var neuronCount = Math.max(4, Math.round(perim / 200));
+          neurons = [];
+          for (var j = 0; j < neuronCount; j++) neurons.push({ s: Math.random(), speed: 0.05 + Math.random() * 0.04 });
+        }
+
+        // ── Interior strands — the part that actually crosses the content,
+        // not just its edge. HALO_PAD matches the CSS inset(-22px) on
+        // .content-halo, so "inside HALO_PAD" is roughly where the real
+        // text/cards sit; strands are drawn first (see draw()) and the
+        // canvas is the first child of its host, so text paints over them.
+        var HALO_PAD = 22, STRAND_COUNT = 3;
+        var strands = [];
+
+        function catmullRom(p0, p1, p2, p3, t) {
+          var t2 = t * t, t3 = t2 * t;
+          var x = 0.5 * ((2 * p1[0]) + (-p0[0] + p2[0]) * t + (2 * p0[0] - 5 * p1[0] + 4 * p2[0] - p3[0]) * t2 + (-p0[0] + 3 * p1[0] - 3 * p2[0] + p3[0]) * t3);
+          var y = 0.5 * ((2 * p1[1]) + (-p0[1] + p2[1]) * t + (2 * p0[1] - 5 * p1[1] + 4 * p2[1] - p3[1]) * t2 + (-p0[1] + 3 * p1[1] - 3 * p2[1] + p3[1]) * t3);
+          return [x, y];
+        }
+        function makeLocalStrand(points) {
+          var padded = [points[0]].concat(points, [points[points.length - 1]]);
+          var segCount = points.length - 1;
+          return function (t) {
+            var segT = t * segCount;
+            var seg = Math.min(segCount - 1, Math.floor(segT));
+            var localT = segT - seg;
+            return catmullRom(padded[seg], padded[seg + 1], padded[seg + 2], padded[seg + 3], localT);
+          };
+        }
+
+        function rebuildStrands() {
+          var left = HALO_PAD, right = Math.max(left + 10, width - HALO_PAD);
+          var top = HALO_PAD, bottom = Math.max(top + 10, height - HALO_PAD);
+          var usableH = bottom - top;
+          strands = [];
+          for (var k = 0; k < STRAND_COUNT; k++) {
+            var centerY = top + ((k + 0.5) / STRAND_COUNT) * usableH;
+            var jitter = Math.min(usableH / (STRAND_COUNT * 2.2), 20);
+            var pts = [], segs = 4;
+            for (var i = 0; i <= segs; i++) {
+              pts.push([left + (i / segs) * (right - left), centerY + (Math.random() * 2 - 1) * jitter]);
+            }
+            var strandNodeCount = 5;
+            var strandNodes = [];
+            for (var n = 0; n < strandNodeCount; n++) strandNodes.push({ t: (n + 0.5) / strandNodeCount, activation: 0 });
+            strands.push({
+              at: makeLocalStrand(pts),
+              nodes: strandNodes,
+              neurons: [
+                { t: Math.random(), speed: 0.07 + Math.random() * 0.05 },
+                { t: Math.random(), speed: 0.07 + Math.random() * 0.05 }
+              ]
+            });
+          }
+        }
+
+        function resize() {
+          dpr = window.devicePixelRatio || 1;
+          width = canvas.clientWidth;
+          height = canvas.clientHeight;
+          canvas.width = width * dpr;
+          canvas.height = height * dpr;
+          ctx.setTransform(1, 0, 0, 1, 0, 0);
+          ctx.scale(dpr, dpr);
+          computeRect();
+          rebuild();
+          rebuildStrands();
+        }
+
+        function drawStrands(t) {
+          strands.forEach(function (strand) {
+            var samples = 40, i, p;
+            ctx.beginPath();
+            for (i = 0; i <= samples; i++) {
+              p = strand.at(i / samples);
+              i === 0 ? ctx.moveTo(p[0], p[1]) : ctx.lineTo(p[0], p[1]);
+            }
+            ctx.strokeStyle = colA(0.22);
+            ctx.lineWidth = 1.1;
+            ctx.stroke();
+
+            strand.nodes.forEach(function (node) {
+              var np = strand.at(node.t);
+              var glow = node.activation;
+              if (glow > 0.03) {
+                ctx.beginPath();
+                ctx.arc(np[0], np[1], 2.5 + glow * 4, 0, Math.PI * 2);
+                ctx.fillStyle = colA(glow * 0.16);
+                ctx.fill();
+              }
+              ctx.beginPath();
+              ctx.arc(np[0], np[1], 1.1 + glow * 1, 0, Math.PI * 2);
+              ctx.fillStyle = colA(0.3 + glow * 0.55);
+              ctx.fill();
+            });
+
+            strand.neurons.forEach(function (n) {
+              var np = strand.at(n.t);
+              ctx.save();
+              ctx.shadowColor = colA(0.85);
+              ctx.shadowBlur = 6;
+              ctx.beginPath();
+              ctx.arc(np[0], np[1], 1.8, 0, Math.PI * 2);
+              ctx.fillStyle = colA(0.9);
+              ctx.fill();
+              ctx.restore();
+            });
+          });
+        }
+
+        function draw(t) {
+          ctx.clearRect(0, 0, width, height);
+
+          drawStrands(t);
+
+          var samples = Math.max(60, Math.round(perim / 6));
+          ctx.beginPath();
+          for (var i = 0; i <= samples; i++) {
+            var p = perimeterPoint(i / samples, t);
+            i === 0 ? ctx.moveTo(p[0], p[1]) : ctx.lineTo(p[0], p[1]);
+          }
+          ctx.strokeStyle = colA(0.4);
+          ctx.lineWidth = 1.3;
+          ctx.stroke();
+
+          nodes.forEach(function (node) {
+            var p = perimeterPoint(node.s, t);
+            var glow = node.activation;
+            if (glow > 0.03) {
+              ctx.beginPath();
+              ctx.arc(p[0], p[1], 2.5 + glow * 4, 0, Math.PI * 2);
+              ctx.fillStyle = colA(glow * 0.18);
+              ctx.fill();
+            }
+            ctx.beginPath();
+            ctx.arc(p[0], p[1], 1.2 + glow * 1.1, 0, Math.PI * 2);
+            ctx.fillStyle = colA(0.45 + glow * 0.5);
+            ctx.fill();
+          });
+
+          neurons.forEach(function (n) {
+            var p = perimeterPoint(n.s, t);
+            ctx.save();
+            ctx.shadowColor = colA(0.9);
+            ctx.shadowBlur = 7;
+            ctx.beginPath();
+            ctx.arc(p[0], p[1], 2, 0, Math.PI * 2);
+            ctx.fillStyle = colA(0.95);
+            ctx.fill();
+            ctx.restore();
+          });
+        }
+
+        function update(dt) {
+          neurons.forEach(function (n) {
+            n.s += n.speed * dt;
+            if (n.s > 1) n.s -= 1;
+            nodes.forEach(function (node) {
+              var diff = Math.abs(node.s - n.s);
+              if (Math.min(diff, 1 - diff) < 0.01) node.activation = 1;
+            });
+          });
+          nodes.forEach(function (node) { node.activation = Math.max(0, node.activation - dt * 1.6); });
+
+          strands.forEach(function (strand) {
+            strand.neurons.forEach(function (n) {
+              n.t += n.speed * dt;
+              if (n.t > 1) n.t -= 1;
+              strand.nodes.forEach(function (node) {
+                if (Math.abs(node.t - n.t) < 0.03) node.activation = 1;
+              });
+            });
+            strand.nodes.forEach(function (node) { node.activation = Math.max(0, node.activation - dt * 1.6); });
+          });
+        }
+
+        window.addEventListener('resize', resize);
+        resize();
+
+        return { update: update, draw: draw };
+      }
+
+      var halos = [];
+      canvases.forEach(function (canvas) { halos.push(makeHalo(canvas)); });
+
+      if (reducedMotion) {
+        halos.forEach(function (halo) { halo.draw(0); });
+        return;
+      }
+
+      var lastTime = 0, elapsed = 0;
+      function frame(now) {
+        if (!lastTime) lastTime = now;
+        var dt = (now - lastTime) / 1000;
+        lastTime = now;
+        elapsed += dt;
+        halos.forEach(function (halo) {
+          halo.update(dt);
+          halo.draw(elapsed);
+        });
+        requestAnimationFrame(frame);
+      }
+      requestAnimationFrame(frame);
     })();
 
     // Stat distribution showcase — cycles four distributions on a canvas.
